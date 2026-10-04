@@ -1,6 +1,6 @@
 // Render scenes.html frame by frame in headless Chrome: node render_frames.mjs <page url> <out dir> [fps] [t0 t1 ...]
 // With times after the fps it saves only those frames (for checking); otherwise every frame from 0 to DURATION.
-// START=<frame> resumes a full render at that frame.
+// START=<frame> resumes a full render at that frame; END=<frame> stops before that frame.
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
@@ -41,7 +41,8 @@ try {
   const list = times.length ? times.map(Number) : Array.from({ length: Math.round(dur * FPS) + 1 }, (_, i) => i / FPS);
   const first = times.length ? 0 : +(process.env.START || 0);
   let n = first;
-  for (const t of list.slice(first)) {
+  const last = times.length ? list.length : +(process.env.END || list.length);
+  for (const t of list.slice(first, last)) {
     await evaluate(`window.render(${t}); true`);
     await evaluate('new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))');
     const shot = await send('Page.captureScreenshot', { format: 'jpeg', quality: 95, clip: { x: 0, y: 0, width: 1920, height: 1080, scale: 1 } });

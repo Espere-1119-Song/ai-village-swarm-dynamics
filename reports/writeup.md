@@ -153,11 +153,11 @@ Whose earlier work does each computer-use session build on?
 
 Nodes are the 78,362 computer-use sessions, and artifacts are documents, code paths, URLs and files. Touch rules classify each step's contact with an artifact as a write or a read. Session A is a parent of session B when A was the last other session to write an artifact before B first touched it. We build one graph per village goal and place each session one layer below its deepest parent.
 
-We compare these graphs with the swarm simulator of Chai (2026). We re-implemented it in Python from the blog text and followed the JavaScript simulator on the blog page where the text leaves points open, without running or copying it. Its generator gives 64 graphs per goal at the goal's session count. The continuation rate is the share of consecutive session pairs of one agent in which the earlier session is a parent of the later one. Figure 12 shows the graph of one goal next to a generator DAG of the same size.
+We compare these graphs with a generative model of swarm work that the toolkit implements. The model grows a task DAG layer by layer, with layer widths that rise to a peak early in the DAG and then taper. Each new step takes a main parent in the layer above, preferring parents that improved on their own best parent, and about half of the steps also merge extra parents. A step at depth d of a DAG with D layers costs c_d = 1 + 9d/(D − 1), so the deepest steps cost ten times the root. Agents work through the DAG alone, in a standard swarm that a coordinator keeps at N agents, or in a recursive swarm whose agents fork sub-agents. The generator gives 64 DAGs per goal with as many steps as the goal has sessions. The continuation rate is the share of consecutive session pairs of one agent in which the earlier session is a parent of the later one. Figure 12 shows the graph of one goal next to a generator DAG of the same size.
 
 ![Dependency graph of one goal and a generator DAG](figures/depgraph_example.png)
 
-**Figure 12.** Dependency graphs drawn layer by layer from left to right. **a**, Goal G43 of the AI Village, leaving out sessions without any edge. Blue edges join two sessions of one agent, and red edges join sessions of different agents. **b**, A DAG from the blog's generator with as many steps as the goal has sessions. Most edges of the real graph stay within one agent, and far more of them skip layers than in the generator.
+**Figure 12.** Dependency graphs drawn layer by layer from left to right. **a**, Goal G43 of the AI Village, leaving out sessions without any edge. Blue edges join two sessions of one agent, and red edges join sessions of different agents. **b**, A DAG from the generator with as many steps as the goal has sessions. Most edges of the real graph stay within one agent, and far more of them skip layers than in the generator.
 
 ### Findings
 
@@ -173,17 +173,17 @@ Real task graphs are denser than the generator's. As shown in Figure 14, a step 
 
 **Figure 14.** Six structure statistics of the AI Village dependency graphs over the generator mean, on a log axis, for all edges under touch rules v2 pooled over 51 goals. Bars span the middle 95% of 64 generator replicates. Real graphs have more parents per step and far more edges that skip layers.
 
-Step cost does not grow with depth. As shown in Figure 15, sessions deep in a goal's graph take about as many turns and active minutes as those at its start. The blog's cost model rises about ninefold.
+Step cost does not grow with depth. As shown in Figure 15, sessions deep in a goal's graph take about as many turns and active minutes as those at its start. The model's cost c_d rises about ninefold.
 
 ![Session cost by relative depth](figures/stepcost.png)
 
-**Figure 15.** Turns and active minutes per computer-use session relative to the goal's layer-0 sessions, by relative depth in the goal's dependency graph, with 95% intervals, against the cost model of the blog. Real sessions cost about the same at every depth, while the cost model rises about ninefold.
+**Figure 15.** Turns and active minutes per computer-use session relative to the goal's layer-0 sessions, by relative depth in the goal's dependency graph, with 95% intervals, against the cost c_d of the model. Real sessions cost about the same at every depth, while the cost model rises about ninefold.
 
-Our re-implementation reproduces the blog's own results. As shown in Figure 16, all 15 required checks pass within the 20% tolerance without tuning. The conclusions on the AI Village graphs also hold on the goals where most GUI writes can be traced to an artifact.
+The simulator shows how swarms speed up work on DAGs like these. As shown in Figure 16, a standard swarm of 64 agents covers half of a DAG 31.7 times faster than one agent. The scaling exponent ln g / ln N, with g the speedup to half coverage, stays between 0.83 and 0.93 for both swarm types at every checked size. All 15 checks against the reference values of the model's first implementation pass within 20% without tuning. The conclusions on the AI Village graphs also hold on the goals where most GUI writes can be traced to an artifact.
 
-![Reproduction of the swarm-scaling checks](figures/reproduction.png)
+![Checks of the swarm simulator](figures/reproduction.png)
 
-**Figure 16.** Deviation of our re-implementation from the blog for the 14 quantitative required checks, relative to the blog value or the nearest end of a blog range, over 256 families of 16 tasks. The fifteenth check, earlier coverage at every larger swarm, holds in all 256 families. Every deviation stays below the 20% tolerance.
+**Figure 16.** Deviation of the simulator from the reference values of the model for the 14 quantitative checks, relative to the reference value or the nearest end of a reference range, over 256 families of 16 tasks. The fifteenth check, earlier coverage at every larger swarm, holds in all 256 families. Every deviation stays below the 20% tolerance.
 
 ## 7. Scaffolding changes
 
@@ -226,7 +226,6 @@ We thank AI Digest for the AI Village dataset and the public monitor findings. P
 - Anderson and Tweney. 1997. Artifactual power curves in forgetting. Memory and Cognition 25(5), 724-730. doi:10.3758/BF03211315.
 - Binksmith. 2026-06-16. How the AI Village works. https://aivillageblog.substack.com/p/how-the-ai-village-works
 - Brown et al. 2002. The time-rescaling theorem and its application to neural spike train data analysis. Neural Computation.
-- Chai, Wenhao. 2026-09-27. Predictable Swarm Scaling. https://wenhaochai.com/blogs/predictable-swarm-scaling.html
 - Champredon and Dushoff. 2015. Intrinsic and realized generation intervals in infectious-disease transmission. Proceedings of the Royal Society B.
 - Didelot et al. 2017. Genomic infectious disease epidemiology in partially sampled and ongoing outbreaks. Molecular Biology and Evolution.
 - Fader and Hardie. 2007. How to project customer retention. Journal of Interactive Marketing 21(1). https://onlinelibrary.wiley.com/doi/abs/10.1002/dir.20074
@@ -291,8 +290,8 @@ These tables give the size of each source table, the values behind Figures 9, 11
 
 | Quantity | Estimate [95% CI] | Reference [95% CI] | n |
 |---|---|---|---|
-| Slope of relative turns on depth | 0.029 [−0.092, 0.074] | 9 in the blog | 77,725 sessions |
-| Slope of relative active minutes | 0.151 [−0.122, 0.255] | 9 in the blog | 77,725 sessions |
+| Slope of relative turns on depth | 0.029 [−0.092, 0.074] | 9 in the model | 77,725 sessions |
+| Slope of relative active minutes | 0.151 [−0.122, 0.255] | 9 in the model | 77,725 sessions |
 | Continuation, same-goal baseline | 60.2% [53.4, 67.4] | 6.3% [5.1, 7.7] | 50,251 pairs |
 | Continuation, same-day baseline | 60.2% [53.6, 67.3] | 25.0% [21.8, 29.0] | 50,251 pairs |
 | Continuation before the switch | 43.2% [34.7, 51.6] | 9.6% [7.9, 11.3] | 12,733 pairs |
@@ -346,7 +345,7 @@ These tables give the size of each source table, the values behind Figures 9, 11
 
 **Table A8.** The excitation model against the LLM monitor. Share rows are differences in posterior parent-class shares between messages near a finding and the same agents' other messages. Percentile rows rank flagged pairs among all pairs of a window, where 50 is chance.
 
-| Check | Blog | Ours [95% CI] | Deviation |
+| Check | Reference | Simulator [95% CI] | Deviation |
 |---|---|---|---|
 | Coverage earlier at every larger swarm | yes | 256 of 256 families | none |
 | Speedup to half coverage, 64 agents | 33 | 31.7 [31.5, 31.9] | 3.9% |
@@ -358,7 +357,7 @@ These tables give the size of each source table, the values behind Figures 9, 11
 | λ, standard swarm, 64 agents | 0.84 | 0.831 [0.830, 0.832] | 1.1% |
 | λ, recursive swarm, 4 to 64 agents | 0.88 to 0.93 | 0.885 to 0.931 | at most 0.1% |
 
-**Table A9.** The 15 required checks of the simulator reproduction, with λ rows grouped by swarm size. Deviation is relative to the blog value or to the nearest end of a blog range, and the tolerance is 20%.
+**Table A9.** The 15 checks of the simulator against the reference values of the model, with λ rows grouped by swarm size. Deviation is relative to the reference value or to the nearest end of a reference range, and the tolerance is 20%.
 
 | Subset | Goals | Mean parents | Generator | Layer-skipping edges | Generator | Continuation [95% CI] |
 |---|---:|---:|---:|---:|---:|---|

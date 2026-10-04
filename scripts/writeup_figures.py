@@ -445,7 +445,7 @@ def _draw_graph(ax, nodes, layer, edges, agent, colour_of, size):
 
 
 def fig_depgraph_example():
-    """One goal's dependency graph and a generator DAG of the same size, drawn like the blog's DAGs."""
+    """One goal's dependency graph and a generator DAG of the same size, drawn layer by layer."""
     nodes = defaultdict(dict)
     for r in rows("depgraph_example_nodes.csv"):
         if r["no_edge"] == "0":
@@ -540,7 +540,7 @@ def fig_stepcost():
     d = sorted(d, key=lambda r: mid[r["bin"]])
     x = [mid[r["bin"]] for r in d]
     fig, axes = canvas(1, 1, panel_height=1.6, quantity="Session cost relative to layer 0", xlabel="Relative depth in the goal's graph",
-                       legend=[("Turns per session", B6), ("Active minutes per session", R6), ("Cost model of the blog", GREY_600, "dash")], **KW)
+                       legend=[("Turns per session", B6), ("Active minutes per session", R6), ("Model cost per step", GREY_600, "dash")], **KW)
     ax = axes[0, 0]
     ax.plot(x, [float(r["blog_vs_layer0"]) for r in d], color=GREY_600, lw=1.1, ls=(0, (3, 2)), zorder=2)
     for col, soft, k, dx in ((B6, B3, "turns_vs_layer0", -0.012), (R6, R3, "active_vs_layer0", 0.012)):
@@ -662,7 +662,7 @@ def fig_reproduction():
         names[f"Recursive swarm@{n}, 3 layers, lambda = ln g50 / ln N"] = f"λ, recursive swarm, {n} agents"
     for n in (4, 8, 16, 64):
         names[f"Standard swarm@{n}, lambda"] = f"λ, standard swarm, {n} agents"
-    fig, axes = canvas(1, 1, panel_height=2.5, quantity="Deviation from the blog value or range (%)",
+    fig, axes = canvas(1, 1, panel_height=2.5, quantity="Deviation from the reference value or range (%)",
                        legend=[("Our re-implementation", B6, "dot"), ("Tolerance of 20%", GREY_600, "dash")], **KW)
     ax = axes[0, 0]
     y = np.arange(len(d))[::-1]

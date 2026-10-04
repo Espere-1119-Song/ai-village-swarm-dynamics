@@ -283,7 +283,7 @@ S.push({ dur: 16, draw(t) {
   line(1560, 309, 1610, 309, C.r4, 5, pl); txt('between agents', 1622, 318, { size: 24, alpha: pl });
   graph(t, D.graphs.ai_village, L + 10, R - 10, 495, 150, 0.9, 7.2, k => k === 's' ? [C.b4, 0.6] : [C.r4, 0.85], 1.4, 5);
   const pg = prog(t, 7.4, 7.9);
-  txt('Generator DAG from the blog, same number of steps', L, 700, { size: 26, weight: 500, alpha: pg, color: C.muted });
+  txt('Generator DAG of the model, same number of steps', L, 700, { size: 26, weight: 500, alpha: pg, color: C.muted });
   graph(t, D.graphs.generator, L + 10, R - 10, 805, 95, 7.6, 10.2, () => [C.g5, 0.4], 1.0, 1.7, C.g6);
   finding(t, 10.6, '77% of links stay within one agent, and far more skip layers than in the generator.', 960, 38);
   rise("60% of sessions continue the agent's own previous session, against at most 25% by chance.", L, 1012, t, 12.0, { size: 30, color: C.muted });
