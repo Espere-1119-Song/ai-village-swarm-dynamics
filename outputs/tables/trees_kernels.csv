@@ -1,0 +1,12 @@
+key,n_single,fit_on,n_fit,dt_q25_h,dt_median_h,dt_q75_h,used_by_module_a_hook
+chat>chat:other,99671,own,99671,0.017109,0.081258,0.932236,false
+chat>chat:self,36020,own,36020,0.023398,0.082342,0.686765,false
+chat>human,706,own,706,0.020758,0.211244,2.741922,false
+chat>memory:other,366727,own,366727,0.060531,0.144479,0.346886,false
+chat>memory:self,77809,own,77809,0.016427,0.058028,0.174861,false
+memory>chat,83897,own,83897,0.161742,10.934615,147.343123,false
+search>chat,1070,own,1070,0.007008,0.047966,2.144564,false
+search>memory,2440,own,2440,0.007552,0.062886,0.311888,false
+history>search,101367,own,101367,0.157411,0.909506,4.462404,false
+env>chat,60407,own,60407,0.050639,1.120828,8.330242,false
+env>memory,122728,own,122728,0.146860,1.186096,8.028220,false

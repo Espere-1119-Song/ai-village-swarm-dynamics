@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="generator" content="avsd report">
+<title>AVSD 结果浏览</title>
+<script>
+(function () {
+  var d = document.documentElement, tabs = {{ tab_labels.keys()|list|tojson }};
+  var t = (location.hash || "").slice(1);
+  d.className += " js";
+  d.setAttribute("data-tab", tabs.indexOf(t) >= 0 ? t : "overview");
+  try { var m = localStorage.getItem("avsd-theme"); if (m === "light" || m === "dark") d.setAttribute("data-theme", m); } catch (e) {}
+})();
+</script>
+<style>
+{{ css }}
+{% for token in tab_labels %}html.js[data-tab="{{ token }}"] #tab-{{ token }}{{ "," if not loop.last }}
+{% endfor %}{ display: block; }
+</style>
+</head>
+<body>
+{% macro pill(status) -%}
+<span class="pill {{ status_css.get(status, 'other') }}">{{ status }}</span>
+{%- endmacro %}
+{% macro card(c, inner=False) %}
+<section class="card card-{{ c.kind }}">
+  {% if not inner %}
+  <header class="card-head">
+    <h3>{{ c.title }}</h3>
+    <p class="src">来源 <code>{{ c.src }}</code>{% if c.meta %}<span class="dot">·</span>{{ c.meta }}{% endif %}</p>
+  </header>
+  {% endif %}
+  {% if c.note %}<p class="note">{{ c.note }}</p>{% endif %}
+  {% if c.kind == "figure" %}
+  <figure class="fig"><img src="{{ c.img }}" alt="{{ c.title }}" class="zoomable" decoding="async">
+    <figcaption>点击图片查看原尺寸</figcaption></figure>
+  {% elif c.kind == "table" %}
+  <div class="tbl" id="{{ c.widget }}" data-src="{{ c.data_id }}"><p class="loading">表格加载中…</p></div>
+  {% elif c.kind == "chart" %}
+  <div class="cpchart" id="{{ c.widget }}" data-src="{{ c.data_id }}"><p class="loading">图表加载中…</p></div>
+  {% elif c.kind == "html" %}
+  <div class="md">{{ c.html }}</div>
+  {% endif %}
+</section>
+{% endmacro %}
+{% macro listed_files(items) %}
+<ul class="listed">
+  {% for f in items %}
+  <li><code>outputs/{{ f.rel }}</code><span class="meta">{{ fmt_size(f.size) }} · 更新于 {{ f.mtime.strftime("%Y-%m-%d %H:%M") }}</span>
+    <span class="why">{{ f.why or "该类型不嵌入" }}</span></li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+{% macro others_section(cards, listed) %}
+{% if cards or listed %}
+<section class="others">
+  <h3>其他文件</h3>
+  <p class="hint">按文件名归入本页、但还没有专门说明的产出。点开查看。</p>
+  {% for c in cards %}
+  <details class="other">
+    <summary><span class="other-name">{{ c.title }}</span><span class="meta">{{ c.meta }}</span></summary>
+    {{ card(c, inner=True) }}
+  </details>
+  {% endfor %}
+  {% if listed %}{{ listed_files(listed) }}{% endif %}
+</section>
+{% endif %}
+{% endmacro %}
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span>AVSD 结果浏览</div>
+    <div class="build">构建于 <time datetime="{{ built_iso }}">{{ built }}</time>（周{{ weekday }}）</div>
+    <button class="theme-btn" type="button" id="theme-btn" title="切换浅色、深色或跟随系统">主题：自动</button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="报告分页">
+    {% for token, label in tab_labels.items() %}
+    <a class="tab" role="tab" href="#{{ token }}" id="tabbtn-{{ token }}" data-tab="{{ token }}" aria-controls="tab-{{ token }}">{{ label }}</a>
+    {% endfor %}
+  </nav>
+</header>
+
+<main class="wrap">
+<section class="panel" id="tab-overview" role="tabpanel" aria-labelledby="tabbtn-overview" data-panel="overview">
+  <h2 class="panel-title">总览</h2>
+  <p class="intro">AI Village swarm 动态分析（SPEC 10.1）的结果汇总。本页只读取 outputs/ 中的聚合结果与 PROGRESS.md，不读取 data/。
+    新产出在下次运行 <code>avsd report</code> 后自动出现。</p>
+  <div class="tiles">
+    <div class="tile">
+      <div class="tile-label">任务状态{% if has_progress %}<span class="tile-sub">PROGRESS.md · {{ progress_mtime }}</span>{% endif %}</div>
+      {% if has_progress %}
+      <div class="tile-statuses">{% for s, css, n in statuses %}<span class="status-count">{{ pill(s) }}<b>{{ n }}</b></span>{% endfor %}</div>
+      {% else %}<div class="tile-value muted">未找到 PROGRESS.md</div>{% endif %}
+    </div>
+    <div class="tile">
+      <div class="tile-label">产出文件</div>
+      <div class="tile-value">{{ n_files }}</div>
+      <div class="tile-sub">qa/ {{ counts.qa }} 个 · tables/ {{ counts.tables }} 个 · figures/ {{ counts.figures }} 个</div>
+    </div>
+    <div class="tile">
+      <div class="tile-label">最近更新</div>
+      {% if latest %}<div class="tile-value small">{{ latest.time }}</div><div class="tile-sub"><code>{{ latest.rel }}</code></div>
+      {% else %}<div class="tile-value muted">尚未产出</div>{% endif %}
+    </div>
+  </div>
+
+  <h3 class="section-title">各模块</h3>
+  <div class="modgrid">
+    {% for p in panels %}
+    <a class="modcard{% if not p.n_files %} is-empty{% endif %}" href="#{{ p.tab.token }}">
+      <span class="modcard-head"><span class="modcard-label">{{ p.tab.label }}</span>
+        <span class="modcard-count" title="已产出 / 预期的主要文件">{{ p.n_known }}/{{ p.n_expected }}</span></span>
+      <span class="modcard-title">{{ p.tab.title }}</span>
+      {% if p.status %}<span class="modcard-status">
+        {% if p.status_counts %}<span class="status-counts">{% for s, n in p.status_counts %}<span class="status-count">{{ pill(s) }}<b>{{ n }}</b></span>{% endfor %}</span>{% endif %}
+        {% for task, status in p.status_brief %}<span class="task">{{ pill(status) }}<span class="task-name">{{ task }}</span></span>{% endfor %}
+      </span>{% endif %}
+      <span class="modcard-foot">{% if p.n_files %}{{ p.n_files }} 个文件 · 最近更新 {{ p.latest }}{% else %}尚未产出{% endif %}</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  <h3 class="section-title">任务状态{% if has_progress %}<span class="sub">来自 PROGRESS.md</span>{% endif %}</h3>
+  {% if task_sections %}
+  {% for s in task_sections %}
+  <section class="card"><h4 class="card-subtitle">{{ s.title }}</h4>{{ s.html }}</section>
+  {% endfor %}
+  {% else %}
+  <section class="card missing"><p>尚未产出：PROGRESS.md 中没有找到带“状态”列的任务表。</p></section>
+  {% endif %}
+
+  <h3 class="section-title">工作日志{% if log %}<span class="sub">最近 {{ [log.n, 10]|min }} 条，新的在前</span>{% endif %}</h3>
+  {% if log %}
+  <section class="card">{{ log.recent }}
+    {% if log.rest %}<details class="more"><summary>显示其余 {{ log.n - 10 }} 条</summary>{{ log.rest }}</details>{% endif %}
+  </section>
+  {% else %}
+  <section class="card missing"><p>尚未产出：PROGRESS.md 中没有找到“工作日志”表。</p></section>
+  {% endif %}
+
+  <h3 class="section-title">全部产出文件<span class="sub">outputs/qa、outputs/tables、outputs/figures</span></h3>
+  <section class="card">
+    {% if n_files %}<div class="tbl" id="{{ index_widget }}"><p class="loading">表格加载中…</p></div>
+    {% else %}<p class="muted">尚未产出：outputs/ 下还没有 QA 报告、表格或图。</p>{% endif %}
+  </section>
+  {{ others_section(overview_others, overview_listed) }}
+</section>
+
+{% for p in panels %}
+<section class="panel" id="tab-{{ p.tab.token }}" role="tabpanel" aria-labelledby="tabbtn-{{ p.tab.token }}" data-panel="{{ p.tab.token }}">
+  <h2 class="panel-title">{{ p.tab.title }}</h2>
+  <p class="intro">{{ p.tab.intro }}</p>
+  {% if p.status or p.qa %}
+  <div class="panel-meta">
+    {% if p.status %}<div class="status-row">{% for task, status in p.status %}<span class="task">{{ pill(status) }}<span class="task-name">{{ task }}</span></span>{% endfor %}</div>{% endif %}
+    {% if p.qa %}<div class="qa-links">QA 报告：{% for s in p.qa %}<a href="#qa" data-qa="{{ s }}">{{ s }}.md</a>{% endfor %}</div>{% endif %}
+  </div>
+  {% endif %}
+  {% for c in p.cards %}{{ card(c) }}{% endfor %}
+  {% if not p.cards %}
+  <section class="card empty"><p>本模块还没有产出。下面列出预期的文件，出现后重新运行 <code>avsd report</code> 即可显示。</p></section>
+  {% endif %}
+  {% if p.missing %}
+  <section class="card missing">
+    <h3>尚未产出</h3>
+    <ul>{% for path, desc in p.missing %}<li><code>{{ path }}</code><span>{{ desc }}</span></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+  {{ others_section(p.others, p.listed) }}
+</section>
+{% endfor %}
+
+<section class="panel" id="tab-qa" role="tabpanel" aria-labelledby="tabbtn-qa" data-panel="qa">
+  <h2 class="panel-title">QA 报告</h2>
+  <p class="intro">outputs/qa/ 下的全部 QA 报告（markdown 渲染），按流水线顺序排列，pilot 运行放在最后。表头可点击排序。</p>
+  {% if qa_reports %}
+  <div class="qa-layout">
+    <nav class="qa-nav" aria-label="QA 报告列表">
+      {% for r in qa_reports %}
+      <button type="button" class="qa-item" data-qa="{{ r.stem }}"><span class="qa-file">{{ r.file }}</span><span class="qa-meta">{{ r.meta }}</span></button>
+      {% endfor %}
+    </nav>
+    <label class="qa-select-wrap">选择报告
+      <select class="qa-select">{% for r in qa_reports %}<option value="{{ r.stem }}">{{ r.file }}</option>{% endfor %}</select>
+    </label>
+    <div class="qa-body">
+      {% for r in qa_reports %}
+      <article class="qa-report md card" id="{{ r.id }}" data-qa-report="{{ r.stem }}"{% if not loop.first %} hidden{% endif %}>
+        <p class="src">来源 <code>outputs/qa/{{ r.file }}</code><span class="dot">·</span>{{ r.meta }}</p>
+        {% if r.toc|length > 2 %}
+        <nav class="toc" aria-label="目录"><span class="toc-label">目录</span>{% for hid, t in r.toc %}<button type="button" data-scroll="{{ hid }}">{{ t }}</button>{% endfor %}</nav>
+        {% endif %}
+        {{ r.html }}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <section class="card missing"><h3>尚未产出</h3><ul><li><code>outputs/qa/*.md</code><span>各步骤的 QA 报告</span></li></ul></section>
+  {% endif %}
+</section>
+</main>
+
+<footer class="foot wrap">
+  <p>Data: AI Digest, "AI Village dataset", 2026, https://theaidigest.org/village</p>
+  <p>由 <code>avsd report</code> 生成。只包含 outputs/ 中的聚合结果；名称像 text、content、heading、summary、evidence、email 的列一律不显示。</p>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden><div class="lightbox-inner"><img alt=""></div><button type="button" class="lightbox-close">关闭</button></div>
+{% for id, text in data_blocks.items() %}
+<script type="application/json" id="{{ id }}">{{ text|safe }}</script>
+{% endfor %}
+<script type="application/json" id="avsd-views">{{ views }}</script>
+<script>
+{{ js }}
+</script>
+</body>
+</html>

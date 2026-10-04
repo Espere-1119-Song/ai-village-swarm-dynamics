@@ -1,0 +1,644 @@
+series_id,level,entity,metric,metric_label,resolution_run_days,n_points,skipped,n_cp_bocpd,n_cp_l2,n_cp_rbf
+family:Anthropic:msg_count,family,Anthropic,msg_count,Messages per agent-day,1,389,,7,15,11
+family:Anthropic:msg_len,family,Anthropic,msg_len,Mean message length,1,389,,13,17,16
+family:Anthropic:question_ratio,family,Anthropic,question_ratio,Question ratio,1,389,,10,11,6
+family:Anthropic:wait_count,family,Anthropic,wait_count,WAIT per agent-day,5,78,,4,16,6
+family:Anthropic:pause_count,family,Anthropic,pause_count,PAUSE per agent-day,5,78,,3,8,7
+family:Anthropic:session_count,family,Anthropic,session_count,Sessions per agent-day,1,389,,10,13,11
+family:Anthropic:turns_per_session,family,Anthropic,turns_per_session,Turns per session,1,387,,8,19,9
+family:Anthropic:search_count,family,Anthropic,search_count,Search history per agent-day,5,78,,5,11,1
+family:Anthropic:events_per_hour,family,Anthropic,events_per_hour,Events per run hour,1,389,,11,16,14
+family:OpenAI:msg_count,family,OpenAI,msg_count,Messages per agent-day,1,389,,10,18,9
+family:OpenAI:msg_len,family,OpenAI,msg_len,Mean message length,1,389,,12,14,10
+family:OpenAI:question_ratio,family,OpenAI,question_ratio,Question ratio,1,389,,6,11,2
+family:OpenAI:wait_count,family,OpenAI,wait_count,WAIT per agent-day,5,78,,2,19,1
+family:OpenAI:pause_count,family,OpenAI,pause_count,PAUSE per agent-day,5,78,,2,12,6
+family:OpenAI:session_count,family,OpenAI,session_count,Sessions per agent-day,1,389,,10,18,10
+family:OpenAI:turns_per_session,family,OpenAI,turns_per_session,Turns per session,1,386,,9,14,8
+family:OpenAI:search_count,family,OpenAI,search_count,Search history per agent-day,5,78,,6,12,2
+family:OpenAI:events_per_hour,family,OpenAI,events_per_hour,Events per run hour,1,389,,11,17,9
+family:Google:msg_count,family,Google,msg_count,Messages per agent-day,1,371,,8,14,7
+family:Google:msg_len,family,Google,msg_len,Mean message length,1,370,,9,13,5
+family:Google:question_ratio,family,Google,question_ratio,Question ratio,1,370,,13,15,1
+family:Google:wait_count,family,Google,wait_count,WAIT per agent-day,1,371,,5,16,9
+family:Google:pause_count,family,Google,pause_count,PAUSE per agent-day,5,75,,7,4,1
+family:Google:session_count,family,Google,session_count,Sessions per agent-day,1,371,,9,15,7
+family:Google:turns_per_session,family,Google,turns_per_session,Turns per session,1,355,,12,18,3
+family:Google:search_count,family,Google,search_count,Search history per agent-day,5,75,,7,13,6
+family:Google:events_per_hour,family,Google,events_per_hour,Events per run hour,1,371,,9,14,5
+family:Other:msg_count,family,Other,msg_count,Messages per agent-day,1,259,,9,14,8
+family:Other:msg_len,family,Other,msg_len,Mean message length,1,259,,5,10,8
+family:Other:question_ratio,family,Other,question_ratio,Question ratio,1,259,,5,8,2
+family:Other:wait_count,family,Other,wait_count,WAIT per agent-day,5,53,,3,2,2
+family:Other:pause_count,family,Other,pause_count,PAUSE per agent-day,5,53,,3,4,4
+family:Other:session_count,family,Other,session_count,Sessions per agent-day,1,259,,8,11,8
+family:Other:turns_per_session,family,Other,turns_per_session,Turns per session,1,255,,6,9,5
+family:Other:search_count,family,Other,search_count,Search history per agent-day,5,53,,3,4,4
+family:Other:events_per_hour,family,Other,events_per_hour,Events per run hour,1,259,,9,13,8
+family:All agents:msg_count,family,All agents,msg_count,Messages per agent-day,1,389,,11,14,11
+family:All agents:msg_len,family,All agents,msg_len,Mean message length,1,389,,8,12,12
+family:All agents:question_ratio,family,All agents,question_ratio,Question ratio,1,389,,11,11,5
+family:All agents:wait_count,family,All agents,wait_count,WAIT per agent-day,1,389,,5,18,12
+family:All agents:pause_count,family,All agents,pause_count,PAUSE per agent-day,5,78,,6,8,5
+family:All agents:session_count,family,All agents,session_count,Sessions per agent-day,1,389,,13,18,13
+family:All agents:turns_per_session,family,All agents,turns_per_session,Turns per session,1,389,,11,19,7
+family:All agents:search_count,family,All agents,search_count,Search history per agent-day,5,78,,4,10,6
+family:All agents:events_per_hour,family,All agents,events_per_hour,Events per run hour,1,389,,13,16,12
+agent:Claude 3.5 Sonnet:msg_count,agent,Claude 3.5 Sonnet,msg_count,Messages per agent-day,1,18,too short,,,
+agent:Claude 3.5 Sonnet:msg_len,agent,Claude 3.5 Sonnet,msg_len,Mean message length,1,18,too short,,,
+agent:Claude 3.5 Sonnet:question_ratio,agent,Claude 3.5 Sonnet,question_ratio,Question ratio,1,18,too short,,,
+agent:Claude 3.5 Sonnet:wait_count,agent,Claude 3.5 Sonnet,wait_count,WAIT per agent-day,5,4,too few points,,,
+agent:Claude 3.5 Sonnet:pause_count,agent,Claude 3.5 Sonnet,pause_count,PAUSE per agent-day,5,4,too few points,,,
+agent:Claude 3.5 Sonnet:session_count,agent,Claude 3.5 Sonnet,session_count,Sessions per agent-day,1,18,too short,,,
+agent:Claude 3.5 Sonnet:turns_per_session,agent,Claude 3.5 Sonnet,turns_per_session,Turns per session,1,18,too short,,,
+agent:Claude 3.5 Sonnet:search_count,agent,Claude 3.5 Sonnet,search_count,Search history per agent-day,5,4,too few points,,,
+agent:Claude 3.5 Sonnet:events_per_hour,agent,Claude 3.5 Sonnet,events_per_hour,Events per run hour,1,18,too short,,,
+agent:Claude 3.7 Sonnet:msg_count,agent,Claude 3.7 Sonnet,msg_count,Messages per agent-day,1,236,,7,6,6
+agent:Claude 3.7 Sonnet:msg_len,agent,Claude 3.7 Sonnet,msg_len,Mean message length,1,236,,6,10,2
+agent:Claude 3.7 Sonnet:question_ratio,agent,Claude 3.7 Sonnet,question_ratio,Question ratio,1,236,,4,4,1
+agent:Claude 3.7 Sonnet:wait_count,agent,Claude 3.7 Sonnet,wait_count,WAIT per agent-day,5,48,,2,4,2
+agent:Claude 3.7 Sonnet:pause_count,agent,Claude 3.7 Sonnet,pause_count,PAUSE per agent-day,5,48,,3,0,1
+agent:Claude 3.7 Sonnet:session_count,agent,Claude 3.7 Sonnet,session_count,Sessions per agent-day,1,236,,8,4,2
+agent:Claude 3.7 Sonnet:turns_per_session,agent,Claude 3.7 Sonnet,turns_per_session,Turns per session,1,232,,3,5,1
+agent:Claude 3.7 Sonnet:search_count,agent,Claude 3.7 Sonnet,search_count,Search history per agent-day,5,48,,3,2,2
+agent:Claude 3.7 Sonnet:events_per_hour,agent,Claude 3.7 Sonnet,events_per_hour,Events per run hour,1,236,,7,9,2
+agent:Claude Fable 5:msg_count,agent,Claude Fable 5,msg_count,Messages per agent-day,1,63,,2,1,1
+agent:Claude Fable 5:msg_len,agent,Claude Fable 5,msg_len,Mean message length,1,60,,0,2,0
+agent:Claude Fable 5:question_ratio,agent,Claude Fable 5,question_ratio,Question ratio,1,60,,0,2,0
+agent:Claude Fable 5:wait_count,agent,Claude Fable 5,wait_count,WAIT per agent-day,5,14,constant,,,
+agent:Claude Fable 5:pause_count,agent,Claude Fable 5,pause_count,PAUSE per agent-day,1,63,,2,3,2
+agent:Claude Fable 5:session_count,agent,Claude Fable 5,session_count,Sessions per agent-day,1,63,,2,2,2
+agent:Claude Fable 5:turns_per_session,agent,Claude Fable 5,turns_per_session,Turns per session,1,62,,1,3,0
+agent:Claude Fable 5:search_count,agent,Claude Fable 5,search_count,Search history per agent-day,5,14,,0,1,0
+agent:Claude Fable 5:events_per_hour,agent,Claude Fable 5,events_per_hour,Events per run hour,1,63,,2,3,2
+agent:Claude Fable 5.1:msg_count,agent,Claude Fable 5.1,msg_count,Messages per agent-day,5,3,too few points,,,
+agent:Claude Fable 5.1:msg_len,agent,Claude Fable 5.1,msg_len,Mean message length,5,3,too few points,,,
+agent:Claude Fable 5.1:question_ratio,agent,Claude Fable 5.1,question_ratio,Question ratio,5,3,too few points,,,
+agent:Claude Fable 5.1:wait_count,agent,Claude Fable 5.1,wait_count,WAIT per agent-day,5,3,too few points,,,
+agent:Claude Fable 5.1:pause_count,agent,Claude Fable 5.1,pause_count,PAUSE per agent-day,1,14,too short,,,
+agent:Claude Fable 5.1:session_count,agent,Claude Fable 5.1,session_count,Sessions per agent-day,5,3,too few points,,,
+agent:Claude Fable 5.1:turns_per_session,agent,Claude Fable 5.1,turns_per_session,Turns per session,5,3,too few points,,,
+agent:Claude Fable 5.1:search_count,agent,Claude Fable 5.1,search_count,Search history per agent-day,5,3,too few points,,,
+agent:Claude Fable 5.1:events_per_hour,agent,Claude Fable 5.1,events_per_hour,Events per run hour,1,14,too short,,,
+agent:Claude Haiku 4.5:msg_count,agent,Claude Haiku 4.5,msg_count,Messages per agent-day,1,239,,4,8,4
+agent:Claude Haiku 4.5:msg_len,agent,Claude Haiku 4.5,msg_len,Mean message length,1,227,,7,12,8
+agent:Claude Haiku 4.5:question_ratio,agent,Claude Haiku 4.5,question_ratio,Question ratio,1,227,,6,8,3
+agent:Claude Haiku 4.5:wait_count,agent,Claude Haiku 4.5,wait_count,WAIT per agent-day,5,48,,1,3,3
+agent:Claude Haiku 4.5:pause_count,agent,Claude Haiku 4.5,pause_count,PAUSE per agent-day,5,48,,1,6,5
+agent:Claude Haiku 4.5:session_count,agent,Claude Haiku 4.5,session_count,Sessions per agent-day,1,239,,5,11,3
+agent:Claude Haiku 4.5:turns_per_session,agent,Claude Haiku 4.5,turns_per_session,Turns per session,1,236,,5,9,1
+agent:Claude Haiku 4.5:search_count,agent,Claude Haiku 4.5,search_count,Search history per agent-day,5,48,,1,3,1
+agent:Claude Haiku 4.5:events_per_hour,agent,Claude Haiku 4.5,events_per_hour,Events per run hour,1,239,,9,9,5
+agent:Claude Opus 4:msg_count,agent,Claude Opus 4,msg_count,Messages per agent-day,1,77,,1,5,4
+agent:Claude Opus 4:msg_len,agent,Claude Opus 4,msg_len,Mean message length,1,77,,1,2,2
+agent:Claude Opus 4:question_ratio,agent,Claude Opus 4,question_ratio,Question ratio,1,77,,2,2,2
+agent:Claude Opus 4:wait_count,agent,Claude Opus 4,wait_count,WAIT per agent-day,1,77,,1,2,2
+agent:Claude Opus 4:pause_count,agent,Claude Opus 4,pause_count,PAUSE per agent-day,5,16,,1,0,0
+agent:Claude Opus 4:session_count,agent,Claude Opus 4,session_count,Sessions per agent-day,5,16,,0,0,0
+agent:Claude Opus 4:turns_per_session,agent,Claude Opus 4,turns_per_session,Turns per session,5,16,,1,1,0
+agent:Claude Opus 4:search_count,agent,Claude Opus 4,search_count,Search history per agent-day,5,16,constant,,,
+agent:Claude Opus 4:events_per_hour,agent,Claude Opus 4,events_per_hour,Events per run hour,1,77,,2,2,0
+agent:Claude Opus 4.1:msg_count,agent,Claude Opus 4.1,msg_count,Messages per agent-day,1,75,,1,2,0
+agent:Claude Opus 4.1:msg_len,agent,Claude Opus 4.1,msg_len,Mean message length,1,75,,2,3,2
+agent:Claude Opus 4.1:question_ratio,agent,Claude Opus 4.1,question_ratio,Question ratio,1,75,,2,1,0
+agent:Claude Opus 4.1:wait_count,agent,Claude Opus 4.1,wait_count,WAIT per agent-day,1,75,,3,5,1
+agent:Claude Opus 4.1:pause_count,agent,Claude Opus 4.1,pause_count,PAUSE per agent-day,5,16,,0,0,0
+agent:Claude Opus 4.1:session_count,agent,Claude Opus 4.1,session_count,Sessions per agent-day,1,75,,3,3,0
+agent:Claude Opus 4.1:turns_per_session,agent,Claude Opus 4.1,turns_per_session,Turns per session,1,72,,0,0,0
+agent:Claude Opus 4.1:search_count,agent,Claude Opus 4.1,search_count,Search history per agent-day,5,16,,2,2,0
+agent:Claude Opus 4.1:events_per_hour,agent,Claude Opus 4.1,events_per_hour,Events per run hour,1,75,,3,4,1
+agent:Claude Opus 4.5:msg_count,agent,Claude Opus 4.5,msg_count,Messages per agent-day,1,215,,5,8,7
+agent:Claude Opus 4.5:msg_len,agent,Claude Opus 4.5,msg_len,Mean message length,1,190,,4,6,4
+agent:Claude Opus 4.5:question_ratio,agent,Claude Opus 4.5,question_ratio,Question ratio,1,190,,5,7,3
+agent:Claude Opus 4.5:wait_count,agent,Claude Opus 4.5,wait_count,WAIT per agent-day,5,44,,1,4,5
+agent:Claude Opus 4.5:pause_count,agent,Claude Opus 4.5,pause_count,PAUSE per agent-day,5,44,,2,8,0
+agent:Claude Opus 4.5:session_count,agent,Claude Opus 4.5,session_count,Sessions per agent-day,1,215,,6,12,6
+agent:Claude Opus 4.5:turns_per_session,agent,Claude Opus 4.5,turns_per_session,Turns per session,1,213,,5,11,5
+agent:Claude Opus 4.5:search_count,agent,Claude Opus 4.5,search_count,Search history per agent-day,5,44,,4,6,0
+agent:Claude Opus 4.5:events_per_hour,agent,Claude Opus 4.5,events_per_hour,Events per run hour,1,215,,7,11,6
+agent:Claude Opus 4.6:msg_count,agent,Claude Opus 4.6,msg_count,Messages per agent-day,5,33,,3,5,5
+agent:Claude Opus 4.6:msg_len,agent,Claude Opus 4.6,msg_len,Mean message length,1,111,,2,3,3
+agent:Claude Opus 4.6:question_ratio,agent,Claude Opus 4.6,question_ratio,Question ratio,1,111,,3,5,1
+agent:Claude Opus 4.6:wait_count,agent,Claude Opus 4.6,wait_count,WAIT per agent-day,5,33,,1,2,3
+agent:Claude Opus 4.6:pause_count,agent,Claude Opus 4.6,pause_count,PAUSE per agent-day,5,33,,2,4,3
+agent:Claude Opus 4.6:session_count,agent,Claude Opus 4.6,session_count,Sessions per agent-day,1,162,,5,8,5
+agent:Claude Opus 4.6:turns_per_session,agent,Claude Opus 4.6,turns_per_session,Turns per session,1,157,,4,8,7
+agent:Claude Opus 4.6:search_count,agent,Claude Opus 4.6,search_count,Search history per agent-day,5,33,,3,3,0
+agent:Claude Opus 4.6:events_per_hour,agent,Claude Opus 4.6,events_per_hour,Events per run hour,1,162,,2,9,9
+agent:Claude Opus 4.7:msg_count,agent,Claude Opus 4.7,msg_count,Messages per agent-day,5,23,,1,2,2
+agent:Claude Opus 4.7:msg_len,agent,Claude Opus 4.7,msg_len,Mean message length,1,74,,1,1,1
+agent:Claude Opus 4.7:question_ratio,agent,Claude Opus 4.7,question_ratio,Question ratio,1,74,,2,4,1
+agent:Claude Opus 4.7:wait_count,agent,Claude Opus 4.7,wait_count,WAIT per agent-day,5,23,constant,,,
+agent:Claude Opus 4.7:pause_count,agent,Claude Opus 4.7,pause_count,PAUSE per agent-day,1,112,,6,7,5
+agent:Claude Opus 4.7:session_count,agent,Claude Opus 4.7,session_count,Sessions per agent-day,5,23,,1,5,5
+agent:Claude Opus 4.7:turns_per_session,agent,Claude Opus 4.7,turns_per_session,Turns per session,5,23,,1,6,4
+agent:Claude Opus 4.7:search_count,agent,Claude Opus 4.7,search_count,Search history per agent-day,5,23,,1,4,1
+agent:Claude Opus 4.7:events_per_hour,agent,Claude Opus 4.7,events_per_hour,Events per run hour,1,112,,5,6,5
+agent:Claude Opus 4.8:msg_count,agent,Claude Opus 4.8,msg_count,Messages per agent-day,1,83,,2,5,4
+agent:Claude Opus 4.8:msg_len,agent,Claude Opus 4.8,msg_len,Mean message length,1,79,,0,4,0
+agent:Claude Opus 4.8:question_ratio,agent,Claude Opus 4.8,question_ratio,Question ratio,1,79,,0,0,0
+agent:Claude Opus 4.8:wait_count,agent,Claude Opus 4.8,wait_count,WAIT per agent-day,5,17,constant,,,
+agent:Claude Opus 4.8:pause_count,agent,Claude Opus 4.8,pause_count,PAUSE per agent-day,1,83,,3,4,3
+agent:Claude Opus 4.8:session_count,agent,Claude Opus 4.8,session_count,Sessions per agent-day,1,83,,3,4,2
+agent:Claude Opus 4.8:turns_per_session,agent,Claude Opus 4.8,turns_per_session,Turns per session,1,83,,4,6,3
+agent:Claude Opus 4.8:search_count,agent,Claude Opus 4.8,search_count,Search history per agent-day,5,17,,0,1,0
+agent:Claude Opus 4.8:events_per_hour,agent,Claude Opus 4.8,events_per_hour,Events per run hour,1,83,,2,3,2
+agent:Claude Opus 5:msg_count,agent,Claude Opus 5,msg_count,Messages per agent-day,1,41,,0,2,1
+agent:Claude Opus 5:msg_len,agent,Claude Opus 5,msg_len,Mean message length,1,40,,0,0,0
+agent:Claude Opus 5:question_ratio,agent,Claude Opus 5,question_ratio,Question ratio,1,40,,0,2,0
+agent:Claude Opus 5:wait_count,agent,Claude Opus 5,wait_count,WAIT per agent-day,5,9,too few points,,,
+agent:Claude Opus 5:pause_count,agent,Claude Opus 5,pause_count,PAUSE per agent-day,5,9,too few points,,,
+agent:Claude Opus 5:session_count,agent,Claude Opus 5,session_count,Sessions per agent-day,1,41,,1,2,0
+agent:Claude Opus 5:turns_per_session,agent,Claude Opus 5,turns_per_session,Turns per session,1,39,,1,1,0
+agent:Claude Opus 5:search_count,agent,Claude Opus 5,search_count,Search history per agent-day,5,9,too few points,,,
+agent:Claude Opus 5:events_per_hour,agent,Claude Opus 5,events_per_hour,Events per run hour,1,41,,1,2,1
+agent:Claude Sonnet 4.5:msg_count,agent,Claude Sonnet 4.5,msg_count,Messages per agent-day,1,255,,5,13,12
+agent:Claude Sonnet 4.5:msg_len,agent,Claude Sonnet 4.5,msg_len,Mean message length,1,188,,5,6,4
+agent:Claude Sonnet 4.5:question_ratio,agent,Claude Sonnet 4.5,question_ratio,Question ratio,1,188,,6,6,1
+agent:Claude Sonnet 4.5:wait_count,agent,Claude Sonnet 4.5,wait_count,WAIT per agent-day,5,52,,1,12,7
+agent:Claude Sonnet 4.5:pause_count,agent,Claude Sonnet 4.5,pause_count,PAUSE per agent-day,5,52,,3,8,1
+agent:Claude Sonnet 4.5:session_count,agent,Claude Sonnet 4.5,session_count,Sessions per agent-day,1,255,,10,12,4
+agent:Claude Sonnet 4.5:turns_per_session,agent,Claude Sonnet 4.5,turns_per_session,Turns per session,1,241,,6,10,4
+agent:Claude Sonnet 4.5:search_count,agent,Claude Sonnet 4.5,search_count,Search history per agent-day,5,52,,4,2,0
+agent:Claude Sonnet 4.5:events_per_hour,agent,Claude Sonnet 4.5,events_per_hour,Events per run hour,1,255,,7,12,4
+agent:Claude Sonnet 4.6:msg_count,agent,Claude Sonnet 4.6,msg_count,Messages per agent-day,1,154,,5,8,7
+agent:Claude Sonnet 4.6:msg_len,agent,Claude Sonnet 4.6,msg_len,Mean message length,1,124,,3,6,2
+agent:Claude Sonnet 4.6:question_ratio,agent,Claude Sonnet 4.6,question_ratio,Question ratio,1,124,,4,6,2
+agent:Claude Sonnet 4.6:wait_count,agent,Claude Sonnet 4.6,wait_count,WAIT per agent-day,5,31,,1,2,2
+agent:Claude Sonnet 4.6:pause_count,agent,Claude Sonnet 4.6,pause_count,PAUSE per agent-day,5,31,,2,2,1
+agent:Claude Sonnet 4.6:session_count,agent,Claude Sonnet 4.6,session_count,Sessions per agent-day,1,154,,6,11,5
+agent:Claude Sonnet 4.6:turns_per_session,agent,Claude Sonnet 4.6,turns_per_session,Turns per session,1,154,,5,6,6
+agent:Claude Sonnet 4.6:search_count,agent,Claude Sonnet 4.6,search_count,Search history per agent-day,5,31,,3,3,0
+agent:Claude Sonnet 4.6:events_per_hour,agent,Claude Sonnet 4.6,events_per_hour,Events per run hour,1,154,,4,9,9
+agent:Claude Sonnet 5:msg_count,agent,Claude Sonnet 5,msg_count,Messages per agent-day,1,59,,2,3,0
+agent:Claude Sonnet 5:msg_len,agent,Claude Sonnet 5,msg_len,Mean message length,1,58,,0,2,0
+agent:Claude Sonnet 5:question_ratio,agent,Claude Sonnet 5,question_ratio,Question ratio,1,58,,1,1,1
+agent:Claude Sonnet 5:wait_count,agent,Claude Sonnet 5,wait_count,WAIT per agent-day,5,12,constant,,,
+agent:Claude Sonnet 5:pause_count,agent,Claude Sonnet 5,pause_count,PAUSE per agent-day,1,59,,2,2,0
+agent:Claude Sonnet 5:session_count,agent,Claude Sonnet 5,session_count,Sessions per agent-day,1,59,,2,2,1
+agent:Claude Sonnet 5:turns_per_session,agent,Claude Sonnet 5,turns_per_session,Turns per session,1,59,,1,2,0
+agent:Claude Sonnet 5:search_count,agent,Claude Sonnet 5,search_count,Search history per agent-day,5,12,,1,1,1
+agent:Claude Sonnet 5:events_per_hour,agent,Claude Sonnet 5,events_per_hour,Events per run hour,1,59,,2,2,2
+agent:DeepSeek-V3.2:msg_count,agent,DeepSeek-V3.2,msg_count,Messages per agent-day,1,207,,3,9,6
+agent:DeepSeek-V3.2:msg_len,agent,DeepSeek-V3.2,msg_len,Mean message length,1,207,,3,7,4
+agent:DeepSeek-V3.2:question_ratio,agent,DeepSeek-V3.2,question_ratio,Question ratio,1,207,,2,6,1
+agent:DeepSeek-V3.2:wait_count,agent,DeepSeek-V3.2,wait_count,WAIT per agent-day,5,42,,1,2,1
+agent:DeepSeek-V3.2:pause_count,agent,DeepSeek-V3.2,pause_count,PAUSE per agent-day,5,42,,2,3,3
+agent:DeepSeek-V3.2:session_count,agent,DeepSeek-V3.2,session_count,Sessions per agent-day,1,207,,5,7,6
+agent:DeepSeek-V3.2:turns_per_session,agent,DeepSeek-V3.2,turns_per_session,Turns per session,1,207,,4,6,6
+agent:DeepSeek-V3.2:search_count,agent,DeepSeek-V3.2,search_count,Search history per agent-day,5,42,,3,3,3
+agent:DeepSeek-V3.2:events_per_hour,agent,DeepSeek-V3.2,events_per_hour,Events per run hour,1,207,,6,9,6
+agent:DeepSeek-V4-Pro:msg_count,agent,DeepSeek-V4-Pro,msg_count,Messages per agent-day,1,57,,2,3,0
+agent:DeepSeek-V4-Pro:msg_len,agent,DeepSeek-V4-Pro,msg_len,Mean message length,1,57,,1,2,1
+agent:DeepSeek-V4-Pro:question_ratio,agent,DeepSeek-V4-Pro,question_ratio,Question ratio,1,57,,0,1,0
+agent:DeepSeek-V4-Pro:wait_count,agent,DeepSeek-V4-Pro,wait_count,WAIT per agent-day,5,12,constant,,,
+agent:DeepSeek-V4-Pro:pause_count,agent,DeepSeek-V4-Pro,pause_count,PAUSE per agent-day,1,57,,1,2,1
+agent:DeepSeek-V4-Pro:session_count,agent,DeepSeek-V4-Pro,session_count,Sessions per agent-day,1,57,,0,4,1
+agent:DeepSeek-V4-Pro:turns_per_session,agent,DeepSeek-V4-Pro,turns_per_session,Turns per session,1,57,,0,1,0
+agent:DeepSeek-V4-Pro:search_count,agent,DeepSeek-V4-Pro,search_count,Search history per agent-day,5,12,,0,2,0
+agent:DeepSeek-V4-Pro:events_per_hour,agent,DeepSeek-V4-Pro,events_per_hour,Events per run hour,1,57,,0,4,3
+agent:Fine-Tuned Leader:msg_count,agent,Fine-Tuned Leader,msg_count,Messages per agent-day,1,5,too few points,,,
+agent:Fine-Tuned Leader:msg_len,agent,Fine-Tuned Leader,msg_len,Mean message length,1,5,too few points,,,
+agent:Fine-Tuned Leader:question_ratio,agent,Fine-Tuned Leader,question_ratio,Question ratio,1,5,too few points,,,
+agent:Fine-Tuned Leader:wait_count,agent,Fine-Tuned Leader,wait_count,WAIT per agent-day,5,2,too few points,,,
+agent:Fine-Tuned Leader:pause_count,agent,Fine-Tuned Leader,pause_count,PAUSE per agent-day,5,2,too few points,,,
+agent:Fine-Tuned Leader:session_count,agent,Fine-Tuned Leader,session_count,Sessions per agent-day,5,2,too few points,,,
+agent:Fine-Tuned Leader:turns_per_session,agent,Fine-Tuned Leader,turns_per_session,Turns per session,5,2,too few points,,,
+agent:Fine-Tuned Leader:search_count,agent,Fine-Tuned Leader,search_count,Search history per agent-day,5,2,too few points,,,
+agent:Fine-Tuned Leader:events_per_hour,agent,Fine-Tuned Leader,events_per_hour,Events per run hour,1,5,too few points,,,
+agent:GLM-5.2:msg_count,agent,GLM-5.2,msg_count,Messages per agent-day,1,56,,2,2,1
+agent:GLM-5.2:msg_len,agent,GLM-5.2,msg_len,Mean message length,1,56,,2,3,0
+agent:GLM-5.2:question_ratio,agent,GLM-5.2,question_ratio,Question ratio,1,56,,1,1,1
+agent:GLM-5.2:wait_count,agent,GLM-5.2,wait_count,WAIT per agent-day,5,12,constant,,,
+agent:GLM-5.2:pause_count,agent,GLM-5.2,pause_count,PAUSE per agent-day,1,56,,2,2,2
+agent:GLM-5.2:session_count,agent,GLM-5.2,session_count,Sessions per agent-day,1,56,,1,1,1
+agent:GLM-5.2:turns_per_session,agent,GLM-5.2,turns_per_session,Turns per session,1,56,,1,2,1
+agent:GLM-5.2:search_count,agent,GLM-5.2,search_count,Search history per agent-day,5,12,,1,2,2
+agent:GLM-5.2:events_per_hour,agent,GLM-5.2,events_per_hour,Events per run hour,1,56,,1,1,1
+agent:GLM-5.3 Flash:msg_count,agent,GLM-5.3 Flash,msg_count,Messages per agent-day,1,16,too short,,,
+agent:GLM-5.3 Flash:msg_len,agent,GLM-5.3 Flash,msg_len,Mean message length,1,15,too short,,,
+agent:GLM-5.3 Flash:question_ratio,agent,GLM-5.3 Flash,question_ratio,Question ratio,1,15,too short,,,
+agent:GLM-5.3 Flash:wait_count,agent,GLM-5.3 Flash,wait_count,WAIT per agent-day,5,4,too few points,,,
+agent:GLM-5.3 Flash:pause_count,agent,GLM-5.3 Flash,pause_count,PAUSE per agent-day,5,4,too few points,,,
+agent:GLM-5.3 Flash:session_count,agent,GLM-5.3 Flash,session_count,Sessions per agent-day,1,16,too short,,,
+agent:GLM-5.3 Flash:turns_per_session,agent,GLM-5.3 Flash,turns_per_session,Turns per session,1,15,too short,,,
+agent:GLM-5.3 Flash:search_count,agent,GLM-5.3 Flash,search_count,Search history per agent-day,5,4,too few points,,,
+agent:GLM-5.3 Flash:events_per_hour,agent,GLM-5.3 Flash,events_per_hour,Events per run hour,1,16,too short,,,
+agent:GPT-4.1:msg_count,agent,GPT-4.1,msg_count,Messages per agent-day,1,28,,1,1,1
+agent:GPT-4.1:msg_len,agent,GPT-4.1,msg_len,Mean message length,1,28,,0,0,0
+agent:GPT-4.1:question_ratio,agent,GPT-4.1,question_ratio,Question ratio,1,28,,0,0,0
+agent:GPT-4.1:wait_count,agent,GPT-4.1,wait_count,WAIT per agent-day,5,6,too few points,,,
+agent:GPT-4.1:pause_count,agent,GPT-4.1,pause_count,PAUSE per agent-day,5,6,too few points,,,
+agent:GPT-4.1:session_count,agent,GPT-4.1,session_count,Sessions per agent-day,5,6,too few points,,,
+agent:GPT-4.1:turns_per_session,agent,GPT-4.1,turns_per_session,Turns per session,5,6,too few points,,,
+agent:GPT-4.1:search_count,agent,GPT-4.1,search_count,Search history per agent-day,5,6,too few points,,,
+agent:GPT-4.1:events_per_hour,agent,GPT-4.1,events_per_hour,Events per run hour,1,28,,0,0,0
+agent:GPT-4o:msg_count,agent,GPT-4o,msg_count,Messages per agent-day,5,3,too few points,,,
+agent:GPT-4o:msg_len,agent,GPT-4o,msg_len,Mean message length,1,10,too few points,,,
+agent:GPT-4o:question_ratio,agent,GPT-4o,question_ratio,Question ratio,1,10,too few points,,,
+agent:GPT-4o:wait_count,agent,GPT-4o,wait_count,WAIT per agent-day,5,3,too few points,,,
+agent:GPT-4o:pause_count,agent,GPT-4o,pause_count,PAUSE per agent-day,5,3,too few points,,,
+agent:GPT-4o:session_count,agent,GPT-4o,session_count,Sessions per agent-day,5,3,too few points,,,
+agent:GPT-4o:turns_per_session,agent,GPT-4o,turns_per_session,Turns per session,1,8,too few points,,,
+agent:GPT-4o:search_count,agent,GPT-4o,search_count,Search history per agent-day,5,3,too few points,,,
+agent:GPT-4o:events_per_hour,agent,GPT-4o,events_per_hour,Events per run hour,1,11,too few points,,,
+agent:GPT-5:msg_count,agent,GPT-5,msg_count,Messages per agent-day,5,58,,3,8,7
+agent:GPT-5:msg_len,agent,GPT-5,msg_len,Mean message length,1,217,,3,8,2
+agent:GPT-5:question_ratio,agent,GPT-5,question_ratio,Question ratio,1,217,,5,2,0
+agent:GPT-5:wait_count,agent,GPT-5,wait_count,WAIT per agent-day,5,58,,1,3,4
+agent:GPT-5:pause_count,agent,GPT-5,pause_count,PAUSE per agent-day,5,58,,1,3,3
+agent:GPT-5:session_count,agent,GPT-5,session_count,Sessions per agent-day,5,58,,3,6,5
+agent:GPT-5:turns_per_session,agent,GPT-5,turns_per_session,Turns per session,5,58,,3,6,1
+agent:GPT-5:search_count,agent,GPT-5,search_count,Search history per agent-day,5,58,,1,1,1
+agent:GPT-5:events_per_hour,agent,GPT-5,events_per_hour,Events per run hour,1,286,,10,11,7
+agent:GPT-5.1:msg_count,agent,GPT-5.1,msg_count,Messages per agent-day,1,222,,7,10,7
+agent:GPT-5.1:msg_len,agent,GPT-5.1,msg_len,Mean message length,1,191,,3,6,5
+agent:GPT-5.1:question_ratio,agent,GPT-5.1,question_ratio,Question ratio,1,191,,7,7,1
+agent:GPT-5.1:wait_count,agent,GPT-5.1,wait_count,WAIT per agent-day,5,45,,2,1,2
+agent:GPT-5.1:pause_count,agent,GPT-5.1,pause_count,PAUSE per agent-day,5,45,,1,11,7
+agent:GPT-5.1:session_count,agent,GPT-5.1,session_count,Sessions per agent-day,1,222,,6,9,7
+agent:GPT-5.1:turns_per_session,agent,GPT-5.1,turns_per_session,Turns per session,1,222,,7,13,6
+agent:GPT-5.1:search_count,agent,GPT-5.1,search_count,Search history per agent-day,5,45,,5,4,1
+agent:GPT-5.1:events_per_hour,agent,GPT-5.1,events_per_hour,Events per run hour,1,222,,4,4,1
+agent:GPT-5.2:msg_count,agent,GPT-5.2,msg_count,Messages per agent-day,1,202,,6,10,3
+agent:GPT-5.2:msg_len,agent,GPT-5.2,msg_len,Mean message length,1,201,,6,6,5
+agent:GPT-5.2:question_ratio,agent,GPT-5.2,question_ratio,Question ratio,1,201,,2,8,0
+agent:GPT-5.2:wait_count,agent,GPT-5.2,wait_count,WAIT per agent-day,5,41,,2,1,2
+agent:GPT-5.2:pause_count,agent,GPT-5.2,pause_count,PAUSE per agent-day,5,41,,3,6,6
+agent:GPT-5.2:session_count,agent,GPT-5.2,session_count,Sessions per agent-day,1,202,,5,10,6
+agent:GPT-5.2:turns_per_session,agent,GPT-5.2,turns_per_session,Turns per session,1,202,,7,7,2
+agent:GPT-5.2:search_count,agent,GPT-5.2,search_count,Search history per agent-day,5,41,,3,2,0
+agent:GPT-5.2:events_per_hour,agent,GPT-5.2,events_per_hour,Events per run hour,1,202,,8,9,7
+agent:GPT-5.4:msg_count,agent,GPT-5.4,msg_count,Messages per agent-day,1,135,,6,9,5
+agent:GPT-5.4:msg_len,agent,GPT-5.4,msg_len,Mean message length,1,125,,5,5,5
+agent:GPT-5.4:question_ratio,agent,GPT-5.4,question_ratio,Question ratio,1,125,,6,9,3
+agent:GPT-5.4:wait_count,agent,GPT-5.4,wait_count,WAIT per agent-day,5,28,constant,,,
+agent:GPT-5.4:pause_count,agent,GPT-5.4,pause_count,PAUSE per agent-day,1,135,,5,8,7
+agent:GPT-5.4:session_count,agent,GPT-5.4,session_count,Sessions per agent-day,1,135,,4,6,4
+agent:GPT-5.4:turns_per_session,agent,GPT-5.4,turns_per_session,Turns per session,1,133,,1,2,0
+agent:GPT-5.4:search_count,agent,GPT-5.4,search_count,Search history per agent-day,5,28,,2,2,0
+agent:GPT-5.4:events_per_hour,agent,GPT-5.4,events_per_hour,Events per run hour,1,135,,5,6,3
+agent:GPT-5.5:msg_count,agent,GPT-5.5,msg_count,Messages per agent-day,1,106,,4,5,5
+agent:GPT-5.5:msg_len,agent,GPT-5.5,msg_len,Mean message length,1,90,,2,2,1
+agent:GPT-5.5:question_ratio,agent,GPT-5.5,question_ratio,Question ratio,1,90,,1,0,2
+agent:GPT-5.5:wait_count,agent,GPT-5.5,wait_count,WAIT per agent-day,5,22,constant,,,
+agent:GPT-5.5:pause_count,agent,GPT-5.5,pause_count,PAUSE per agent-day,1,106,,3,6,3
+agent:GPT-5.5:session_count,agent,GPT-5.5,session_count,Sessions per agent-day,1,106,,3,6,4
+agent:GPT-5.5:turns_per_session,agent,GPT-5.5,turns_per_session,Turns per session,1,100,,3,4,1
+agent:GPT-5.5:search_count,agent,GPT-5.5,search_count,Search history per agent-day,5,22,,2,3,3
+agent:GPT-5.5:events_per_hour,agent,GPT-5.5,events_per_hour,Events per run hour,1,106,,3,5,3
+agent:GPT-5.6 Luna:msg_count,agent,GPT-5.6 Luna,msg_count,Messages per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Luna:msg_len,agent,GPT-5.6 Luna,msg_len,Mean message length,5,10,too few points,,,
+agent:GPT-5.6 Luna:question_ratio,agent,GPT-5.6 Luna,question_ratio,Question ratio,5,10,too few points,,,
+agent:GPT-5.6 Luna:wait_count,agent,GPT-5.6 Luna,wait_count,WAIT per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Luna:pause_count,agent,GPT-5.6 Luna,pause_count,PAUSE per agent-day,1,52,,0,0,0
+agent:GPT-5.6 Luna:session_count,agent,GPT-5.6 Luna,session_count,Sessions per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Luna:turns_per_session,agent,GPT-5.6 Luna,turns_per_session,Turns per session,5,11,too few points,,,
+agent:GPT-5.6 Luna:search_count,agent,GPT-5.6 Luna,search_count,Search history per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Luna:events_per_hour,agent,GPT-5.6 Luna,events_per_hour,Events per run hour,1,52,,0,1,0
+agent:GPT-5.6 Sol:msg_count,agent,GPT-5.6 Sol,msg_count,Messages per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Sol:msg_len,agent,GPT-5.6 Sol,msg_len,Mean message length,5,11,too few points,,,
+agent:GPT-5.6 Sol:question_ratio,agent,GPT-5.6 Sol,question_ratio,Question ratio,5,11,too few points,,,
+agent:GPT-5.6 Sol:wait_count,agent,GPT-5.6 Sol,wait_count,WAIT per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Sol:pause_count,agent,GPT-5.6 Sol,pause_count,PAUSE per agent-day,1,51,,1,2,2
+agent:GPT-5.6 Sol:session_count,agent,GPT-5.6 Sol,session_count,Sessions per agent-day,1,51,,2,2,2
+agent:GPT-5.6 Sol:turns_per_session,agent,GPT-5.6 Sol,turns_per_session,Turns per session,1,47,,2,2,2
+agent:GPT-5.6 Sol:search_count,agent,GPT-5.6 Sol,search_count,Search history per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Sol:events_per_hour,agent,GPT-5.6 Sol,events_per_hour,Events per run hour,1,51,,2,3,2
+agent:GPT-5.6 Terra:msg_count,agent,GPT-5.6 Terra,msg_count,Messages per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Terra:msg_len,agent,GPT-5.6 Terra,msg_len,Mean message length,5,11,too few points,,,
+agent:GPT-5.6 Terra:question_ratio,agent,GPT-5.6 Terra,question_ratio,Question ratio,5,11,too few points,,,
+agent:GPT-5.6 Terra:wait_count,agent,GPT-5.6 Terra,wait_count,WAIT per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Terra:pause_count,agent,GPT-5.6 Terra,pause_count,PAUSE per agent-day,1,52,,0,0,0
+agent:GPT-5.6 Terra:session_count,agent,GPT-5.6 Terra,session_count,Sessions per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Terra:turns_per_session,agent,GPT-5.6 Terra,turns_per_session,Turns per session,5,11,too few points,,,
+agent:GPT-5.6 Terra:search_count,agent,GPT-5.6 Terra,search_count,Search history per agent-day,5,11,too few points,,,
+agent:GPT-5.6 Terra:events_per_hour,agent,GPT-5.6 Terra,events_per_hour,Events per run hour,1,52,,1,1,0
+agent:GPT-6 Astra:msg_count,agent,GPT-6 Astra,msg_count,Messages per agent-day,5,3,too few points,,,
+agent:GPT-6 Astra:msg_len,agent,GPT-6 Astra,msg_len,Mean message length,1,6,too few points,,,
+agent:GPT-6 Astra:question_ratio,agent,GPT-6 Astra,question_ratio,Question ratio,1,6,too few points,,,
+agent:GPT-6 Astra:wait_count,agent,GPT-6 Astra,wait_count,WAIT per agent-day,5,3,too few points,,,
+agent:GPT-6 Astra:pause_count,agent,GPT-6 Astra,pause_count,PAUSE per agent-day,1,11,too few points,,,
+agent:GPT-6 Astra:session_count,agent,GPT-6 Astra,session_count,Sessions per agent-day,5,3,too few points,,,
+agent:GPT-6 Astra:turns_per_session,agent,GPT-6 Astra,turns_per_session,Turns per session,5,3,too few points,,,
+agent:GPT-6 Astra:search_count,agent,GPT-6 Astra,search_count,Search history per agent-day,5,3,too few points,,,
+agent:GPT-6 Astra:events_per_hour,agent,GPT-6 Astra,events_per_hour,Events per run hour,1,11,too few points,,,
+agent:Gemini 2.5 Pro:msg_count,agent,Gemini 2.5 Pro,msg_count,Messages per agent-day,1,368,,9,12,8
+agent:Gemini 2.5 Pro:msg_len,agent,Gemini 2.5 Pro,msg_len,Mean message length,1,317,,7,9,5
+agent:Gemini 2.5 Pro:question_ratio,agent,Gemini 2.5 Pro,question_ratio,Question ratio,1,317,,8,12,1
+agent:Gemini 2.5 Pro:wait_count,agent,Gemini 2.5 Pro,wait_count,WAIT per agent-day,5,75,,4,11,8
+agent:Gemini 2.5 Pro:pause_count,agent,Gemini 2.5 Pro,pause_count,PAUSE per agent-day,5,75,,7,9,2
+agent:Gemini 2.5 Pro:session_count,agent,Gemini 2.5 Pro,session_count,Sessions per agent-day,1,368,,10,14,6
+agent:Gemini 2.5 Pro:turns_per_session,agent,Gemini 2.5 Pro,turns_per_session,Turns per session,1,350,,8,13,3
+agent:Gemini 2.5 Pro:search_count,agent,Gemini 2.5 Pro,search_count,Search history per agent-day,5,75,,3,3,3
+agent:Gemini 2.5 Pro:events_per_hour,agent,Gemini 2.5 Pro,events_per_hour,Events per run hour,1,368,,9,13,0
+agent:Gemini 3 Pro:msg_count,agent,Gemini 3 Pro,msg_count,Messages per agent-day,1,78,,1,1,1
+agent:Gemini 3 Pro:msg_len,agent,Gemini 3 Pro,msg_len,Mean message length,1,78,,1,1,0
+agent:Gemini 3 Pro:question_ratio,agent,Gemini 3 Pro,question_ratio,Question ratio,1,78,,2,1,1
+agent:Gemini 3 Pro:wait_count,agent,Gemini 3 Pro,wait_count,WAIT per agent-day,5,16,,0,0,0
+agent:Gemini 3 Pro:pause_count,agent,Gemini 3 Pro,pause_count,PAUSE per agent-day,5,16,,0,0,0
+agent:Gemini 3 Pro:session_count,agent,Gemini 3 Pro,session_count,Sessions per agent-day,1,78,,0,1,0
+agent:Gemini 3 Pro:turns_per_session,agent,Gemini 3 Pro,turns_per_session,Turns per session,1,78,,1,1,0
+agent:Gemini 3 Pro:search_count,agent,Gemini 3 Pro,search_count,Search history per agent-day,5,16,,0,0,0
+agent:Gemini 3 Pro:events_per_hour,agent,Gemini 3 Pro,events_per_hour,Events per run hour,1,78,,0,3,0
+agent:Gemini 3.1 Pro:msg_count,agent,Gemini 3.1 Pro,msg_count,Messages per agent-day,1,141,,5,6,6
+agent:Gemini 3.1 Pro:msg_len,agent,Gemini 3.1 Pro,msg_len,Mean message length,1,110,,2,2,2
+agent:Gemini 3.1 Pro:question_ratio,agent,Gemini 3.1 Pro,question_ratio,Question ratio,1,110,,3,4,1
+agent:Gemini 3.1 Pro:wait_count,agent,Gemini 3.1 Pro,wait_count,WAIT per agent-day,5,29,,1,2,1
+agent:Gemini 3.1 Pro:pause_count,agent,Gemini 3.1 Pro,pause_count,PAUSE per agent-day,5,29,,4,5,0
+agent:Gemini 3.1 Pro:session_count,agent,Gemini 3.1 Pro,session_count,Sessions per agent-day,1,141,,2,6,5
+agent:Gemini 3.1 Pro:turns_per_session,agent,Gemini 3.1 Pro,turns_per_session,Turns per session,1,140,,4,5,3
+agent:Gemini 3.1 Pro:search_count,agent,Gemini 3.1 Pro,search_count,Search history per agent-day,5,29,,3,5,0
+agent:Gemini 3.1 Pro:events_per_hour,agent,Gemini 3.1 Pro,events_per_hour,Events per run hour,1,141,,6,9,3
+agent:Gemini 3.5 Flash:msg_count,agent,Gemini 3.5 Flash,msg_count,Messages per agent-day,1,89,,2,5,2
+agent:Gemini 3.5 Flash:msg_len,agent,Gemini 3.5 Flash,msg_len,Mean message length,1,76,,2,1,1
+agent:Gemini 3.5 Flash:question_ratio,agent,Gemini 3.5 Flash,question_ratio,Question ratio,1,76,,0,0,0
+agent:Gemini 3.5 Flash:wait_count,agent,Gemini 3.5 Flash,wait_count,WAIT per agent-day,5,18,constant,,,
+agent:Gemini 3.5 Flash:pause_count,agent,Gemini 3.5 Flash,pause_count,PAUSE per agent-day,5,18,,0,0,0
+agent:Gemini 3.5 Flash:session_count,agent,Gemini 3.5 Flash,session_count,Sessions per agent-day,1,89,,4,6,4
+agent:Gemini 3.5 Flash:turns_per_session,agent,Gemini 3.5 Flash,turns_per_session,Turns per session,1,89,,3,6,0
+agent:Gemini 3.5 Flash:search_count,agent,Gemini 3.5 Flash,search_count,Search history per agent-day,5,18,,1,1,1
+agent:Gemini 3.5 Flash:events_per_hour,agent,Gemini 3.5 Flash,events_per_hour,Events per run hour,1,89,,5,5,2
+agent:Gemini 3.8 Flash:msg_count,agent,Gemini 3.8 Flash,msg_count,Messages per agent-day,1,12,too short,,,
+agent:Gemini 3.8 Flash:msg_len,agent,Gemini 3.8 Flash,msg_len,Mean message length,1,12,too short,,,
+agent:Gemini 3.8 Flash:question_ratio,agent,Gemini 3.8 Flash,question_ratio,Question ratio,1,12,too short,,,
+agent:Gemini 3.8 Flash:wait_count,agent,Gemini 3.8 Flash,wait_count,WAIT per agent-day,5,3,too few points,,,
+agent:Gemini 3.8 Flash:pause_count,agent,Gemini 3.8 Flash,pause_count,PAUSE per agent-day,1,12,too short,,,
+agent:Gemini 3.8 Flash:session_count,agent,Gemini 3.8 Flash,session_count,Sessions per agent-day,1,12,too short,,,
+agent:Gemini 3.8 Flash:turns_per_session,agent,Gemini 3.8 Flash,turns_per_session,Turns per session,1,12,too short,,,
+agent:Gemini 3.8 Flash:search_count,agent,Gemini 3.8 Flash,search_count,Search history per agent-day,5,3,too few points,,,
+agent:Gemini 3.8 Flash:events_per_hour,agent,Gemini 3.8 Flash,events_per_hour,Events per run hour,1,12,too short,,,
+agent:Grok 4:msg_count,agent,Grok 4,msg_count,Messages per agent-day,1,52,,2,2,2
+agent:Grok 4:msg_len,agent,Grok 4,msg_len,Mean message length,1,52,,3,3,3
+agent:Grok 4:question_ratio,agent,Grok 4,question_ratio,Question ratio,1,52,,0,1,0
+agent:Grok 4:wait_count,agent,Grok 4,wait_count,WAIT per agent-day,5,11,too few points,,,
+agent:Grok 4:pause_count,agent,Grok 4,pause_count,PAUSE per agent-day,5,11,too few points,,,
+agent:Grok 4:session_count,agent,Grok 4,session_count,Sessions per agent-day,5,11,too few points,,,
+agent:Grok 4:turns_per_session,agent,Grok 4,turns_per_session,Turns per session,5,11,too few points,,,
+agent:Grok 4:search_count,agent,Grok 4,search_count,Search history per agent-day,5,11,too few points,,,
+agent:Grok 4:events_per_hour,agent,Grok 4,events_per_hour,Events per run hour,1,52,,2,1,1
+agent:Grok 4.5:msg_count,agent,Grok 4.5,msg_count,Messages per agent-day,1,51,,0,3,3
+agent:Grok 4.5:msg_len,agent,Grok 4.5,msg_len,Mean message length,1,51,,2,3,3
+agent:Grok 4.5:question_ratio,agent,Grok 4.5,question_ratio,Question ratio,1,51,,1,2,1
+agent:Grok 4.5:wait_count,agent,Grok 4.5,wait_count,WAIT per agent-day,5,11,too few points,,,
+agent:Grok 4.5:pause_count,agent,Grok 4.5,pause_count,PAUSE per agent-day,5,11,too few points,,,
+agent:Grok 4.5:session_count,agent,Grok 4.5,session_count,Sessions per agent-day,1,51,,0,2,2
+agent:Grok 4.5:turns_per_session,agent,Grok 4.5,turns_per_session,Turns per session,1,51,,0,0,0
+agent:Grok 4.5:search_count,agent,Grok 4.5,search_count,Search history per agent-day,5,11,too few points,,,
+agent:Grok 4.5:events_per_hour,agent,Grok 4.5,events_per_hour,Events per run hour,1,51,,0,2,2
+agent:Kimi K2.6:msg_count,agent,Kimi K2.6,msg_count,Messages per agent-day,5,22,,0,1,0
+agent:Kimi K2.6:msg_len,agent,Kimi K2.6,msg_len,Mean message length,5,20,,1,1,0
+agent:Kimi K2.6:question_ratio,agent,Kimi K2.6,question_ratio,Question ratio,5,20,,0,4,0
+agent:Kimi K2.6:wait_count,agent,Kimi K2.6,wait_count,WAIT per agent-day,5,22,constant,,,
+agent:Kimi K2.6:pause_count,agent,Kimi K2.6,pause_count,PAUSE per agent-day,5,22,,0,1,0
+agent:Kimi K2.6:session_count,agent,Kimi K2.6,session_count,Sessions per agent-day,1,109,,2,6,1
+agent:Kimi K2.6:turns_per_session,agent,Kimi K2.6,turns_per_session,Turns per session,1,108,,2,2,0
+agent:Kimi K2.6:search_count,agent,Kimi K2.6,search_count,Search history per agent-day,5,22,,0,4,0
+agent:Kimi K2.6:events_per_hour,agent,Kimi K2.6,events_per_hour,Events per run hour,1,109,,2,4,1
+agent:Kimi K3:msg_count,agent,Kimi K3,msg_count,Messages per agent-day,5,10,too few points,,,
+agent:Kimi K3:msg_len,agent,Kimi K3,msg_len,Mean message length,5,10,too few points,,,
+agent:Kimi K3:question_ratio,agent,Kimi K3,question_ratio,Question ratio,5,10,too few points,,,
+agent:Kimi K3:wait_count,agent,Kimi K3,wait_count,WAIT per agent-day,5,10,too few points,,,
+agent:Kimi K3:pause_count,agent,Kimi K3,pause_count,PAUSE per agent-day,5,10,too few points,,,
+agent:Kimi K3:session_count,agent,Kimi K3,session_count,Sessions per agent-day,5,10,too few points,,,
+agent:Kimi K3:turns_per_session,agent,Kimi K3,turns_per_session,Turns per session,5,10,too few points,,,
+agent:Kimi K3:search_count,agent,Kimi K3,search_count,Search history per agent-day,5,10,too few points,,,
+agent:Kimi K3:events_per_hour,agent,Kimi K3,events_per_hour,Events per run hour,1,45,,1,2,2
+agent:Muse Spark 1.3:msg_count,agent,Muse Spark 1.3,msg_count,Messages per agent-day,5,3,too few points,,,
+agent:Muse Spark 1.3:msg_len,agent,Muse Spark 1.3,msg_len,Mean message length,1,5,too few points,,,
+agent:Muse Spark 1.3:question_ratio,agent,Muse Spark 1.3,question_ratio,Question ratio,1,5,too few points,,,
+agent:Muse Spark 1.3:wait_count,agent,Muse Spark 1.3,wait_count,WAIT per agent-day,5,3,too few points,,,
+agent:Muse Spark 1.3:pause_count,agent,Muse Spark 1.3,pause_count,PAUSE per agent-day,1,12,too short,,,
+agent:Muse Spark 1.3:session_count,agent,Muse Spark 1.3,session_count,Sessions per agent-day,5,3,too few points,,,
+agent:Muse Spark 1.3:turns_per_session,agent,Muse Spark 1.3,turns_per_session,Turns per session,5,3,too few points,,,
+agent:Muse Spark 1.3:search_count,agent,Muse Spark 1.3,search_count,Search history per agent-day,5,3,too few points,,,
+agent:Muse Spark 1.3:events_per_hour,agent,Muse Spark 1.3,events_per_hour,Events per run hour,1,12,too short,,,
+agent:Opus 4.5 (Claude Code):msg_count,agent,Opus 4.5 (Claude Code),msg_count,Messages per agent-day,1,45,,2,2,2
+agent:Opus 4.5 (Claude Code):msg_len,agent,Opus 4.5 (Claude Code),msg_len,Mean message length,1,45,,0,2,0
+agent:Opus 4.5 (Claude Code):question_ratio,agent,Opus 4.5 (Claude Code),question_ratio,Question ratio,1,45,,0,2,0
+agent:Opus 4.5 (Claude Code):wait_count,agent,Opus 4.5 (Claude Code),wait_count,WAIT per agent-day,5,10,too few points,,,
+agent:Opus 4.5 (Claude Code):pause_count,agent,Opus 4.5 (Claude Code),pause_count,PAUSE per agent-day,5,10,too few points,,,
+agent:Opus 4.5 (Claude Code):session_count,agent,Opus 4.5 (Claude Code),session_count,Sessions per agent-day,1,45,,1,1,0
+agent:Opus 4.5 (Claude Code):turns_per_session,agent,Opus 4.5 (Claude Code),turns_per_session,Turns per session,1,36,,1,2,2
+agent:Opus 4.5 (Claude Code):search_count,agent,Opus 4.5 (Claude Code),search_count,Search history per agent-day,5,10,too few points,,,
+agent:Opus 4.5 (Claude Code):events_per_hour,agent,Opus 4.5 (Claude Code),events_per_hour,Events per run hour,1,45,,1,3,1
+agent:[Temporary] Fine-tuned Leader:msg_count,agent,[Temporary] Fine-tuned Leader,msg_count,Messages per agent-day,1,2,too few points,,,
+agent:[Temporary] Fine-tuned Leader:msg_len,agent,[Temporary] Fine-tuned Leader,msg_len,Mean message length,1,2,too few points,,,
+agent:[Temporary] Fine-tuned Leader:question_ratio,agent,[Temporary] Fine-tuned Leader,question_ratio,Question ratio,1,2,too few points,,,
+agent:[Temporary] Fine-tuned Leader:wait_count,agent,[Temporary] Fine-tuned Leader,wait_count,WAIT per agent-day,5,1,too few points,,,
+agent:[Temporary] Fine-tuned Leader:pause_count,agent,[Temporary] Fine-tuned Leader,pause_count,PAUSE per agent-day,5,1,too few points,,,
+agent:[Temporary] Fine-tuned Leader:session_count,agent,[Temporary] Fine-tuned Leader,session_count,Sessions per agent-day,5,1,too few points,,,
+agent:[Temporary] Fine-tuned Leader:turns_per_session,agent,[Temporary] Fine-tuned Leader,turns_per_session,Turns per session,5,1,too few points,,,
+agent:[Temporary] Fine-tuned Leader:search_count,agent,[Temporary] Fine-tuned Leader,search_count,Search history per agent-day,5,1,too few points,,,
+agent:[Temporary] Fine-tuned Leader:events_per_hour,agent,[Temporary] Fine-tuned Leader,events_per_hour,Events per run hour,1,2,too few points,,,
+agent:o1:msg_count,agent,o1,msg_count,Messages per agent-day,1,12,too short,,,
+agent:o1:msg_len,agent,o1,msg_len,Mean message length,1,11,too few points,,,
+agent:o1:question_ratio,agent,o1,question_ratio,Question ratio,1,11,too few points,,,
+agent:o1:wait_count,agent,o1,wait_count,WAIT per agent-day,1,12,too short,,,
+agent:o1:pause_count,agent,o1,pause_count,PAUSE per agent-day,5,3,too few points,,,
+agent:o1:session_count,agent,o1,session_count,Sessions per agent-day,1,12,too short,,,
+agent:o1:turns_per_session,agent,o1,turns_per_session,Turns per session,1,11,too few points,,,
+agent:o1:search_count,agent,o1,search_count,Search history per agent-day,5,3,too few points,,,
+agent:o1:events_per_hour,agent,o1,events_per_hour,Events per run hour,1,12,too short,,,
+agent:o3:msg_count,agent,o3,msg_count,Messages per agent-day,1,166,,1,1,1
+agent:o3:msg_len,agent,o3,msg_len,Mean message length,1,166,,3,4,2
+agent:o3:question_ratio,agent,o3,question_ratio,Question ratio,1,166,,1,2,0
+agent:o3:wait_count,agent,o3,wait_count,WAIT per agent-day,5,34,,0,0,0
+agent:o3:pause_count,agent,o3,pause_count,PAUSE per agent-day,5,34,,2,3,1
+agent:o3:session_count,agent,o3,session_count,Sessions per agent-day,1,166,,5,5,2
+agent:o3:turns_per_session,agent,o3,turns_per_session,Turns per session,1,163,,4,2,0
+agent:o3:search_count,agent,o3,search_count,Search history per agent-day,5,34,,1,1,1
+agent:o3:events_per_hour,agent,o3,events_per_hour,Events per run hour,1,166,,5,8,1
+agent:o4-mini:msg_count,agent,o4-mini,msg_count,Messages per agent-day,1,1,too few points,,,
+agent:o4-mini:msg_len,agent,o4-mini,msg_len,Mean message length,1,1,too few points,,,
+agent:o4-mini:question_ratio,agent,o4-mini,question_ratio,Question ratio,1,1,too few points,,,
+agent:o4-mini:wait_count,agent,o4-mini,wait_count,WAIT per agent-day,5,1,too few points,,,
+agent:o4-mini:pause_count,agent,o4-mini,pause_count,PAUSE per agent-day,5,1,too few points,,,
+agent:o4-mini:session_count,agent,o4-mini,session_count,Sessions per agent-day,5,1,too few points,,,
+agent:o4-mini:turns_per_session,agent,o4-mini,turns_per_session,Turns per session,5,1,too few points,,,
+agent:o4-mini:search_count,agent,o4-mini,search_count,Search history per agent-day,5,1,too few points,,,
+agent:o4-mini:events_per_hour,agent,o4-mini,events_per_hour,Events per run hour,1,1,too few points,,,
+lexical:Anthropic:genuinely,lexical,Anthropic,word:genuinely,"'genuinely' per 1,000 messages",5,78,,1,2,2
+lexical:Anthropic:minutes,lexical,Anthropic,word:minutes,"'minutes' per 1,000 messages",1,389,,7,13,8
+lexical:Anthropic:remaining,lexical,Anthropic,word:remaining,"'remaining' per 1,000 messages",5,78,,4,6,4
+lexical:Anthropic:session,lexical,Anthropic,word:session,"'session' per 1,000 messages",1,389,,11,16,14
+lexical:Anthropic:working,lexical,Anthropic,word:working,"'working' per 1,000 messages",1,389,,10,14,5
+lexical:Anthropic:let,lexical,Anthropic,word:let,"'let' per 1,000 messages",1,389,,9,15,7
+lexical:Anthropic:complete,lexical,Anthropic,word:complete,"'complete' per 1,000 messages",1,389,,10,13,9
+lexical:Anthropic:claude,lexical,Anthropic,word:claude,"'claude' per 1,000 messages",1,389,,11,18,10
+lexical:Anthropic:deadline,lexical,Anthropic,word:deadline,"'deadline' per 1,000 messages",5,78,,3,4,2
+lexical:Anthropic:just,lexical,Anthropic,word:just,"'just' per 1,000 messages",1,389,,9,10,4
+lexical:Anthropic:need,lexical,Anthropic,word:need,"'need' per 1,000 messages",1,389,,6,11,7
+lexical:Anthropic:completed,lexical,Anthropic,word:completed,"'completed' per 1,000 messages",5,78,,6,11,10
+lexical:Anthropic:gemini,lexical,Anthropic,word:gemini,"'gemini' per 1,000 messages",1,389,,11,13,6
+lexical:Anthropic:pro,lexical,Anthropic,word:pro,"'pro' per 1,000 messages",1,389,,13,16,9
+lexical:Anthropic:actively,lexical,Anthropic,word:actively,"'actively' per 1,000 messages",5,78,,3,7,4
+lexical:Anthropic:document,lexical,Anthropic,word:document,"'document' per 1,000 messages",5,78,,4,8,2
+lexical:Anthropic:computer,lexical,Anthropic,word:computer,"'computer' per 1,000 messages",1,389,,6,15,9
+lexical:Anthropic:sessions,lexical,Anthropic,word:sessions,"'sessions' per 1,000 messages",5,78,,3,3,3
+lexical:Anthropic:gpt,lexical,Anthropic,word:gpt,"'gpt' per 1,000 messages",1,389,,12,19,8
+lexical:Anthropic:multiple,lexical,Anthropic,word:multiple,"'multiple' per 1,000 messages",5,78,,5,11,6
+lexical:Anthropic:looking,lexical,Anthropic,word:looking,"'looking' per 1,000 messages",5,78,,2,5,2
+lexical:OpenAI:genuinely,lexical,OpenAI,word:genuinely,"'genuinely' per 1,000 messages",5,78,,3,14,3
+lexical:OpenAI:public,lexical,OpenAI,word:public,"'public' per 1,000 messages",5,78,,6,6,0
+lexical:OpenAI:link,lexical,OpenAI,word:link,"'link' per 1,000 messages",1,389,,15,17,2
+lexical:OpenAI:sha,lexical,OpenAI,word:sha,"'sha' per 1,000 messages",5,78,,2,14,4
+lexical:OpenAI:canonical,lexical,OpenAI,word:canonical,"'canonical' per 1,000 messages",5,78,,5,8,2
+lexical:OpenAI:raw,lexical,OpenAI,word:raw,"'raw' per 1,000 messages",5,78,,4,4,2
+lexical:OpenAI:audit,lexical,OpenAI,word:audit,"'audit' per 1,000 messages",5,78,,3,2,1
+lexical:OpenAI:quick,lexical,OpenAI,word:quick,"'quick' per 1,000 messages",5,78,,6,7,4
+lexical:OpenAI:receipts,lexical,OpenAI,word:receipts,"'receipts' per 1,000 messages",5,78,,6,5,4
+lexical:OpenAI:doc,lexical,OpenAI,word:doc,"'doc' per 1,000 messages",5,78,,3,5,1
+lexical:OpenAI:fresh,lexical,OpenAI,word:fresh,"'fresh' per 1,000 messages",5,78,,5,3,0
+lexical:OpenAI:docs,lexical,OpenAI,word:docs,"'docs' per 1,000 messages",5,78,,6,7,1
+lexical:OpenAI:open,lexical,OpenAI,word:open,"'open' per 1,000 messages",5,78,,5,5,1
+lexical:OpenAI:opened,lexical,OpenAI,word:opened,"'opened' per 1,000 messages",5,78,,3,11,2
+lexical:OpenAI:copy,lexical,OpenAI,word:copy,"'copy' per 1,000 messages",5,78,,2,2,1
+lexical:OpenAI:short,lexical,OpenAI,word:short,"'short' per 1,000 messages",5,78,,6,6,1
+lexical:OpenAI:plus,lexical,OpenAI,word:plus,"'plus' per 1,000 messages",5,78,,2,5,2
+lexical:OpenAI:logged,lexical,OpenAI,word:logged,"'logged' per 1,000 messages",5,78,,7,5,2
+lexical:OpenAI:bytes,lexical,OpenAI,word:bytes,"'bytes' per 1,000 messages",5,78,,3,10,5
+lexical:OpenAI:paste,lexical,OpenAI,word:paste,"'paste' per 1,000 messages",5,78,,5,11,2
+lexical:OpenAI:visible,lexical,OpenAI,word:visible,"'visible' per 1,000 messages",5,78,,8,9,1
+lexical:Google:genuinely,lexical,Google,word:genuinely,"'genuinely' per 1,000 messages",5,75,,8,0,0
+lexical:Google:wait,lexical,Google,word:wait,"'wait' per 1,000 messages",5,75,,5,11,8
+lexical:Google:blocked,lexical,Google,word:blocked,"'blocked' per 1,000 messages",5,75,,3,8,4
+lexical:Google:continue,lexical,Google,word:continue,"'continue' per 1,000 messages",5,75,,3,4,3
+lexical:Google:role,lexical,Google,word:role,"'role' per 1,000 messages",5,75,,4,3,3
+lexical:Google:monitor,lexical,Google,word:monitor,"'monitor' per 1,000 messages",5,75,,5,6,3
+lexical:Google:team's,lexical,Google,word:team's,"'team's' per 1,000 messages",5,75,,3,6,2
+lexical:Google:completely,lexical,Google,word:completely,"'completely' per 1,000 messages",5,75,,9,7,3
+lexical:Google:silence,lexical,Google,word:silence,"'silence' per 1,000 messages",5,75,,8,17,3
+lexical:Google:felt,lexical,Google,word:felt,"'felt' per 1,000 messages",5,75,,2,3,2
+lexical:Google:new,lexical,Google,word:new,"'new' per 1,000 messages",1,370,,9,9,3
+lexical:Google:silent,lexical,Google,word:silent,"'silent' per 1,000 messages",5,75,,6,5,3
+lexical:Google:intelligence,lexical,Google,word:intelligence,"'intelligence' per 1,000 messages",5,75,,4,6,0
+lexical:Google:began,lexical,Google,word:began,"'began' per 1,000 messages",5,75,,2,4,2
+lexical:Google:light,lexical,Google,word:light,"'light' per 1,000 messages",5,75,,1,1,1
+lexical:Google:stand,lexical,Google,word:stand,"'stand' per 1,000 messages",5,75,,2,2,1
+lexical:Google:failure,lexical,Google,word:failure,"'failure' per 1,000 messages",5,75,,4,6,2
+lexical:Google:okay,lexical,Google,word:okay,"'okay' per 1,000 messages",5,75,,4,4,4
+lexical:Google:did,lexical,Google,word:did,"'did' per 1,000 messages",5,75,,5,3,2
+lexical:Google:unable,lexical,Google,word:unable,"'unable' per 1,000 messages",5,75,,4,4,2
+lexical:Google:await,lexical,Google,word:await,"'await' per 1,000 messages",5,75,,4,5,3
+lexical:Other:genuinely,lexical,Other,word:genuinely,"'genuinely' per 1,000 messages",5,53,,4,11,1
+lexical:Other:pattern,lexical,Other,word:pattern,"'pattern' per 1,000 messages",5,53,,4,4,4
+lexical:Other:relationship,lexical,Other,word:relationship,"'relationship' per 1,000 messages",5,53,,6,11,3
+lexical:Other:patterns,lexical,Other,word:patterns,"'patterns' per 1,000 messages",5,53,,3,6,2
+lexical:Other:constraint,lexical,Other,word:constraint,"'constraint' per 1,000 messages",5,53,,2,12,4
+lexical:Other:framework,lexical,Other,word:framework,"'framework' per 1,000 messages",5,53,,1,4,2
+lexical:Other:coordination,lexical,Other,word:coordination,"'coordination' per 1,000 messages",5,53,,4,3,3
+lexical:Other:quality,lexical,Other,word:quality,"'quality' per 1,000 messages",5,53,,6,8,8
+lexical:Other:glm,lexical,Other,word:glm,"'glm' per 1,000 messages",5,53,,1,1,4
+lexical:Other:documentation,lexical,Other,word:documentation,"'documentation' per 1,000 messages",5,53,,3,1,1
+lexical:Other:engagement,lexical,Other,word:engagement,"'engagement' per 1,000 messages",5,53,,2,10,2
+lexical:Other:timing,lexical,Other,word:timing,"'timing' per 1,000 messages",5,53,,3,3,3
+lexical:Other:verification,lexical,Other,word:verification,"'verification' per 1,000 messages",5,53,,3,3,2
+lexical:Other:external,lexical,Other,word:external,"'external' per 1,000 messages",5,53,,2,7,2
+lexical:Other:collaboration,lexical,Other,word:collaboration,"'collaboration' per 1,000 messages",5,53,,2,3,1
+lexical:Other:constraints,lexical,Other,word:constraints,"'constraints' per 1,000 messages",5,53,,2,5,3
+lexical:Other:validation,lexical,Other,word:validation,"'validation' per 1,000 messages",5,53,,3,3,1
+lexical:Other:tracking,lexical,Other,word:tracking,"'tracking' per 1,000 messages",5,53,,4,6,1
+lexical:Other:village,lexical,Other,word:village,"'village' per 1,000 messages",5,53,,3,7,2
+lexical:Other:analysis,lexical,Other,word:analysis,"'analysis' per 1,000 messages",5,53,,4,7,3
+lexical:Other:layer,lexical,Other,word:layer,"'layer' per 1,000 messages",5,53,,5,10,3
+hawkes:best:share_baseline,external,hawkes best,share_baseline,Share baseline,5,8,too few points,,,
+hawkes:best:share_exogenous,external,hawkes best,share_exogenous,Share exogenous,5,8,too few points,,,
+hawkes:best:share_agent,external,hawkes best,share_agent,Share agent,5,8,too few points,,,
+hawkes:best:spectral_radius,external,hawkes best,spectral_radius,Spectral radius,5,8,too few points,,,
+hawkes:best:n_agents,external,hawkes best,n_agents,N agents,5,8,too few points,,,
+hawkes:focus:share_baseline,external,hawkes focus,share_baseline,Share baseline,5,3,too few points,,,
+hawkes:focus:share_exogenous,external,hawkes focus,share_exogenous,Share exogenous,5,3,too few points,,,
+hawkes:focus:share_agent,external,hawkes focus,share_agent,Share agent,5,3,too few points,,,
+hawkes:focus:spectral_radius,external,hawkes focus,spectral_radius,Spectral radius,5,3,too few points,,,
+hawkes:focus:n_agents,external,hawkes focus,n_agents,N agents,5,3,too few points,,,
+hawkes:general:share_baseline,external,hawkes general,share_baseline,Share baseline,5,63,,5,5,2
+hawkes:general:share_exogenous,external,hawkes general,share_exogenous,Share exogenous,5,63,,4,9,1
+hawkes:general:share_agent,external,hawkes general,share_agent,Share agent,5,63,,5,6,1
+hawkes:general:spectral_radius,external,hawkes general,spectral_radius,Spectral radius,5,63,,5,5,0
+hawkes:general:n_agents,external,hawkes general,n_agents,N agents,5,63,,4,7,7
+hawkes:rest:share_baseline,external,hawkes rest,share_baseline,Share baseline,5,16,,1,1,1
+hawkes:rest:share_exogenous,external,hawkes rest,share_exogenous,Share exogenous,5,16,,0,0,0
+hawkes:rest:share_agent,external,hawkes rest,share_agent,Share agent,5,16,,0,1,0
+hawkes:rest:spectral_radius,external,hawkes rest,spectral_radius,Spectral radius,5,16,,0,0,0
+hawkes:rest:n_agents,external,hawkes rest,n_agents,N agents,5,16,,2,2,3
+hawkes:universe-coordination:share_baseline,external,hawkes universe-coordination,share_baseline,Share baseline,5,2,too few points,,,
+hawkes:universe-coordination:share_exogenous,external,hawkes universe-coordination,share_exogenous,Share exogenous,5,2,too few points,,,
+hawkes:universe-coordination:share_agent,external,hawkes universe-coordination,share_agent,Share agent,5,2,too few points,,,
+hawkes:universe-coordination:spectral_radius,external,hawkes universe-coordination,spectral_radius,Spectral radius,5,2,too few points,,,
+hawkes:universe-coordination:n_agents,external,hawkes universe-coordination,n_agents,N agents,5,2,too few points,,,
+memory_hazard:All standard:h1,external,memory_hazard All standard,h1,H1,22,18,,4,2,2
+memory_hazard:All standard:h2,external,memory_hazard All standard,h2,H2,22,18,,4,4,4
+memory_hazard:All standard:h3_4,external,memory_hazard All standard,h3_4,H3 4,22,18,,4,5,3
+memory_hazard:All standard:n_at_risk,external,memory_hazard All standard,n_at_risk,N at risk,22,18,,2,3,2
+memory_hazard:Anthropic:h1,external,memory_hazard Anthropic,h1,H1,22,18,,4,2,2
+memory_hazard:Anthropic:h2,external,memory_hazard Anthropic,h2,H2,22,18,,2,3,2
+memory_hazard:Anthropic:h3_4,external,memory_hazard Anthropic,h3_4,H3 4,22,18,,2,3,1
+memory_hazard:Anthropic:n_at_risk,external,memory_hazard Anthropic,n_at_risk,N at risk,22,18,,3,2,2
+memory_hazard:OpenAI:h1,external,memory_hazard OpenAI,h1,H1,22,18,,2,2,2
+memory_hazard:OpenAI:h2,external,memory_hazard OpenAI,h2,H2,22,18,,3,2,2
+memory_hazard:OpenAI:h3_4,external,memory_hazard OpenAI,h3_4,H3 4,22,18,,2,2,2
+memory_hazard:OpenAI:n_at_risk,external,memory_hazard OpenAI,n_at_risk,N at risk,22,18,,2,4,2
+memory_hazard:Google:h1,external,memory_hazard Google,h1,H1,22,18,,3,3,3
+memory_hazard:Google:h2,external,memory_hazard Google,h2,H2,22,18,,3,3,3
+memory_hazard:Google:h3_4,external,memory_hazard Google,h3_4,H3 4,22,18,,4,2,0
+memory_hazard:Google:n_at_risk,external,memory_hazard Google,n_at_risk,N at risk,22,18,,2,2,2
+memory_hazard:Other:h1,external,memory_hazard Other,h1,H1,22,13,,3,2,2
+memory_hazard:Other:h2,external,memory_hazard Other,h2,H2,22,13,,1,2,2
+memory_hazard:Other:h3_4,external,memory_hazard Other,h3_4,H3 4,22,13,,1,2,2
+memory_hazard:Other:n_at_risk,external,memory_hazard Other,n_at_risk,N at risk,22,18,,6,3,3
+monitor:All agents:conflict,external,Monitor All agents,conflict,Monitor conflict findings per run day,5,14,,1,1,0
+monitor:All agents:off-goal,external,Monitor All agents,off-goal,Monitor off-goal findings per run day,1,64,,3,3,2
+monitor:All agents:emotional-or-erratic,external,Monitor All agents,emotional-or-erratic,Monitor emotional-or-erratic findings per run day,5,14,,2,2,0
+monitor:All agents:likely-scaffolding-issue,external,Monitor All agents,likely-scaffolding-issue,Monitor likely-scaffolding-issue findings per run day,1,64,,2,3,1
+monitor:All agents:surreptitious-or-deceptive,external,Monitor All agents,surreptitious-or-deceptive,Monitor surreptitious-or-deceptive findings per run day,5,14,,0,3,0
+monitor:All agents:outside-agent-contact,external,Monitor All agents,outside-agent-contact,Monitor outside-agent-contact findings per run day,5,14,,0,1,0
+monitor:All agents:human-contact,external,Monitor All agents,human-contact,Monitor human-contact findings per run day,5,14,,2,3,2
+monitor:All agents:unsolicited-outreach,external,Monitor All agents,unsolicited-outreach,Monitor unsolicited-outreach findings per run day,5,14,,0,0,0
+monitor:All agents:good-tweet,external,Monitor All agents,good-tweet,Monitor good-tweet findings per run day,5,14,,0,2,0
+monitor:All agents:interesting-content,external,Monitor All agents,interesting-content,Monitor interesting-content findings per run day,1,64,,2,1,1
+monitor:All agents:other,external,Monitor All agents,other,Monitor other findings per run day,1,64,,1,1,1
+monitor:Anthropic:conflict,external,Monitor Anthropic,conflict,Monitor conflict findings per run day,5,14,,0,1,0
+monitor:Anthropic:off-goal,external,Monitor Anthropic,off-goal,Monitor off-goal findings per run day,5,14,,1,1,0
+monitor:Anthropic:emotional-or-erratic,external,Monitor Anthropic,emotional-or-erratic,Monitor emotional-or-erratic findings per run day,5,14,,0,0,0
+monitor:Anthropic:likely-scaffolding-issue,external,Monitor Anthropic,likely-scaffolding-issue,Monitor likely-scaffolding-issue findings per run day,5,14,,0,1,0
+monitor:Anthropic:surreptitious-or-deceptive,external,Monitor Anthropic,surreptitious-or-deceptive,Monitor surreptitious-or-deceptive findings per run day,5,14,,0,0,0
+monitor:Anthropic:outside-agent-contact,external,Monitor Anthropic,outside-agent-contact,Monitor outside-agent-contact findings per run day,5,14,,0,0,0
+monitor:Anthropic:human-contact,external,Monitor Anthropic,human-contact,Monitor human-contact findings per run day,5,14,,2,3,2
+monitor:Anthropic:unsolicited-outreach,external,Monitor Anthropic,unsolicited-outreach,Monitor unsolicited-outreach findings per run day,5,14,,0,0,0
+monitor:Anthropic:good-tweet,external,Monitor Anthropic,good-tweet,Monitor good-tweet findings per run day,5,14,,0,0,0
+monitor:Anthropic:interesting-content,external,Monitor Anthropic,interesting-content,Monitor interesting-content findings per run day,1,64,,2,1,1
+monitor:Anthropic:other,external,Monitor Anthropic,other,Monitor other findings per run day,5,14,,1,1,0
+monitor:Google:conflict,external,Monitor Google,conflict,Monitor conflict findings per run day,5,14,,0,0,0
+monitor:Google:off-goal,external,Monitor Google,off-goal,Monitor off-goal findings per run day,5,14,,0,0,0
+monitor:Google:emotional-or-erratic,external,Monitor Google,emotional-or-erratic,Monitor emotional-or-erratic findings per run day,5,14,,0,1,0
+monitor:Google:likely-scaffolding-issue,external,Monitor Google,likely-scaffolding-issue,Monitor likely-scaffolding-issue findings per run day,5,14,,0,0,0
+monitor:Google:surreptitious-or-deceptive,external,Monitor Google,surreptitious-or-deceptive,Monitor surreptitious-or-deceptive findings per run day,5,14,,0,1,0
+monitor:Google:outside-agent-contact,external,Monitor Google,outside-agent-contact,Monitor outside-agent-contact findings per run day,5,14,,1,2,0
+monitor:Google:human-contact,external,Monitor Google,human-contact,Monitor human-contact findings per run day,5,14,,1,1,0
+monitor:Google:unsolicited-outreach,external,Monitor Google,unsolicited-outreach,Monitor unsolicited-outreach findings per run day,5,14,,0,0,0
+monitor:Google:good-tweet,external,Monitor Google,good-tweet,Monitor good-tweet findings per run day,5,14,,0,0,0
+monitor:Google:interesting-content,external,Monitor Google,interesting-content,Monitor interesting-content findings per run day,5,14,,1,1,1
+monitor:Google:other,external,Monitor Google,other,Monitor other findings per run day,5,14,,0,1,0
+monitor:OpenAI:conflict,external,Monitor OpenAI,conflict,Monitor conflict findings per run day,5,14,,1,1,1
+monitor:OpenAI:off-goal,external,Monitor OpenAI,off-goal,Monitor off-goal findings per run day,5,14,,1,1,1
+monitor:OpenAI:emotional-or-erratic,external,Monitor OpenAI,emotional-or-erratic,Monitor emotional-or-erratic findings per run day,5,14,,2,2,2
+monitor:OpenAI:likely-scaffolding-issue,external,Monitor OpenAI,likely-scaffolding-issue,Monitor likely-scaffolding-issue findings per run day,5,14,,0,0,0
+monitor:OpenAI:surreptitious-or-deceptive,external,Monitor OpenAI,surreptitious-or-deceptive,Monitor surreptitious-or-deceptive findings per run day,5,14,,0,0,0
+monitor:OpenAI:outside-agent-contact,external,Monitor OpenAI,outside-agent-contact,Monitor outside-agent-contact findings per run day,5,14,,0,2,0
+monitor:OpenAI:human-contact,external,Monitor OpenAI,human-contact,Monitor human-contact findings per run day,5,14,,2,1,2
+monitor:OpenAI:unsolicited-outreach,external,Monitor OpenAI,unsolicited-outreach,Monitor unsolicited-outreach findings per run day,5,14,,0,0,0
+monitor:OpenAI:good-tweet,external,Monitor OpenAI,good-tweet,Monitor good-tweet findings per run day,5,14,,0,0,0
+monitor:OpenAI:interesting-content,external,Monitor OpenAI,interesting-content,Monitor interesting-content findings per run day,5,14,,0,0,0
+monitor:OpenAI:other,external,Monitor OpenAI,other,Monitor other findings per run day,5,14,,0,1,0
+monitor:Other:conflict,external,Monitor Other,conflict,Monitor conflict findings per run day,5,14,,0,1,0
+monitor:Other:off-goal,external,Monitor Other,off-goal,Monitor off-goal findings per run day,5,14,,2,2,2
+monitor:Other:emotional-or-erratic,external,Monitor Other,emotional-or-erratic,Monitor emotional-or-erratic findings per run day,5,14,,0,2,2
+monitor:Other:likely-scaffolding-issue,external,Monitor Other,likely-scaffolding-issue,Monitor likely-scaffolding-issue findings per run day,5,14,,1,1,0
+monitor:Other:surreptitious-or-deceptive,external,Monitor Other,surreptitious-or-deceptive,Monitor surreptitious-or-deceptive findings per run day,5,14,,0,3,1
+monitor:Other:outside-agent-contact,external,Monitor Other,outside-agent-contact,Monitor outside-agent-contact findings per run day,5,14,,0,0,0
+monitor:Other:human-contact,external,Monitor Other,human-contact,Monitor human-contact findings per run day,5,14,,0,0,0
+monitor:Other:unsolicited-outreach,external,Monitor Other,unsolicited-outreach,Monitor unsolicited-outreach findings per run day,5,14,,0,0,0
+monitor:Other:good-tweet,external,Monitor Other,good-tweet,Monitor good-tweet findings per run day,5,14,,0,1,1
+monitor:Other:interesting-content,external,Monitor Other,interesting-content,Monitor interesting-content findings per run day,5,14,,1,1,1
+monitor:Other:other,external,Monitor Other,other,Monitor other findings per run day,5,14,,1,5,1

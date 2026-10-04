@@ -1,0 +1,15 @@
+channel,n_edges,n_edges_with_shared_context,contexts_carried,contexts_changed,c,edge_change_share,c_lo,c_hi,n_grandchild_contexts,inherited_share,reverted_share,rules,source,modification_rate_per_trial,n_agents,ci_note
+agent_retelling,942606,532523,909623,273400,0.300564,0.394860,0.299030,0.302299,83218,0.420186,0.417278,v2,B2 MAP edges,,,
+chat_to_chat_other,263744,146162,269365,115522,0.428868,0.546469,0.424793,0.432795,80533,0.420772,0.415296,v2,B2 MAP edges,,,
+chat_to_memory_other,678862,386361,640258,157878,0.246585,0.337506,0.244985,0.248051,2685,0.402607,0.476723,v2,B2 MAP edges,,,
+chat_same_agent,376097,239121,572877,190708,0.332895,0.479653,0.329427,0.336188,96422,0.393116,0.331117,v2,B2 MAP edges,,,
+own_memory_to_chat,122133,54195,74587,28484,0.381890,0.434247,0.378052,0.385601,32665,0.487219,0.449962,v2,B2 MAP edges,,,
+search_answer_to_agent,14946,7274,9923,2910,0.293258,0.348089,0.282997,0.303327,2673,0.380471,0.578002,v2,B2 MAP edges,,,
+chat_to_search_answer,192853,118932,255850,14562,0.056916,0.108062,0.055293,0.058344,649,0.419106,0.497689,v2,B2 MAP edges,,,
+memory_consolidation_b1_number,,,10679350,140251,0.013133,,0.013065,0.013201,,,,v2,B1 tables,0.010985,45,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_money,,,322346,869,0.002696,,0.002523,0.002881,,,,v2,B1 tables,0.002454,42,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_percent,,,552639,4186,0.007575,,0.007349,0.007807,,,,v2,B1 tables,0.006419,44,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_time,,,7883192,40178,0.005097,,0.005047,0.005147,,,,v2,B1 tables,0.004713,45,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_quantities,,,19437527,185484,0.009543,,0.009499,0.009586,,,,v2,B1 tables,,,"Wilson, units independent"
+memory_consolidation_b1_quantities,,,6550788,848830,0.129577,,0.129320,0.129834,,,,v1,B1 tables,,,"Wilson, units independent"
+memory_consolidation_b1_quantities,,,7386947,243386,0.032948,,0.032820,0.033077,,,,v3,B1 tables,,,"Wilson, units independent"

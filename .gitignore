@@ -1,0 +1,28 @@
+# Raw data, screenshots, message text, labels and intermediate parquet (SPEC 0.2)
+data/
+*.parquet
+*.jsonl
+*.jsonl.gz
+*.tar
+*.png
+!outputs/figures/*.png
+!reports/explainer_figures/*.png
+!reports/figures/*.png
+
+# Environments and caches
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Slurm logs
+logs/
+slurm-*.out
+
+# Secrets
+.env
+*.token
+
+# LaTeX build files of reports/writeup.pdf
+reports/build/

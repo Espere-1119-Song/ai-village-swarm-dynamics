@@ -1,0 +1,86 @@
+# Default configuration for avsd. Every command reads this file.
+# Data: AI Digest, "AI Village dataset", 2026, https://theaidigest.org/village
+
+seed: 20261003
+
+paths:
+  raw: data/raw/ai-village
+  interim: data/interim
+  processed: data/processed
+  tables: data/processed/tables
+  labels: data/labels
+  outputs: outputs
+  reports: reports
+
+dataset:
+  repo_id: aidigestorg/ai-village
+  repo_type: dataset
+  revision: 838b4150303ca8228e8edb432d8b8ccae353d258   # export of 2026-09-20
+  allow_patterns:
+    - "*.md"
+    - "*.jsonl.gz"
+    - manifest.json
+    - example.py
+    - images/computer-use-turns/index.json
+  screenshot_budget_gb: 30
+
+time:
+  village_tz: America/Los_Angeles
+  village_day1: "2025-04-02"
+  pause_gap_minutes: 30        # G in SPEC 4.2
+
+hawkes:
+  betas_per_s: [0.016666666666666666, 0.0016666666666666668, 0.0002777777777777778]
+  max_lag_hours: 3             # L
+  baseline_hour_bins: 8
+  min_agent_msgs_per_window: 500
+  rolling_window_run_days: 5
+  em_tol: 1.0e-8               # SPEC 5.3 says 1e-6; see decisions.md
+  em_xtol: 1.0e-5              # max relative parameter move of one plain EM step
+  em_max_iter: 2000
+  bootstrap_reps: 1000         # run-date replicates per goal window; best of three starts and the full-data fit
+  parent_prob_min: 0.01
+  # Real-data pipeline (avsd.hawkes.pipeline; docs/decisions.md):
+  kernel_sharing: class        # owner's choice; three starts, Newton-certified stopping
+  l1: 0.0                      # no L1 penalty (CV-chosen L1 did not lower recovery error on the grid)
+  min_room_share: 0.10         # a room above this share of a window's agent messages is its own group
+  recovery_reps: 20            # SPEC 5.6-1 replicates per goal window
+  recovery_reps_borderline: 20 # more replicates when the mean mae4 is within recovery_borderline_se SE of the bar
+  recovery_borderline_se: 2.0
+  recovery_bar_mae4: 0.05      # a window fails when its mean mae4 reaches this; it is then merged
+  core_presence: 0.8           # rho over agents present on at least this share of a window's realizations
+  matched_reps: 8              # replicates per matched-truth arm and window
+  identified_children: 50      # a kernel class shape needs this many expected children
+  sensitivity_max_lag_hours: [1, 6]
+  sensitivity_gap_minutes: [15, 60]
+
+lineage:
+  memory_cluster_gap_s: 60
+  right_censor_run_days: 3     # L_B
+  gamma: 1.0                   # default; B2 picks gamma by grid search on the explicit-reference labels
+  posterior_samples: 200
+  min_edges_per_generation: 30
+  # Module B2 (transmission trees). B1's rule set for memory presence is chosen on the command line
+  # (`avsd lineage trees --rules v3`, the default) until the owner's labels pick v1, v2 or v3.
+  min_occurrences: 3           # SPEC 6.4.1
+  max_unit_occurrences: 200    # larger units are recurring background anchors, not one spread
+  kde_min_edges: 50            # single-candidate edges needed for a key's own KDE
+  boot_reps: 500               # cluster bootstrap by tree root
+  h1_permutations: 499         # MAP tree
+  h1_permutations_draws: 99    # each posterior draw
+  h1_permutations_sensitivity: 199
+  draw_workers: 24
+  synthetic_reps: 100          # null replicates (plus a quarter as many power replicates)
+  synthetic_units: 50000
+
+changepoint:
+  align_window_run_days: 3     # w
+  null_reps: 10000
+  block_len_run_days: 5
+
+llm:
+  backend: none                # none | vllm. No paid API is used in this project.
+  cache_dir: data/interim/llm_cache
+
+swarmsim_calibrate:
+  rules: v2   # D2 touch rules: v2 confirmed by the owner on 2026-10-01; v1 is the sensitivity version

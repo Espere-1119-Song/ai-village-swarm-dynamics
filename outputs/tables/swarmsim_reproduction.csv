@@ -1,0 +1,30 @@
+check,required,blog,blog_low,blog_high,ours,ci95_low,ci95_high,range_p025,range_p975,unit,n,blog_percentile,rel_deviation,status,note
+Standard swarm coverage curve shifts earlier at every larger N (N = 1 to 64),true,earlier as the swarm grows,NaN,NaN,1.0000,NaN,NaN,NaN,NaN,family,256,NaN,NaN,pass,"levels 0.25, 0.5, 0.75, 0.9; ours = share of families where every level is reached strictly sooner at each larger N; family-mean times to cov50: 0.297 > 0.172 > 0.0866 > 0.0444 > 0.0236 > 0.0136 > 0.00938"
+Standard swarm best score curve shifts earlier at every larger N (N = 1 to 64),false,earlier as the swarm grows,NaN,NaN,0.9819,NaN,NaN,NaN,NaN,family,221,NaN,NaN,pass,"levels 0.5, 0.8; ours = share of families where every level is reached strictly sooner at each larger N; family-mean times to best80: 0.678 > 0.408 > 0.22 > 0.121 > 0.0702 > 0.0464 > 0.0385"
+Standard swarm@32 finishes every step (t / T1),true,about 0.10,0.1000,0.1000,0.0856,0.0834,0.0879,0.0632,0.1316,family,256,0.8281,0.1435,pass,first time the family-average coverage reaches 1
+Standard swarm@64 finishes every step (t / T1),true,about 0.10,0.1000,0.1000,0.0812,0.0787,0.0836,0.0542,0.1304,family,256,0.8555,0.1884,pass,first time the family-average coverage reaches 1
+"Standard swarm finish time, 64 over 32 agents",true,about 1 (no sooner),1.0000,1.0000,0.9438,0.9360,0.9515,0.8233,1.0666,family,256,0.7852,0.0562,pass,""
+"Standard swarm@64 speedup at half coverage, g50",true,33,33.0000,33.0000,31.7107,31.5371,31.8893,28.6340,34.3836,family,256,0.8242,0.0391,pass,""
+Standard swarm@64 speedup at best score 0.8,true,16,16.0000,16.0000,18.0906,17.7939,18.3720,13.3112,21.1567,family,221,0.1674,0.1307,pass,families whose average best score never reaches 0.8 are left out
+"Recursive swarm@4, 3 layers, lambda = ln g50 / ln N",true,0.88 to 0.93,0.8800,0.9300,0.8860,0.8847,0.8873,0.8675,0.9079,family,256,NaN,0.0000,pass,""
+"Recursive swarm@8, 3 layers, lambda = ln g50 / ln N",true,0.88 to 0.93,0.8800,0.9300,0.9175,0.9167,0.9183,0.9051,0.9318,family,256,NaN,0.0000,pass,""
+"Recursive swarm@16, 3 layers, lambda = ln g50 / ln N",true,0.88 to 0.93,0.8800,0.9300,0.9306,0.9299,0.9313,0.9201,0.9413,family,256,NaN,0.0006,pass,""
+"Recursive swarm@32, 3 layers, lambda = ln g50 / ln N",true,0.88 to 0.93,0.8800,0.9300,0.9256,0.9248,0.9264,0.9117,0.9381,family,256,NaN,0.0000,pass,""
+"Recursive swarm@64, 3 layers, lambda = ln g50 / ln N",true,0.88 to 0.93,0.8800,0.9300,0.8847,0.8832,0.8862,0.8571,0.9065,family,256,NaN,0.0000,pass,""
+"Standard swarm@4, lambda",true,0.89 to 0.92,0.8900,0.9200,0.8890,0.8878,0.8902,0.8707,0.9090,family,256,NaN,0.0011,pass,""
+"Standard swarm@8, lambda",true,0.89 to 0.92,0.8900,0.9200,0.9142,0.9133,0.9150,0.9016,0.9282,family,256,NaN,0.0000,pass,""
+"Standard swarm@16, lambda",true,0.89 to 0.92,0.8900,0.9200,0.9127,0.9120,0.9134,0.9017,0.9240,family,256,NaN,0.0000,pass,""
+"Standard swarm@64, lambda",true,0.84,0.8400,0.8400,0.8309,0.8296,0.8323,0.8066,0.8506,family,256,0.8008,0.0108,pass,""
+Recursive (3 layers) over standard g50 at N = 16,false,1.04,1.0400,1.0400,1.0507,1.0496,1.0518,1.0314,1.0676,family,256,0.1211,0.0103,pass,""
+Recursive (3 layers) over standard g50 at N = 64,false,1.2,1.2000,1.2000,1.2508,1.2490,1.2526,1.2184,1.2757,family,256,0.0000,0.0424,pass,""
+Standard swarm@4 speedup at best score 0.5 below g50,false,smaller from 4 agents on,NaN,NaN,0.9844,NaN,NaN,NaN,NaN,family,256,NaN,NaN,pass,ours = share of families; family means 2.67 against 3.43
+Standard swarm@8 speedup at best score 0.5 below g50,false,smaller from 4 agents on,NaN,NaN,1.0000,NaN,NaN,NaN,NaN,family,256,NaN,NaN,pass,ours = share of families; family means 4.33 against 6.69
+Standard swarm@16 speedup at best score 0.5 below g50,false,smaller from 4 agents on,NaN,NaN,1.0000,NaN,NaN,NaN,NaN,family,256,NaN,NaN,pass,ours = share of families; family means 6.68 against 12.6
+Standard swarm@32 speedup at best score 0.5 below g50,false,smaller from 4 agents on,NaN,NaN,1.0000,NaN,NaN,NaN,NaN,family,256,NaN,NaN,pass,ours = share of families; family means 9.4 against 21.8
+Standard swarm@64 speedup at best score 0.5 below g50,false,smaller from 4 agents on,NaN,NaN,1.0000,NaN,NaN,NaN,NaN,family,256,NaN,NaN,pass,ours = share of families; family means 11.9 against 31.7
+"Generator best recipe depth, language-modelling size",false,94%,0.9400,0.9400,0.9272,0.9217,0.9324,0.6875,1.0000,DAG,1024,0.5566,0.0136,pass,1024 DAGs of 723 steps and 17 layers without task variation; layer of the best value over the deepest layer
+"Generator best recipe depth, diffusion size",false,88%,0.8800,0.8800,NaN,NaN,NaN,NaN,NaN,DAG,0,NaN,NaN,not checked,the blog does not give the diffusion DAG's size
+Generator cross-layer edge share,false,18%,0.1800,0.1800,0.1865,0.1856,0.1874,0.1559,0.2143,DAG,1024,0.3281,0.0360,pass,1024 DAGs of 723 steps and 17 layers without task variation; edges spanning 2 or more layers after relayering each step one layer below its deepest parent
+Generator leaf share (steps without children),false,about half,0.5000,0.5000,0.4812,0.4798,0.4825,0.4398,0.5270,DAG,1024,0.7988,0.0376,pass,1024 DAGs of 723 steps and 17 layers without task variation
+Best recipe of a typical task DAG on the task's scale,false,about 0.83,0.8300,0.8300,0.8351,0.8296,0.8404,0.6077,1.0000,task,4096,0.4863,0.0062,pass,"ours = median over task DAGs, CI by bootstrap over tasks"
+Share of task DAGs whose best recipe reaches 0.95,false,about 1 in 6,0.1667,0.1667,0.1899,0.1770,0.2029,0.0000,0.4141,family,256,0.4258,0.1396,pass,ours = mean over families of the share of their tasks

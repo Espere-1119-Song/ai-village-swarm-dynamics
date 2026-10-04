@@ -1,0 +1,61 @@
+variant,scope,edges,statistic,observed,gen_mean,gen_sd,gen_p025,gen_p975,quantile,gen_n,n_edges
+generator at connected-node count,pooled,all,multi_parent_share,0.69953,0.42362,0.00716,0.40825,0.43309,1.00000,64,
+generator at connected-node count,pooled,all,mean_parents,2.66593,1.73871,0.01368,1.71344,1.75817,1.00000,64,
+generator at connected-node count,pooled,all,sibling_merge_share,0.43913,0.41976,0.01207,0.39902,0.44455,0.92188,64,
+generator at connected-node count,pooled,all,outdeg_gini,0.49554,0.53141,0.00572,0.52308,0.54442,0.00000,64,
+generator at connected-node count,pooled,all,top10_child_share,0.40340,0.44277,0.00687,0.43221,0.45721,0.00000,64,
+generator at connected-node count,pooled,all,cross_layer_share,0.59976,0.19734,0.00456,0.18846,0.20587,1.00000,64,
+generator at connected-node count,pooled,write,multi_parent_share,0.55063,0.42362,0.00716,0.40825,0.43309,1.00000,64,
+generator at connected-node count,pooled,write,mean_parents,1.90348,1.73871,0.01368,1.71344,1.75817,1.00000,64,
+generator at connected-node count,pooled,write,sibling_merge_share,0.22144,0.41976,0.01207,0.39902,0.44455,0.00000,64,
+generator at connected-node count,pooled,write,outdeg_gini,0.35022,0.53141,0.00572,0.52308,0.54442,0.00000,64,
+generator at connected-node count,pooled,write,top10_child_share,0.28975,0.44277,0.00687,0.43221,0.45721,0.00000,64,
+generator at connected-node count,pooled,write,cross_layer_share,0.44928,0.19734,0.00456,0.18846,0.20587,1.00000,64,
+generator with depth matched to the goal graph,pooled,all,multi_parent_share,0.69953,0.43704,0.00164,0.43350,0.44028,1.00000,64,
+generator with depth matched to the goal graph,pooled,all,mean_parents,2.66593,1.73434,0.00471,1.72552,1.74171,1.00000,64,
+generator with depth matched to the goal graph,pooled,all,sibling_merge_share,0.43913,0.44153,0.00398,0.43356,0.44807,0.26562,64,
+generator with depth matched to the goal graph,pooled,all,outdeg_gini,0.49554,0.42512,0.00112,0.42317,0.42717,1.00000,64,
+generator with depth matched to the goal graph,pooled,all,top10_child_share,0.40340,0.32849,0.00125,0.32639,0.33064,1.00000,64,
+generator with depth matched to the goal graph,pooled,all,cross_layer_share,0.59976,0.22977,0.00149,0.22684,0.23200,1.00000,64,
+generator with depth matched to the goal graph,pooled,write,multi_parent_share,0.55063,0.43704,0.00164,0.43350,0.44028,1.00000,64,
+generator with depth matched to the goal graph,pooled,write,mean_parents,1.90348,1.73434,0.00471,1.72552,1.74171,1.00000,64,
+generator with depth matched to the goal graph,pooled,write,sibling_merge_share,0.22144,0.44153,0.00398,0.43356,0.44807,0.00000,64,
+generator with depth matched to the goal graph,pooled,write,outdeg_gini,0.35022,0.42512,0.00112,0.42317,0.42717,0.00000,64,
+generator with depth matched to the goal graph,pooled,write,top10_child_share,0.28975,0.32849,0.00125,0.32639,0.33064,0.00000,64,
+generator with depth matched to the goal graph,pooled,write,cross_layer_share,0.44928,0.22977,0.00149,0.22684,0.23200,1.00000,64,
+exact keys,pooled,all,multi_parent_share,0.71937,0.42276,0.00455,0.41536,0.43002,1.00000,64,146249
+exact keys,pooled,all,mean_parents,3.06467,1.73879,0.00847,1.72502,1.75264,1.00000,64,146249
+exact keys,pooled,all,sibling_merge_share,0.52734,0.41661,0.01068,0.40061,0.44320,1.00000,64,146249
+exact keys,pooled,all,outdeg_gini,0.52857,0.53358,0.00382,0.52702,0.54208,0.06250,64,146249
+exact keys,pooled,all,top10_child_share,0.43590,0.44463,0.00460,0.43664,0.45456,0.01562,64,146249
+exact keys,pooled,all,cross_layer_share,0.65394,0.19813,0.00386,0.18874,0.20424,1.00000,64,146249
+exact keys,pooled,write,multi_parent_share,0.57789,0.42276,0.00455,0.41536,0.43002,1.00000,64,74640
+exact keys,pooled,write,mean_parents,2.10728,1.73879,0.00847,1.72502,1.75264,1.00000,64,74640
+exact keys,pooled,write,sibling_merge_share,0.28414,0.41661,0.01068,0.40061,0.44320,0.00000,64,74640
+exact keys,pooled,write,outdeg_gini,0.34820,0.53358,0.00382,0.52702,0.54208,0.00000,64,74640
+exact keys,pooled,write,top10_child_share,0.26874,0.44463,0.00460,0.43664,0.45456,0.00000,64,74640
+exact keys,pooled,write,cross_layer_share,0.50242,0.19813,0.00386,0.18874,0.20424,1.00000,64,74640
+with observed mentions,pooled,all,multi_parent_share,0.74176,0.42276,0.00455,0.41536,0.43002,1.00000,64,188665
+with observed mentions,pooled,all,mean_parents,3.59746,1.73879,0.00847,1.72502,1.75264,1.00000,64,188665
+with observed mentions,pooled,all,sibling_merge_share,0.57613,0.41661,0.01068,0.40061,0.44320,1.00000,64,188665
+with observed mentions,pooled,all,outdeg_gini,0.56580,0.53358,0.00382,0.52702,0.54208,1.00000,64,188665
+with observed mentions,pooled,all,top10_child_share,0.46762,0.44463,0.00460,0.43664,0.45456,1.00000,64,188665
+with observed mentions,pooled,all,cross_layer_share,0.70090,0.19813,0.00386,0.18874,0.20424,1.00000,64,188665
+with observed mentions,pooled,write,multi_parent_share,0.55174,0.42276,0.00455,0.41536,0.43002,1.00000,64,71858
+with observed mentions,pooled,write,mean_parents,1.90509,1.73879,0.00847,1.72502,1.75264,1.00000,64,71858
+with observed mentions,pooled,write,sibling_merge_share,0.22190,0.41661,0.01068,0.40061,0.44320,0.00000,64,71858
+with observed mentions,pooled,write,outdeg_gini,0.35100,0.53358,0.00382,0.52702,0.54208,0.00000,64,71858
+with observed mentions,pooled,write,top10_child_share,0.28995,0.44463,0.00460,0.43664,0.45456,0.00000,64,71858
+with observed mentions,pooled,write,cross_layer_share,0.44989,0.19813,0.00386,0.18874,0.20424,1.00000,64,71858
+structured only,pooled,all,multi_parent_share,0.69054,0.42276,0.00455,0.41536,0.43002,1.00000,64,116121
+structured only,pooled,all,mean_parents,2.45842,1.73879,0.00847,1.72502,1.75264,1.00000,64,116121
+structured only,pooled,all,sibling_merge_share,0.39559,0.41661,0.01068,0.40061,0.44320,0.00000,64,116121
+structured only,pooled,all,outdeg_gini,0.46473,0.53358,0.00382,0.52702,0.54208,0.00000,64,116121
+structured only,pooled,all,top10_child_share,0.37020,0.44463,0.00460,0.43664,0.45456,0.00000,64,116121
+structured only,pooled,all,cross_layer_share,0.56602,0.19813,0.00386,0.18874,0.20424,1.00000,64,116121
+structured only,pooled,write,multi_parent_share,0.54482,0.42276,0.00455,0.41536,0.43002,1.00000,64,68602
+structured only,pooled,write,mean_parents,1.86226,1.73879,0.00847,1.72502,1.75264,1.00000,64,68602
+structured only,pooled,write,sibling_merge_share,0.20708,0.41661,0.01068,0.40061,0.44320,0.00000,64,68602
+structured only,pooled,write,outdeg_gini,0.34504,0.53358,0.00382,0.52702,0.54208,0.00000,64,68602
+structured only,pooled,write,top10_child_share,0.28907,0.44463,0.00460,0.43664,0.45456,0.00000,64,68602
+structured only,pooled,write,cross_layer_share,0.43729,0.19813,0.00386,0.18874,0.20424,1.00000,64,68602

@@ -1,0 +1,69 @@
+scenario,statistic,n_replicates,estimate,lo,hi,interval
+null (H1 true),parent_accuracy,100,0.808213,0.803937,0.811859,2.5 and 97.5 percentiles over replicates
+null (H1 true),parent_accuracy_transmission,100,0.792215,0.787630,0.796397,2.5 and 97.5 percentiles over replicates
+null (H1 true),env_recall,100,0.932078,0.926285,0.937828,2.5 and 97.5 percentiles over replicates
+null (H1 true),generation_accuracy,100,0.873470,0.870071,0.876125,2.5 and 97.5 percentiles over replicates
+null (H1 true),generation_accuracy_nonroot,100,0.749664,0.744025,0.753947,2.5 and 97.5 percentiles over replicates
+null (H1 true),agent_generation_accuracy,100,0.890986,0.886393,0.895677,2.5 and 97.5 percentiles over replicates
+null (H1 true),generation_mae,100,0.161558,0.156242,0.167469,2.5 and 97.5 percentiles over replicates
+null (H1 true),determined_share,100,0.572666,0.563896,0.579638,2.5 and 97.5 percentiles over replicates
+null (H1 true),determined_parent_accuracy,100,0.954368,0.950990,0.957326,2.5 and 97.5 percentiles over replicates
+null (H1 true),determined_agent_generation_accuracy,100,0.952066,0.948558,0.955659,2.5 and 97.5 percentiles over replicates
+null (H1 true),rejection_rate_true_chat_to_chat_other,100,0.030000,0.010255,0.084519,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_true_chat_to_memory_other,100,0.070000,0.034319,0.137495,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_true_combined,100,0.070000,0.034319,0.137495,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_inferred_chat_to_chat_other,100,0.760000,0.667677,0.833087,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_inferred_chat_to_memory_other,100,0.370000,0.281824,0.467795,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_inferred_combined,100,0.770000,0.678456,0.841567,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_determined_chat_to_chat_other,100,0.130000,0.077572,0.209804,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_determined_chat_to_memory_other,100,0.070000,0.034319,0.137495,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),rejection_rate_determined_combined,100,0.150000,0.093060,0.232836,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_true_chat_to_chat_other,100,0.100000,0.055229,0.174366,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_true_chat_to_chat_self,100,0.060000,0.027786,0.124768,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_true_chat_to_memory_other,100,0.040000,0.015663,0.098371,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_true_chat_to_memory_self,100,0.100000,0.055229,0.174366,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_true_memory_to_chat,100,0.080000,0.041093,0.149981,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_true_combined,100,0.070000,0.034319,0.137495,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_inferred_chat_to_chat_other,100,1.000000,0.963007,1.000000,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_inferred_chat_to_chat_self,100,0.980000,0.929988,0.994498,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_inferred_chat_to_memory_other,100,0.470000,0.375108,0.567111,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_inferred_chat_to_memory_self,100,0.420000,0.327984,0.517935,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_inferred_memory_to_chat,100,1.000000,0.963007,1.000000,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_inferred_combined,100,1.000000,0.963007,1.000000,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_determined_chat_to_chat_other,100,0.100000,0.055229,0.174366,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_determined_chat_to_memory_other,100,0.450000,0.356145,0.547554,Wilson 95% over replicates (alpha 0.05)
+null (H1 true),occurrence_rejection_rate_determined_combined,100,0.380000,0.290976,0.477902,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),parent_accuracy,25,0.806568,0.803531,0.809264,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),parent_accuracy_transmission,25,0.790309,0.786807,0.793445,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),env_recall,25,0.932398,0.928285,0.938863,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),generation_accuracy,25,0.872592,0.868995,0.874828,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),generation_accuracy_nonroot,25,0.748025,0.742821,0.752039,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),agent_generation_accuracy,25,0.886335,0.881565,0.891778,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),generation_mae,25,0.165968,0.160544,0.172646,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),determined_share,25,0.573089,0.566443,0.579018,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),determined_parent_accuracy,25,0.947461,0.944179,0.952387,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),determined_agent_generation_accuracy,25,0.944464,0.940592,0.949766,2.5 and 97.5 percentiles over replicates
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_true_chat_to_chat_other,25,0.960000,0.804559,0.992904,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_true_chat_to_memory_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_true_combined,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_inferred_chat_to_chat_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_inferred_chat_to_memory_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_inferred_combined,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_determined_chat_to_chat_other,25,0.400000,0.234033,0.592605,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_determined_chat_to_memory_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),rejection_rate_determined_combined,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_true_chat_to_chat_other,25,0.720000,0.524234,0.857161,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_true_chat_to_chat_self,25,0.000000,0.000000,0.133192,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_true_chat_to_memory_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_true_chat_to_memory_self,25,0.000000,0.000000,0.133192,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_true_memory_to_chat,25,0.040000,0.007096,0.195441,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_true_combined,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_inferred_chat_to_chat_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_inferred_chat_to_chat_self,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_inferred_chat_to_memory_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_inferred_chat_to_memory_self,25,0.360000,0.202479,0.554815,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_inferred_memory_to_chat,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_inferred_combined,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_determined_chat_to_chat_other,25,0.200000,0.088606,0.391310,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_determined_chat_to_memory_other,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)
+alternative (intervals between agents x 1.5^(g-1)),occurrence_rejection_rate_determined_combined,25,1.000000,0.866808,1.000000,Wilson 95% over replicates (alpha 0.05)

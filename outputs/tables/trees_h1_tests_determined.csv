@@ -1,0 +1,11 @@
+channel,generations,n_edges,n_generations,ad_stat,p_perm,n_perm,z_vs_null,synthetic_type1,synthetic_type1_lo,synthetic_type1_hi,synthetic_power,synthetic_power_lo,synthetic_power_hi
+chat_to_chat_other,"1,2",84857,2,145.255285,0.002000,499,176.792703,0.130000,0.077572,0.209804,0.400000,0.234033,0.592605
+chat_to_chat_self,"",0,0,NaN,NaN,0,NaN,,,,,,
+chat_to_human,1,250,1,NaN,NaN,0,NaN,,,,,,
+chat_to_memory_other,"1,2,3",351863,3,589.808040,0.002000,499,523.984276,0.070000,0.034319,0.137495,1.000000,0.866808,1.000000
+chat_to_memory_self,"",0,0,NaN,NaN,0,NaN,,,,,,
+memory_to_chat,"",0,0,NaN,NaN,0,NaN,,,,,,
+search_to_chat,"",0,0,NaN,NaN,0,NaN,,,,,,
+search_to_memory,"",0,0,NaN,NaN,0,NaN,,,,,,
+chat_to_search_answer,"1,2",26316,2,12.065280,0.002000,499,14.709594,,,,,,
+combined,"",463036,7,747.128605,0.002000,499,466.166000,0.150000,0.093060,0.232836,1.000000,0.866808,1.000000

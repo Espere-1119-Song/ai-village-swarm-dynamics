@@ -1,0 +1,133 @@
+subset,definition,n_goals,n_sessions,analysis,edges,statistic,window,value,gen_mean,gen_p025,gen_p975,quantile,n,ci_low,ci_high,baseline,baseline_ci_low,baseline_ci_high,n_agents
+full,all goals,51,78362,D3,all,multi_parent_share,"",0.69953,0.42276,0.41536,0.43002,1.00000,48954,,,,,,
+full,all goals,51,78362,D3,all,mean_parents,"",2.66593,1.73879,1.72502,1.75264,1.00000,48954,,,,,,
+full,all goals,51,78362,D3,all,sibling_merge_share,"",0.43913,0.41661,0.40061,0.44320,0.95312,48954,,,,,,
+full,all goals,51,78362,D3,all,outdeg_gini,"",0.49554,0.53358,0.52702,0.54208,0.00000,48954,,,,,,
+full,all goals,51,78362,D3,all,top10_child_share,"",0.40340,0.44463,0.43664,0.45456,0.00000,48954,,,,,,
+full,all goals,51,78362,D3,all,cross_layer_share,"",0.59976,0.19813,0.18874,0.20424,1.00000,48954,,,,,,
+full,all goals,51,78362,D3,write,multi_parent_share,"",0.55063,0.42276,0.41536,0.43002,1.00000,37693,,,,,,
+full,all goals,51,78362,D3,write,mean_parents,"",1.90348,1.73879,1.72502,1.75264,1.00000,37693,,,,,,
+full,all goals,51,78362,D3,write,sibling_merge_share,"",0.22144,0.41661,0.40061,0.44320,0.00000,37693,,,,,,
+full,all goals,51,78362,D3,write,outdeg_gini,"",0.35022,0.53358,0.52702,0.54208,0.00000,37693,,,,,,
+full,all goals,51,78362,D3,write,top10_child_share,"",0.28975,0.44463,0.43664,0.45456,0.00000,37693,,,,,,
+full,all goals,51,78362,D3,write,cross_layer_share,"",0.44928,0.19813,0.18874,0.20424,1.00000,37693,,,,,,
+full,all goals,51,78362,step cost,all,slope of turns,"",0.02942,,,,,77725,-0.09654,0.07311,,,,
+full,all goals,51,78362,step cost,all,slope of active_min,"",0.15103,,,,,77725,-0.13389,0.25287,,,,
+full,all goals,51,78362,D4,all,with_parents,goal,0.60178,,,,,50251,0.53547,0.67220,0.06324,0.05176,0.07610,45
+full,all goals,51,78362,D4,all,all_pairs,goal,0.38613,,,,,78316,0.31400,0.47936,0.04058,0.03105,0.05104,46
+full,all goals,51,78362,D4,all,with_parents,day,0.60178,,,,,50251,0.53775,0.67047,0.25019,0.21755,0.28999,45
+full,all goals,51,78362,D4,all,all_pairs,day,0.38613,,,,,78316,0.31142,0.47847,0.16054,0.12939,0.20685,46
+full,all goals,51,78362,D4,write,with_parents,goal,0.65852,,,,,38421,0.59642,0.72592,0.05545,0.04388,0.06753,45
+full,all goals,51,78362,D4,write,all_pairs,goal,0.32306,,,,,78316,0.25356,0.40872,0.02720,0.02039,0.03539,46
+full,all goals,51,78362,D4,write,with_parents,day,0.65852,,,,,38421,0.59372,0.72531,0.23068,0.20219,0.26685,45
+full,all goals,51,78362,D4,write,all_pairs,day,0.32306,,,,,78316,0.25284,0.40989,0.11317,0.08861,0.14719,46
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,all,multi_parent_share,"",0.72576,0.42292,0.41368,0.43108,1.00000,45909,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,all,mean_parents,"",2.73983,1.74163,1.72790,1.76105,1.00000,45909,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,all,sibling_merge_share,"",0.44026,0.40665,0.38749,0.43731,0.96875,45909,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,all,outdeg_gini,"",0.49525,0.54018,0.53297,0.54985,0.00000,45909,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,all,top10_child_share,"",0.40271,0.45242,0.44377,0.46402,0.00000,45909,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,all,cross_layer_share,"",0.60933,0.20082,0.19020,0.20768,1.00000,45909,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,write,multi_parent_share,"",0.56574,0.42292,0.41368,0.43108,1.00000,36190,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,write,mean_parents,"",1.93139,1.74163,1.72790,1.76105,1.00000,36190,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,write,sibling_merge_share,"",0.22253,0.40665,0.38749,0.43731,0.00000,36190,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,write,outdeg_gini,"",0.35017,0.54018,0.53297,0.54985,0.00000,36190,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,write,top10_child_share,"",0.28694,0.45242,0.44377,0.46402,0.00000,36190,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D3,write,cross_layer_share,"",0.45659,0.20082,0.19020,0.20768,1.00000,36190,,,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,step cost,all,slope of turns,"",0.03776,,,,,62886,-0.08454,0.07602,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,step cost,all,slope of active_min,"",0.16830,,,,,62886,-0.12431,0.26584,,,,
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,all,with_parents,goal,0.62699,,,,,46750,0.55745,0.69685,0.06314,0.05096,0.07762,37
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,all,all_pairs,goal,0.46453,,,,,63101,0.39084,0.55841,0.04678,0.03742,0.05771,37
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,all,with_parents,day,0.62699,,,,,46750,0.56140,0.69632,0.25643,0.22205,0.29748,37
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,all,all_pairs,day,0.46453,,,,,63101,0.39045,0.55982,0.18999,0.15531,0.23708,37
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,write,with_parents,goal,0.67724,,,,,36662,0.61928,0.74662,0.05503,0.04287,0.06832,37
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,write,all_pairs,goal,0.39348,,,,,63101,0.32403,0.48938,0.03197,0.02473,0.04097,37
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,write,with_parents,day,0.67724,,,,,36662,0.61803,0.74581,0.23336,0.20299,0.27110,37
+gap < 20%,goals whose unattributed GUI writes are under 20% of write actions,24,63128,D4,write,all_pairs,day,0.39348,,,,,63101,0.32457,0.48909,0.13558,0.10745,0.17297,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,all,multi_parent_share,"",0.75976,0.42339,0.40793,0.43466,1.00000,34241,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,all,mean_parents,"",2.87784,1.74415,1.72137,1.76713,1.00000,34241,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,all,sibling_merge_share,"",0.44436,0.39968,0.37335,0.44441,0.96875,34241,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,all,outdeg_gini,"",0.49089,0.54390,0.53439,0.55533,0.00000,34241,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,all,top10_child_share,"",0.39718,0.45706,0.44747,0.47237,0.00000,34241,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,all,cross_layer_share,"",0.62655,0.20330,0.18898,0.21323,1.00000,34241,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,write,multi_parent_share,"",0.60747,0.42339,0.40793,0.43466,1.00000,28194,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,write,mean_parents,"",2.00901,1.74415,1.72137,1.76713,1.00000,28194,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,write,sibling_merge_share,"",0.21808,0.39968,0.37335,0.44441,0.00000,28194,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,write,outdeg_gini,"",0.35619,0.54390,0.53439,0.55533,0.00000,28194,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,write,top10_child_share,"",0.28512,0.45706,0.44747,0.47237,0.00000,28194,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D3,write,cross_layer_share,"",0.47558,0.20330,0.18898,0.21323,1.00000,28194,,,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,step cost,all,slope of turns,"",0.07950,,,,,44744,-0.03071,0.10018,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,step cost,all,slope of active_min,"",0.21784,,,,,44744,-0.19836,0.28913,,,,
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,all,with_parents,goal,0.66659,,,,,34555,0.59227,0.74139,0.05401,0.04174,0.06831,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,all,all_pairs,goal,0.51309,,,,,44893,0.42032,0.62388,0.04157,0.03187,0.05326,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,all,with_parents,day,0.66659,,,,,34555,0.58825,0.74569,0.26665,0.22693,0.31307,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,all,all_pairs,day,0.51309,,,,,44893,0.42039,0.62351,0.20524,0.16337,0.26256,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,write,with_parents,goal,0.69906,,,,,28448,0.63623,0.76907,0.04705,0.03519,0.06139,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,write,all_pairs,goal,0.44299,,,,,44893,0.35499,0.54758,0.02981,0.02239,0.04001,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,write,with_parents,day,0.69906,,,,,28448,0.63892,0.76403,0.23801,0.20341,0.28094,37
+gap < 10%,goals whose unattributed GUI writes are under 10% of write actions,13,44910,D4,write,all_pairs,day,0.44299,,,,,44893,0.35121,0.55354,0.15082,0.11657,0.19525,37
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,all,multi_parent_share,"",0.62160,0.42258,0.41324,0.43036,1.00000,14720,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,all,mean_parents,"",2.06793,1.73251,1.70995,1.75466,1.00000,14720,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,all,sibling_merge_share,"",0.34743,0.43652,0.42225,0.45154,0.00000,14720,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,all,outdeg_gini,"",0.43890,0.52083,0.51469,0.52718,0.00000,14720,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,all,top10_child_share,"",0.34947,0.42906,0.42107,0.43772,0.00000,14720,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,all,cross_layer_share,"",0.48118,0.19152,0.18681,0.19762,1.00000,14720,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,write,multi_parent_share,"",0.43706,0.42258,0.41324,0.43036,1.00000,11058,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,write,mean_parents,"",1.57922,1.73251,1.70995,1.75466,0.00000,11058,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,write,sibling_merge_share,"",0.18767,0.43652,0.42225,0.45154,0.00000,11058,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,write,outdeg_gini,"",0.28681,0.52083,0.51469,0.52718,0.00000,11058,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,write,top10_child_share,"",0.25311,0.42906,0.42107,0.43772,0.00000,11058,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D3,write,cross_layer_share,"",0.34003,0.19152,0.18681,0.19762,1.00000,11058,,,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,step cost,all,slope of turns,"",-0.00355,,,,,18136,-0.08861,0.07962,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,step cost,all,slope of active_min,"",-0.12999,,,,,18136,-0.22219,-0.04189,,,,
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,all,with_parents,goal,0.58348,,,,,15010,0.52085,0.65786,0.12527,0.10885,0.14256,22
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,all,all_pairs,goal,0.47918,,,,,18277,0.40686,0.56781,0.10288,0.08534,0.12255,22
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,all,with_parents,day,0.58348,,,,,15010,0.52274,0.65486,0.26163,0.23031,0.29439,22
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,all,all_pairs,day,0.47918,,,,,18277,0.40081,0.56617,0.21486,0.18111,0.25289,22
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,write,with_parents,goal,0.64209,,,,,11299,0.58800,0.70367,0.11738,0.10336,0.13249,22
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,write,all_pairs,goal,0.39695,,,,,18277,0.32494,0.48153,0.07256,0.05819,0.08888,22
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,write,with_parents,day,0.64209,,,,,11299,0.58649,0.69670,0.24729,0.22556,0.26983,22
+touch share >= 80%,goals where at least 80% of sessions touch an artifact,17,18286,D4,write,all_pairs,day,0.39695,,,,,18277,0.32377,0.47960,0.15288,0.12495,0.18547,22
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,all,multi_parent_share,"",0.70664,0.42290,0.41503,0.43073,1.00000,48404,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,all,mean_parents,"",2.68397,1.74046,1.72631,1.75648,1.00000,48404,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,all,sibling_merge_share,"",0.43954,0.41197,0.39455,0.43981,0.96875,48404,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,all,outdeg_gini,"",0.49550,0.53669,0.52960,0.54535,0.00000,48404,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,all,top10_child_share,"",0.40327,0.44821,0.43969,0.45937,0.00000,48404,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,all,cross_layer_share,"",0.60224,0.19944,0.18919,0.20585,1.00000,48404,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,write,multi_parent_share,"",0.55477,0.42290,0.41503,0.43073,1.00000,37401,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,write,mean_parents,"",1.91038,1.74046,1.72631,1.75648,1.00000,37401,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,write,sibling_merge_share,"",0.22150,0.41197,0.39455,0.43981,0.00000,37401,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,write,outdeg_gini,"",0.35048,0.53669,0.52960,0.54535,0.00000,37401,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,write,top10_child_share,"",0.28934,0.44821,0.43969,0.45937,0.00000,37401,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D3,write,cross_layer_share,"",0.45110,0.19944,0.18919,0.20585,1.00000,37401,,,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,step cost,all,slope of turns,"",0.02867,,,,,71769,-0.10097,0.07365,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,step cost,all,slope of active_min,"",0.14933,,,,,71769,-0.14021,0.25775,,,,
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,all,with_parents,goal,0.60887,,,,,49533,0.54358,0.68145,0.06361,0.05105,0.07631,40
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,all,all_pairs,goal,0.41900,,,,,71979,0.34263,0.51276,0.04377,0.03439,0.05474,40
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,all,with_parents,day,0.60887,,,,,49533,0.54532,0.68449,0.25199,0.21972,0.29398,40
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,all,all_pairs,day,0.41900,,,,,71979,0.34448,0.51257,0.17341,0.14005,0.21759,40
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,write,with_parents,goal,0.66397,,,,,38026,0.60161,0.73197,0.05567,0.04410,0.06817,40
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,write,all_pairs,goal,0.35077,,,,,71979,0.28149,0.44672,0.02941,0.02281,0.03766,40
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,write,with_parents,day,0.66397,,,,,38026,0.60553,0.73267,0.23163,0.20218,0.26797,40
+from 2025-10,goals starting on or after 2025-10-01,36,72012,D4,write,all_pairs,day,0.35077,,,,,71979,0.27974,0.43961,0.12237,0.09679,0.15701,40
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,all,multi_parent_share,"",0.70358,0.42281,0.41500,0.43032,1.00000,48621,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,all,mean_parents,"",2.67656,1.73987,1.72559,1.75613,1.00000,48621,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,all,sibling_merge_share,"",0.43947,0.41316,0.39596,0.44113,0.96875,48621,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,all,outdeg_gini,"",0.49556,0.53586,0.52889,0.54440,0.00000,48621,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,all,top10_child_share,"",0.40331,0.44729,0.43863,0.45806,0.00000,48621,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,all,cross_layer_share,"",0.60125,0.19906,0.18898,0.20554,1.00000,48621,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,write,multi_parent_share,"",0.55283,0.42281,0.41500,0.43032,1.00000,37538,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,write,mean_parents,"",1.90713,1.73987,1.72559,1.75613,1.00000,37538,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,write,sibling_merge_share,"",0.22147,0.41316,0.39596,0.44113,0.00000,37538,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,write,outdeg_gini,"",0.35037,0.53586,0.52889,0.54440,0.00000,37538,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,write,top10_child_share,"",0.28955,0.44729,0.43863,0.45806,0.00000,37538,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D3,write,cross_layer_share,"",0.45026,0.19906,0.18898,0.20554,1.00000,37538,,,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,step cost,all,slope of turns,"",0.02901,,,,,73627,-0.09338,0.07426,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,step cost,all,slope of active_min,"",0.15123,,,,,73627,-0.13356,0.25026,,,,
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,all,with_parents,goal,0.60655,,,,,49808,0.54023,0.67533,0.06349,0.05151,0.07669,42
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,all,all_pairs,goal,0.40916,,,,,73837,0.33376,0.50612,0.04283,0.03360,0.05383,42
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,all,with_parents,day,0.60655,,,,,49808,0.54001,0.67618,0.25158,0.21826,0.29063,42
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,all,all_pairs,day,0.40916,,,,,73837,0.33883,0.50355,0.16971,0.13619,0.21443,42
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,write,with_parents,goal,0.66213,,,,,38192,0.60291,0.72888,0.05559,0.04425,0.06815,42
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,write,all_pairs,goal,0.34248,,,,,73837,0.27210,0.43225,0.02875,0.02198,0.03693,42
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,write,with_parents,day,0.66213,,,,,38192,0.59929,0.73076,0.23147,0.20176,0.26752,42
+no GUI-heavy early goals,all goals except those before 2025-10 with a gap of at least 80%,40,73870,D4,write,all_pairs,day,0.34248,,,,,73837,0.27323,0.43399,0.11973,0.09462,0.15360,42

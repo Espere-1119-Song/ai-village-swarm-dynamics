@@ -1,0 +1,61 @@
+time_term,gamma,label_set,n_cases,accuracy,mean_logp,best_for_set
+module A kernel + KDE,0.000000,owner,14,0.571429,-5.287063,false
+module A kernel + KDE,0.000000,claude,45,0.688889,-0.875678,false
+module A kernel + KDE,0.000000,composite,45,0.666667,-2.160303,false
+module A kernel + KDE,0.250000,owner,14,0.500000,-5.261106,false
+module A kernel + KDE,0.250000,claude,45,0.733333,-0.798214,true
+module A kernel + KDE,0.250000,composite,45,0.666667,-2.116173,false
+module A kernel + KDE,0.500000,owner,14,0.500000,-5.326235,false
+module A kernel + KDE,0.500000,claude,45,0.688889,-0.809777,false
+module A kernel + KDE,0.500000,composite,45,0.622222,-2.161069,false
+module A kernel + KDE,0.750000,owner,14,0.500000,-5.443450,false
+module A kernel + KDE,0.750000,claude,45,0.688889,-0.845146,false
+module A kernel + KDE,0.750000,composite,45,0.622222,-2.229771,false
+module A kernel + KDE,1.000000,owner,14,0.500000,-5.582721,false
+module A kernel + KDE,1.000000,claude,45,0.688889,-0.893076,false
+module A kernel + KDE,1.000000,composite,45,0.622222,-2.311034,false
+module A kernel + KDE,1.500000,owner,14,0.428571,-5.887578,false
+module A kernel + KDE,1.500000,claude,45,0.666667,-1.007864,false
+module A kernel + KDE,1.500000,composite,45,0.600000,-2.492489,false
+module A kernel + KDE,2.000000,owner,14,0.428571,-6.215596,false
+module A kernel + KDE,2.000000,claude,45,0.666667,-1.136977,false
+module A kernel + KDE,2.000000,composite,45,0.600000,-2.688268,false
+module A kernel + KDE,3.000000,owner,14,0.428571,-6.921397,false
+module A kernel + KDE,3.000000,claude,45,0.666667,-1.418035,false
+module A kernel + KDE,3.000000,composite,45,0.600000,-3.102660,false
+module A kernel + KDE,4.000000,owner,14,0.357143,-7.663293,false
+module A kernel + KDE,4.000000,claude,45,0.644444,-1.713717,false
+module A kernel + KDE,4.000000,composite,45,0.577778,-3.531675,false
+module A kernel + KDE,6.000000,owner,14,0.357143,-9.208168,false
+module A kernel + KDE,6.000000,claude,45,0.644444,-2.326778,false
+module A kernel + KDE,6.000000,composite,45,0.577778,-4.411403,false
+KDE only,0.000000,owner,14,0.714286,-0.806710,false
+KDE only,0.000000,claude,45,0.577778,-0.848739,false
+KDE only,0.000000,composite,45,0.644444,-0.831242,false
+KDE only,0.250000,owner,14,0.714286,-0.783469,true
+KDE only,0.250000,claude,45,0.622222,-0.769860,false
+KDE only,0.250000,composite,45,0.666667,-0.785696,true
+KDE only,0.500000,owner,14,0.642857,-0.859399,false
+KDE only,0.500000,claude,45,0.622222,-0.783532,false
+KDE only,0.500000,composite,45,0.622222,-0.832702,false
+KDE only,0.750000,owner,14,0.642857,-0.992957,false
+KDE only,0.750000,claude,45,0.622222,-0.823159,false
+KDE only,0.750000,composite,45,0.622222,-0.905662,false
+KDE only,1.000000,owner,14,0.642857,-1.153008,false
+KDE only,1.000000,claude,45,0.622222,-0.877212,false
+KDE only,1.000000,composite,45,0.622222,-0.993048,false
+KDE only,1.500000,owner,14,0.571429,-1.508948,false
+KDE only,1.500000,claude,45,0.600000,-1.008636,false
+KDE only,1.500000,composite,45,0.600000,-1.191139,false
+KDE only,2.000000,owner,14,0.571429,-1.895746,false
+KDE only,2.000000,claude,45,0.600000,-1.158637,false
+KDE only,2.000000,composite,45,0.600000,-1.407807,false
+KDE only,3.000000,owner,14,0.571429,-2.728627,false
+KDE only,3.000000,claude,45,0.600000,-1.489692,false
+KDE only,3.000000,composite,45,0.600000,-1.872195,false
+KDE only,4.000000,owner,14,0.571429,-3.600507,false
+KDE only,4.000000,claude,45,0.600000,-1.841952,false
+KDE only,4.000000,composite,45,0.600000,-2.357788,false
+KDE only,6.000000,owner,14,0.500000,-5.406537,false
+KDE only,6.000000,claude,45,0.577778,-2.576984,false
+KDE only,6.000000,composite,45,0.577778,-3.359487,false

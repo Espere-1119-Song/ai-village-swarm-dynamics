@@ -1,0 +1,58 @@
+metric,scope,v1,v2,diff
+v1 losses kept in v2,url,104652,3466,0.0331193
+v1 losses kept in v2,email,5165,0,0
+v1 losses kept in v2,phone,207,0,0
+v1 losses kept in v2,date,24280,1476,0.0607908
+v1 losses kept in v2,time,689299,358913,0.520693
+v1 losses kept in v2,money,32685,9631,0.294661
+v1 losses kept in v2,percent,103826,25513,0.245728
+v1 losses kept in v2,number,2233691,631838,0.282867
+v1 losses kept in v2,agent,2983,472,0.15823
+v1 losses kept in v2,person,231295,48753,0.210783
+v1 losses kept in v2,org,470676,139807,0.297034
+v1 losses kept in v2,gpe,45388,20583,0.45349
+v1 losses kept in v2,product,47942,21620,0.450962
+v1 losses kept in v2,event,8819,3579,0.405828
+v1 losses kept in v2,work_of_art,133844,43461,0.324714
+v1 losses kept in v2,All standard,4134752,1309112,0.316612
+h1,All standard,0.521949,0.339892,-0.182058
+h2,All standard,0.505649,0.353146,-0.152502
+h3_4,All standard,0.301782,0.218791,-0.0829911
+h5_8,All standard,0.174129,0.130892,-0.0432361
+h9plus,All standard,0.0453189,0.0248089,-0.02051
+mod_share,All standard,0.232776,0.0516368,-0.181139
+h1,Anthropic,0.54108,0.33913,-0.20195
+h2,Anthropic,0.529872,0.370257,-0.159615
+h3_4,Anthropic,0.311221,0.2208,-0.0904208
+h5_8,Anthropic,0.181396,0.134809,-0.0465863
+h9plus,Anthropic,0.0451395,0.0253676,-0.0197719
+mod_share,Anthropic,0.228504,0.0503723,-0.178132
+h1,OpenAI,0.630013,0.448318,-0.181695
+h2,OpenAI,0.435608,0.311051,-0.124557
+h3_4,OpenAI,0.286522,0.204556,-0.0819659
+h5_8,OpenAI,0.173116,0.124478,-0.0486376
+h9plus,OpenAI,0.0425387,0.0203792,-0.0221595
+mod_share,OpenAI,0.186937,0.0511787,-0.135758
+h1,Google,0.433678,0.310154,-0.123524
+h2,Google,0.40374,0.313325,-0.0904149
+h3_4,Google,0.23627,0.192715,-0.0435556
+h5_8,Google,0.13484,0.112126,-0.0227133
+h9plus,Google,0.0355536,0.0182325,-0.0173211
+mod_share,Google,0.202542,0.0652817,-0.13726
+h1,Other,0.419167,0.254478,-0.164689
+h2,Other,0.539286,0.364784,-0.174503
+h3_4,Other,0.323313,0.233257,-0.0900559
+h5_8,Other,0.182885,0.135649,-0.0472358
+h9plus,Other,0.0570082,0.0338176,-0.0231906
+mod_share,Other,0.288283,0.0504684,-0.237814
+h1,Claude Code,0.516731,0.436445,-0.0802859
+h2,Claude Code,0.278362,0.248989,-0.029373
+h3_4,Claude Code,0.18532,0.167344,-0.0179763
+h5_8,Claude Code,0.129538,0.125527,-0.00401087
+h9plus,Claude Code,0.103276,0.0918252,-0.0114503
+mod_share,Claude Code,0.199646,0.148947,-0.0506986
+BdW c (from g = 2),family:All standard,0.713868,0.423893,-0.289975
+BdW c (from g = 2),regime_cohort:pre,0.181181,0.430527,0.249346
+BdW c (from g = 2),regime_cohort:post,0.89333,0.546154,-0.347176
+agreement with LLM labels,500 units,310,341,31
+Cohen's kappa with LLM labels,500 units,0.523432,0.543989,0.0205572

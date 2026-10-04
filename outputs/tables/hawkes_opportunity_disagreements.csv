@@ -1,0 +1,411 @@
+window_id,group,target,source,hawkes_rank,opportunity_rank,n,influence
+g01,general,GPT-4.1,Gemini 2.5 Pro,0.9048,0.1667,0.1684,-104.4146
+g01,general,GPT-4o,Claude 3.7 Sonnet,0.2262,0.9762,0.0000,128.4747
+g01,general,Gemini 2.5 Pro,Claude 3.7 Sonnet,0.9524,0.0952,0.2411,-120.5123
+g01,general,Gemini 2.5 Pro,GPT-4.1,0.9286,0.3810,0.2085,-9.1703
+g01,general,o3,Claude 3.7 Sonnet,0.4762,0.9286,0.0016,62.3479
+g02-03,general,Gemini 2.5 Pro,o3,1.0000,0.0833,0.2432,-88.0308
+g04,general,Gemini 2.5 Pro,Claude Opus 4,0.5000,0.9333,0.0226,72.0264
+g04,general,o4-mini,Claude 3.7 Sonnet,0.9333,0.0667,0.2115,-350.0081
+g05-07,general,Claude Opus 4,o3,0.0833,0.9167,0.0000,78.8775
+g05-07,general,Gemini 2.5 Pro,o3,1.0000,0.3333,0.1104,-5.9216
+g08,general,Claude Opus 4,Claude 3.7 Sonnet,0.4167,1.0000,0.0000,167.8302
+g08,general,Gemini 2.5 Pro,Claude 3.7 Sonnet,0.4167,0.9167,0.0000,91.9415
+g08,general,o3,Claude 3.7 Sonnet,1.0000,0.0833,0.0462,-90.1841
+g08,general,o3,Claude Opus 4,0.9167,0.1667,0.0155,-83.9576
+g09,general,Claude 3.7 Sonnet,Claude Opus 4,0.9167,0.2500,0.2013,-35.9393
+g09,general,Claude Opus 4,o3,0.4167,1.0000,0.0997,274.0261
+g09,general,o3,Claude 3.7 Sonnet,0.5000,0.9167,0.1044,253.0328
+g10,general,Claude 3.7 Sonnet,Gemini 2.5 Pro,0.9286,0.4048,0.3150,-20.3471
+g10,general,Claude Opus 4,Claude Opus 4.1,0.9762,0.1667,0.4866,-157.3418
+g10,general,Claude Opus 4,Gemini 2.5 Pro,0.9048,0.0714,0.2837,-577.8727
+g10,general,o3,Claude 3.7 Sonnet,0.2024,0.9524,0.0000,262.5434
+g11,general,Claude Opus 4,o3,0.9524,0.0238,0.1678,-291.9365
+g11,general,Gemini 2.5 Pro,GPT-5,0.9048,0.1190,0.1535,-118.0047
+g11,general,Grok 4,Claude Opus 4,0.1786,1.0000,0.0000,201.3148
+g11,general,Grok 4,Claude Opus 4.1,0.1786,0.9524,0.0000,171.8870
+g12,general,Claude 3.7 Sonnet,o3,0.1667,1.0000,0.0000,240.3430
+g12,general,Claude Opus 4,GPT-5,0.9524,0.4524,0.1583,1.2089
+g12,general,Claude Opus 4.1,Claude 3.7 Sonnet,0.9762,0.4048,0.1943,-11.3818
+g13,general,Claude Opus 4.1,GPT-5,0.9667,0.4667,0.2566,2.8885
+g13,general,o3,Claude Opus 4.1,0.2500,0.9333,0.0000,115.8603
+g14,general,Claude 3.7 Sonnet,o3,0.2833,0.9333,0.0000,131.6404
+g14,general,Claude Opus 4.1,o3,0.9667,0.0667,0.1261,-169.3062
+g14,general,GPT-5,o3,0.2833,1.0000,0.0000,559.4447
+g14,general,Gemini 2.5 Pro,Claude 3.7 Sonnet,0.9333,0.4667,0.0846,-11.0187
+g15,general,Claude Opus 4.1,Claude Sonnet 4.5,1.0000,0.1667,0.2857,-117.9366
+g15,general,Claude Opus 4.1,o3,0.9762,0.0952,0.2600,-234.9696
+g15,general,Gemini 2.5 Pro,GPT-5,0.9048,0.4524,0.2158,2.4450
+g15,general,Grok 4,Claude Opus 4.1,0.3333,0.9286,0.0020,213.9424
+g16,general,Claude Opus 4.1,o3,0.9048,0.0238,0.1265,-429.7436
+g16,general,GPT-5,o3,0.9286,0.5000,0.1333,5.0766
+g16,general,Grok 4,Claude 3.7 Sonnet,0.4048,0.9048,0.0076,269.9799
+g16,general,Grok 4,GPT-5,0.1786,0.9286,0.0000,295.4802
+g16,general,o3,Grok 4,0.1786,0.9524,0.0000,334.0741
+g17,general,Claude Opus 4.1,o3,0.9524,0.1190,0.2004,-134.8419
+g17,general,Claude Sonnet 4.5,GPT-5,0.9286,0.3810,0.1995,-28.1055
+g17,general,o3,Grok 4,0.1905,0.9524,0.0000,273.1638
+g18,general,GPT-5,o3,0.1250,1.0000,0.0000,279.5265
+g18,general,Gemini 2.5 Pro,Claude 3.7 Sonnet,0.9643,0.3036,0.3393,-22.3769
+g18,general,Gemini 2.5 Pro,Claude Sonnet 4.5,0.9107,0.3750,0.2077,-6.6626
+g18,general,Gemini 2.5 Pro,GPT-5,0.9821,0.2321,0.3482,-36.5095
+g18,general,Gemini 2.5 Pro,Grok 4,1.0000,0.0536,0.3999,-423.6776
+g18,general,Grok 4,Claude Sonnet 4.5,0.4286,0.9107,0.0185,161.2173
+g18,general,Grok 4,GPT-5,0.1250,0.9643,0.0000,253.4337
+g19,general,Claude 3.7 Sonnet,Claude Haiku 4.5,0.9286,0.2500,0.1561,-44.1533
+g19,general,GPT-5.1,Gemini 2.5 Pro,0.1607,0.9107,0.0000,144.6311
+g19,general,Gemini 2.5 Pro,Claude 3.7 Sonnet,0.9821,0.3929,0.1804,-9.0759
+g19,general,Gemini 2.5 Pro,GPT-5,0.9107,0.0536,0.1441,-223.2902
+g19,general,Gemini 2.5 Pro,GPT-5.1,1.0000,0.3750,0.2416,-14.6794
+g20,general,Claude 3.7 Sonnet,GPT-5,0.1778,0.9444,0.0000,233.9593
+g20,general,Claude Opus 4.1,Claude Opus 4.5,0.9111,0.3556,0.0969,-41.8570
+g20,general,Claude Opus 4.5,Claude Haiku 4.5,0.9667,0.3333,0.1205,-46.6374
+g20,general,Claude Opus 4.5,Claude Sonnet 4.5,0.1778,1.0000,0.0000,290.6830
+g20,general,GPT-5,Claude Sonnet 4.5,0.3667,0.9333,0.0008,220.8137
+g20,general,GPT-5.1,GPT-5,0.1778,0.9889,0.0000,283.3918
+g20,general,Gemini 2.5 Pro,Claude Haiku 4.5,0.9222,0.3000,0.0994,-49.8661
+g20,general,Gemini 3 Pro,GPT-5.1,0.1778,0.9222,0.0000,215.9265
+g20,general,Gemini 3 Pro,o3,0.1778,0.9778,0.0000,283.1818
+g20,general,o3,GPT-5,0.1778,0.9667,0.0000,279.9734
+g21,general,Claude 3.7 Sonnet,Claude Haiku 4.5,0.9861,0.3889,0.4972,-78.7032
+g21,general,Claude 3.7 Sonnet,GPT-5,0.2778,0.9444,0.0000,569.6240
+g21,general,Claude Haiku 4.5,Claude 3.7 Sonnet,1.0000,0.4722,0.6596,-49.6164
+g21,general,Claude Opus 4.5,GPT-5.1,0.2778,0.9028,0.0000,301.0146
+g21,general,Claude Sonnet 4.5,GPT-5,0.2778,1.0000,0.0000,2999.1040
+g21,general,DeepSeek-V3.2,Gemini 3 Pro,0.2778,0.9722,0.0000,1492.5327
+g21,general,Gemini 2.5 Pro,GPT-5,0.2778,0.9861,0.0000,1583.1168
+g21,general,Gemini 2.5 Pro,Gemini 3 Pro,0.9444,0.2361,0.2643,-173.5426
+g22,general,Claude 3.7 Sonnet,GPT-5.2,0.2611,0.9667,0.0000,916.0079
+g22,general,Claude Haiku 4.5,Claude 3.7 Sonnet,0.9889,0.3778,0.2647,-21.0561
+g22,general,Claude Haiku 4.5,GPT-5.2,1.0000,0.1222,0.6144,-383.9935
+g22,general,Claude Opus 4.5,Claude Sonnet 4.5,0.9556,0.1889,0.2047,-183.3480
+g22,general,Claude Opus 4.5,GPT-5.2,0.2611,0.9444,0.0000,730.2227
+g22,general,Claude Sonnet 4.5,Claude Opus 4.5,0.9444,0.3444,0.1994,-40.4241
+g22,general,Claude Sonnet 4.5,GPT-5.2,0.2611,0.9222,0.0000,536.3336
+g22,general,DeepSeek-V3.2,Claude Sonnet 4.5,0.2611,0.9778,0.0000,988.4579
+g22,general,DeepSeek-V3.2,GPT-5.1,0.9111,0.0889,0.1620,-547.3409
+g22,general,GPT-5.2,GPT-5,0.2611,1.0000,0.0000,1808.2928
+g22,general,GPT-5.2,GPT-5.1,0.2611,0.9889,0.0000,1689.4326
+g22,general,Gemini 2.5 Pro,Gemini 3 Pro,0.9222,0.4222,0.1767,17.8184
+g22,general,Gemini 3 Pro,GPT-5.2,0.2611,0.9556,0.0000,747.9901
+g23,general,Claude 3.7 Sonnet,Claude Haiku 4.5,0.9667,0.3333,0.1058,-68.8644
+g23,general,Claude 3.7 Sonnet,GPT-5.1,0.2111,0.9111,0.0000,511.6455
+g23,general,Claude 3.7 Sonnet,GPT-5.2,0.9222,0.3000,0.0868,-78.6248
+g23,general,Claude 3.7 Sonnet,Gemini 3 Pro,1.0000,0.3778,0.2336,-36.5828
+g23,general,Claude Haiku 4.5,Gemini 2.5 Pro,0.9111,0.4333,0.0842,-7.9162
+g23,general,Claude Opus 4.5,Claude Haiku 4.5,0.4667,0.9667,0.0069,721.8880
+g23,general,Claude Opus 4.5,GPT-5.2,0.2111,0.9333,0.0000,544.3719
+g23,general,DeepSeek-V3.2,GPT-5.2,0.2111,0.9778,0.0000,772.9023
+g23,general,GPT-5.2,GPT-5.1,0.2111,1.0000,0.0000,1131.3902
+g23,general,Gemini 2.5 Pro,GPT-5.2,0.9889,0.1444,0.1587,-338.2191
+g23,general,Gemini 3 Pro,Claude Opus 4.5,0.2111,0.9222,0.0000,533.6293
+g23,general,Gemini 3 Pro,Claude Sonnet 4.5,0.4889,0.9889,0.0080,1029.0213
+g24-25,general,Claude Haiku 4.5,Gemini 2.5 Pro,1.0000,0.3778,0.1433,-30.8896
+g24-25,general,Claude Opus 4.5,GPT-5.1,0.1556,0.9556,0.0000,482.1956
+g24-25,general,Claude Sonnet 4.5,GPT-5,0.1556,1.0000,0.0000,771.4579
+g24-25,general,DeepSeek-V3.2,GPT-5,0.1556,0.9333,0.0000,441.8998
+g24-25,general,GPT-5,Claude Sonnet 4.5,0.3556,0.9111,0.0018,373.5294
+g24-25,general,GPT-5.1,GPT-5,0.1556,0.9444,0.0000,449.9343
+g24-25,general,GPT-5.2,Claude 3.7 Sonnet,0.4667,0.9222,0.0099,409.0642
+g24-25,general,GPT-5.2,GPT-5,0.9667,0.1000,0.1179,-224.5915
+g24-25,general,Gemini 2.5 Pro,Claude Haiku 4.5,0.9778,0.3333,0.1301,-39.7127
+g26,general,Claude 3.7 Sonnet,GPT-5,0.4667,0.9667,0.0295,342.0408
+g26,general,Claude Haiku 4.5,GPT-5,0.9222,0.2000,0.1569,-190.4524
+g26,general,Claude Opus 4.5,DeepSeek-V3.2,0.3111,0.9333,0.0065,300.7313
+g26,general,Claude Opus 4.5,GPT-5.1,0.9556,0.1333,0.1870,-285.0081
+g26,general,DeepSeek-V3.2,GPT-5.1,0.1333,1.0000,0.0000,1343.3727
+g26,general,GPT-5,DeepSeek-V3.2,0.4111,0.9556,0.0231,331.9048
+g26,general,Gemini 2.5 Pro,Claude 3.7 Sonnet,0.9333,0.1667,0.1585,-222.4434
+g26,general,Gemini 2.5 Pro,GPT-5,0.1333,0.9889,0.0000,1040.8426
+g26,general,Gemini 2.5 Pro,GPT-5.1,0.9889,0.0667,0.2217,-397.1532
+g26,general,Gemini 2.5 Pro,GPT-5.2,0.9111,0.3000,0.1548,-133.2205
+g27,general,Claude 3.7 Sonnet,Claude Sonnet 4.5,0.9556,0.3778,0.0684,-28.3081
+g27,general,Claude Opus 4.5,Claude Haiku 4.5,0.9778,0.2222,0.0869,-113.2772
+g27,general,Claude Opus 4.5,DeepSeek-V3.2,0.5000,0.9444,0.0097,423.5606
+g27,general,Claude Sonnet 4.5,Claude Haiku 4.5,0.9111,0.3000,0.0508,-51.4605
+g27,general,DeepSeek-V3.2,Claude Sonnet 4.5,0.2222,0.9778,0.0000,659.7705
+g27,general,DeepSeek-V3.2,GPT-5.2,0.4556,0.9111,0.0017,268.7576
+g27,general,GPT-5,Claude Sonnet 4.5,0.2222,0.9556,0.0000,427.3482
+g27,general,GPT-5,DeepSeek-V3.2,0.2222,0.9667,0.0000,487.7329
+g28,general,Claude 3.7 Sonnet,Claude Haiku 4.5,0.9727,0.4636,0.1401,3.4399
+g28,general,Claude 3.7 Sonnet,DeepSeek-V3.2,0.9636,0.3273,0.1401,-62.6381
+g28,general,Claude 3.7 Sonnet,GPT-5,0.2045,0.9455,0.0000,542.0888
+g28,general,Claude 3.7 Sonnet,GPT-5.1,0.9545,0.1636,0.1354,-215.0325
+g28,general,Claude Haiku 4.5,DeepSeek-V3.2,0.9273,0.5000,0.1250,15.1145
+g28,general,Claude Opus 4.5,GPT-5,0.4091,0.9091,0.0006,386.5261
+g28,general,Claude Opus 4.5,GPT-5.1,0.4364,0.9727,0.0046,798.1558
+g28,general,DeepSeek-V3.2,GPT-5.1,0.2045,0.9545,0.0000,681.5284
+g28,general,GPT-5.2,GPT-5,1.0000,0.4182,0.1840,-18.0902
+g28,general,GPT-5.2,Opus 4.5 (Claude Code),0.9818,0.2909,0.1536,-80.6893
+g28,general,Gemini 2.5 Pro,Gemini 3 Pro,0.9364,0.4909,0.1275,14.8047
+g28,general,Gemini 3 Pro,Claude Haiku 4.5,0.2045,0.9273,0.0000,455.3131
+g28,general,Gemini 3 Pro,Claude Sonnet 4.5,0.4273,0.9636,0.0037,686.1227
+g28,general,Opus 4.5 (Claude Code),GPT-5.1,0.9909,0.0636,0.1589,-488.9888
+g28,general,Opus 4.5 (Claude Code),Gemini 3 Pro,0.9182,0.0273,0.1175,-713.5316
+g29,general,Claude 3.7 Sonnet,Claude Haiku 4.5,0.9621,0.2955,0.2328,-123.2402
+g29,general,Claude 3.7 Sonnet,Gemini 2.5 Pro,0.9167,0.2500,0.1452,-190.5142
+g29,general,Claude Haiku 4.5,Claude Opus 4.6,0.9394,0.4773,0.1879,14.6737
+g29,general,Claude Opus 4.6,Claude Opus 4.5,0.9848,0.3182,0.2668,-96.3126
+g29,general,Claude Opus 4.6,GPT-5.2,0.2273,0.9621,0.0000,951.0454
+g29,general,Claude Opus 4.6,Gemini 3 Pro,0.2273,0.9394,0.0000,817.9795
+g29,general,Claude Sonnet 4.5,GPT-5,1.0000,0.2727,0.2963,-144.1212
+g29,general,DeepSeek-V3.2,GPT-5.1,0.2273,0.9167,0.0000,713.0176
+g29,general,GPT-5,Claude Sonnet 4.5,0.2273,0.9470,0.0000,841.6830
+g29,general,Gemini 2.5 Pro,GPT-5,0.2273,0.9545,0.0000,863.6690
+g29,general,Opus 4.5 (Claude Code),Claude Haiku 4.5,0.2273,0.9848,0.0000,1463.0595
+g29,general,Opus 4.5 (Claude Code),Claude Opus 4.6,0.9924,0.2348,0.2805,-193.5262
+g30,general,Claude 3.7 Sonnet,DeepSeek-V3.2,0.9015,0.4394,0.0804,-9.4037
+g30,general,Claude Haiku 4.5,GPT-5,0.2008,0.9242,0.0000,439.6807
+g30,general,Claude Haiku 4.5,Gemini 2.5 Pro,0.9167,0.4621,0.0916,-2.0704
+g30,general,Claude Opus 4.5,Claude 3.7 Sonnet,0.9848,0.4242,0.1780,-15.4680
+g30,general,Claude Opus 4.5,DeepSeek-V3.2,0.4318,0.9470,0.0059,515.6804
+g30,general,Claude Opus 4.5,Gemini 2.5 Pro,0.9394,0.3561,0.1070,-47.6282
+g30,general,Claude Opus 4.6,GPT-5,0.2008,1.0000,0.0000,1576.8506
+g30,general,DeepSeek-V3.2,GPT-5,0.2008,0.9773,0.0000,1133.8214
+g30,general,DeepSeek-V3.2,GPT-5.1,0.4621,0.9848,0.0081,1435.6101
+g30,general,GPT-5,Gemini 3 Pro,0.2008,0.9167,0.0000,425.7567
+g30,general,GPT-5.2,GPT-5,0.2008,0.9091,0.0000,406.1640
+g30,general,GPT-5.2,GPT-5.1,0.4773,0.9318,0.0084,507.4652
+g30,general,Gemini 2.5 Pro,GPT-5,1.0000,0.0303,0.2275,-727.1785
+g30,general,Gemini 2.5 Pro,GPT-5.1,0.9242,0.1364,0.0959,-263.3840
+g30,general,Gemini 3 Pro,DeepSeek-V3.2,0.2008,0.9015,0.0000,399.0876
+g30,general,Opus 4.5 (Claude Code),GPT-5,0.2008,0.9697,0.0000,1064.6366
+g30,general,Opus 4.5 (Claude Code),GPT-5.1,0.2008,0.9545,0.0000,592.9495
+g31,general,Claude 3.7 Sonnet,Claude Haiku 4.5,0.9936,0.1026,0.1446,-270.1679
+g31,general,Claude Haiku 4.5,Claude Opus 4.6,0.9423,0.4103,0.0981,-31.4234
+g31,general,Claude Haiku 4.5,GPT-5,0.9615,0.0577,0.1329,-483.5843
+g31,general,Claude Opus 4.6,GPT-5.1,0.9744,0.3718,0.1358,-50.5897
+g31,general,Claude Sonnet 4.5,GPT-5,0.9808,0.0513,0.1415,-502.9900
+g31,general,Claude Sonnet 4.5,GPT-5.1,0.2276,0.9615,0.0000,663.9713
+g31,general,Claude Sonnet 4.6,GPT-5.1,0.9551,0.2436,0.1094,-114.3722
+g31,general,DeepSeek-V3.2,GPT-5.1,0.2276,1.0000,0.0000,904.6498
+g31,general,GPT-5,Gemini 2.5 Pro,0.2276,0.9295,0.0000,456.7031
+g31,general,GPT-5,Gemini 3 Pro,0.2276,0.9103,0.0000,364.4981
+g31,general,GPT-5.2,GPT-5.1,0.2276,0.9936,0.0000,804.5406
+g31,general,Gemini 2.5 Pro,Claude 3.7 Sonnet,1.0000,0.4167,0.1518,-30.6087
+g31,general,Gemini 3 Pro,Claude Haiku 4.5,0.2276,0.9679,0.0000,671.6413
+g31,general,Gemini 3 Pro,GPT-5.1,0.9487,0.0128,0.1036,-1226.0682
+g31,general,Opus 4.5 (Claude Code),Claude Opus 4.6,0.2276,0.9872,0.0000,704.2265
+g31,general,Opus 4.5 (Claude Code),Claude Sonnet 4.6,0.2276,0.9808,0.0000,701.5059
+g32,general,Claude Haiku 4.5,GPT-5,0.9697,0.3712,0.2038,-63.5315
+g32,general,Claude Opus 4.5,Gemini 2.5 Pro,0.9621,0.2197,0.1891,-145.0147
+g32,general,Claude Opus 4.5,Opus 4.5 (Claude Code),0.9924,0.3409,0.2611,-74.2136
+g32,general,Claude Opus 4.6,Opus 4.5 (Claude Code),0.9242,0.4470,0.1598,-13.8643
+g32,general,Claude Sonnet 4.6,Claude Opus 4.6,0.9773,0.3106,0.2085,-87.1806
+g32,general,Claude Sonnet 4.6,GPT-5,0.2576,0.9091,0.0000,385.6453
+g32,general,Claude Sonnet 4.6,Opus 4.5 (Claude Code),0.9015,0.4318,0.1468,-16.2403
+g32,general,DeepSeek-V3.2,Claude Sonnet 4.6,0.2576,0.9242,0.0000,477.2410
+g32,general,Gemini 2.5 Pro,GPT-5,0.9318,0.1970,0.1669,-159.0602
+g32,general,Opus 4.5 (Claude Code),GPT-5,0.2576,1.0000,0.0000,2483.4585
+g32,general,Opus 4.5 (Claude Code),Gemini 3 Pro,0.9167,0.0152,0.1544,-1047.8038
+g33-34,general,Claude Opus 4.5,Claude Haiku 4.5,0.9038,0.3718,0.0727,-49.5327
+g33-34,general,Claude Opus 4.5,Gemini 3 Pro,1.0000,0.1090,0.1606,-256.3634
+g33-34,general,Claude Opus 4.6,GPT-5,0.9423,0.3077,0.0940,-79.6514
+g33-34,general,Claude Sonnet 4.6,Claude Opus 4.6,0.9103,0.3654,0.0734,-54.4978
+g33-34,general,DeepSeek-V3.2,Gemini 3 Pro,0.3013,0.9231,0.0005,277.5678
+g33-34,general,GPT-5,GPT-5.1,0.3654,0.9936,0.0045,1234.5022
+g33-34,general,GPT-5.2,Gemini 3 Pro,0.9167,0.2308,0.0776,-133.3092
+g33-34,general,Gemini 2.5 Pro,Claude Haiku 4.5,0.9679,0.2500,0.1129,-108.7230
+g33-34,general,Gemini 3 Pro,Claude Opus 4.5,0.1506,0.9487,0.0000,418.9405
+g33-34,general,Gemini 3 Pro,GPT-5.1,0.9744,0.4295,0.1222,-37.4325
+g33-34,general,Gemini 3.1 Pro,GPT-5,0.1506,0.9551,0.0000,431.4961
+g33-34,general,Opus 4.5 (Claude Code),Claude Opus 4.5,0.3269,0.9744,0.0025,519.5795
+g33-34,general,Opus 4.5 (Claude Code),DeepSeek-V3.2,0.1506,0.9295,0.0000,282.2030
+g33-34,general,Opus 4.5 (Claude Code),GPT-5.1,0.9872,0.0192,0.1289,-556.0158
+g33-34,general,Opus 4.5 (Claude Code),Gemini 3.1 Pro,0.1506,0.9103,0.0000,264.2570
+g35-39,best,Claude Opus 4.6,Opus 4.5 (Claude Code),0.9683,0.3016,0.3215,-483.8077
+g35-39,best,Claude Sonnet 4.6,Kimi K2.6,0.9365,0.2857,0.2402,-626.9106
+g35-39,best,GPT-5.5,Gemini 3.1 Pro,0.9206,0.2381,0.2385,-1025.3117
+g35-39,best,Gemini 3.1 Pro,GPT-5.5,0.2222,0.9206,0.0000,806.5042
+g35,rest,Claude Opus 4.5,GPT-5,0.2111,0.9556,0.0000,1002.2015
+g35,rest,Claude Opus 4.5,GPT-5.1,0.2111,0.9333,0.0000,812.3605
+g35,rest,DeepSeek-V3.2,Claude Haiku 4.5,0.2111,0.9889,0.0000,1938.0894
+g35,rest,GPT-5,DeepSeek-V3.2,0.2111,0.9667,0.0000,1633.5944
+g35,rest,GPT-5,GPT-5.1,0.9111,0.0222,0.0990,-1068.7232
+g35,rest,GPT-5.1,GPT-5,0.2111,1.0000,0.0000,3859.5046
+g35,rest,GPT-5.2,Claude Sonnet 4.6,0.9222,0.1556,0.1004,-314.9111
+g35,rest,GPT-5.2,GPT-5.1,0.2111,0.9778,0.0000,1654.2503
+g35,rest,Gemini 2.5 Pro,GPT-5,0.2111,0.9444,0.0000,892.7333
+g36-37,rest,Claude Opus 4.5,Claude Sonnet 4.6,0.9383,0.4691,0.2107,62.4940
+g36-37,rest,Claude Opus 4.5,GPT-5.1,0.9136,0.2840,0.1961,-112.1936
+g36-37,rest,Claude Sonnet 4.6,Gemini 2.5 Pro,0.9259,0.2593,0.2001,-130.1326
+g36-37,rest,Gemini 2.5 Pro,Claude Sonnet 4.6,0.2099,0.9136,0.0000,535.5691
+g36-37,rest,Gemini 2.5 Pro,GPT-5,0.2099,0.9877,0.0000,14623.1140
+g36-37,rest,Opus 4.5 (Claude Code),Claude Haiku 4.5,0.2099,0.9383,0.0000,673.4729
+g36-37,rest,Opus 4.5 (Claude Code),Claude Opus 4.5,0.2099,0.9012,0.0000,530.5148
+g36-37,rest,Opus 4.5 (Claude Code),GPT-5,0.2099,1.0000,0.0000,2226641232.5804
+g38-39,rest,Claude Opus 4.6,GPT-5,0.9800,0.0600,0.3556,-1943.1080
+g38-39,rest,Claude Opus 4.6,GPT-5.4,0.4800,0.9800,0.0093,2699.2900
+g38-39,rest,Claude Opus 4.6,Gemini 2.5 Pro,1.0000,0.0200,0.4665,-5082.5694
+g38-39,rest,Claude Sonnet 4.6,GPT-5,0.9700,0.0800,0.3489,-1839.1011
+g38-39,rest,DeepSeek-V3.2,Gemini 2.5 Pro,0.9600,0.3000,0.3285,-218.9992
+g38-39,rest,GPT-5.1,GPT-5.4,0.1800,0.9200,0.0000,1067.1969
+g38-39,rest,GPT-5.2,Claude Opus 4.5,0.9100,0.3200,0.1091,-179.3264
+g38-39,rest,GPT-5.4,Claude Opus 4.6,0.1800,0.9600,0.0000,1372.6417
+g40,universe-coordination,Claude Haiku 4.5,Claude Opus 4.6,0.4172,0.9763,0.0000,1683.7056
+g40,universe-coordination,Claude Opus 4.5,GPT-5.2,0.9290,0.4438,0.4710,-16.4193
+g40,universe-coordination,Claude Opus 4.6,Claude Sonnet 4.5,0.4172,0.9467,0.0000,1134.5958
+g40,universe-coordination,Claude Opus 4.6,GPT-5.2,0.4172,0.9586,0.0000,1224.0985
+g40,universe-coordination,Claude Sonnet 4.5,Gemini 2.5 Pro,0.9172,0.2012,0.3289,-488.3793
+g40,universe-coordination,Claude Sonnet 4.6,Kimi K2.6,0.4172,0.9290,0.0000,1072.7548
+g40,universe-coordination,GPT-5.4,GPT-5.1,0.4172,0.9882,0.0000,1742.3229
+g40,universe-coordination,GPT-5.5,Claude Opus 4.7,0.9408,0.4024,0.6050,-88.0160
+g40,universe-coordination,GPT-5.5,GPT-5.1,0.4172,0.9822,0.0000,1737.2469
+g40,universe-coordination,GPT-5.5,Gemini 2.5 Pro,0.4172,0.9172,0.0000,1003.0248
+g40,universe-coordination,Gemini 2.5 Pro,Claude Opus 4.6,0.4172,0.9349,0.0000,1122.5272
+g41-44,best,Claude Opus 4.7,[Temporary] Fine-tuned Leader,0.2381,0.9048,0.0040,816.0428
+g41-44,best,Gemini 3.1 Pro,Claude Opus 4.7,0.9762,0.3095,0.2443,-210.6712
+g41-44,best,[Temporary] Fine-tuned Leader,Kimi K2.6,0.1190,0.9286,0.0000,875.0524
+g41-43,rest,Claude Opus 4.5,Claude Sonnet 4.5,0.9256,0.1736,0.2150,-279.5055
+g41-43,rest,Claude Opus 4.5,GPT-5,0.9587,0.0331,0.3564,-1643.7575
+g41-43,rest,Claude Sonnet 4.5,Claude Opus 4.6,0.3140,0.9587,0.0020,1306.3621
+g41-43,rest,GPT-5.1,Claude Opus 4.5,0.3471,0.9421,0.0039,1032.7377
+g41-43,rest,GPT-5.1,GPT-5,0.1529,0.9835,0.0000,3460.3362
+g41-43,rest,Gemini 2.5 Pro,GPT-5.4,0.3802,0.9091,0.0049,541.1414
+g41-43,rest,Gemini 3.1 Pro,Claude Haiku 4.5,0.9091,0.2066,0.1658,-246.0541
+g44-45,rest,Claude Haiku 4.5,GPT-5.1,0.2591,0.9182,0.0000,1547.0161
+g44-45,rest,Claude Haiku 4.5,Gemini 2.5 Pro,0.2591,0.9818,0.0000,3526.9986
+g44-45,rest,Claude Opus 4.5,Gemini 2.5 Pro,0.9909,0.0545,0.6517,-773.1079
+g44-45,rest,Claude Opus 4.6,Claude Opus 4.7,0.9455,0.2636,0.1496,-202.0520
+g44-45,rest,Claude Opus 4.6,Gemini 2.5 Pro,0.2591,1.0000,0.0000,6517.7608
+g44-45,rest,Claude Opus 4.7,Gemini 2.5 Pro,0.2591,0.9636,0.0000,2737.0891
+g44-45,rest,Claude Sonnet 4.5,GPT-5.1,0.2591,0.9727,0.0000,2811.4819
+g44-45,rest,DeepSeek-V3.2,Claude Haiku 4.5,0.9636,0.4727,0.1531,-9.3387
+g44-45,rest,DeepSeek-V3.2,Claude Sonnet 4.5,0.9364,0.1455,0.1253,-388.1461
+g44-45,rest,GPT-5.4,GPT-5.1,0.2591,0.9545,0.0000,2364.8474
+g44-45,rest,Gemini 3.1 Pro,Claude Opus 4.5,0.9091,0.4818,0.1138,-6.2485
+g45-47,best,Claude Fable 5,Kimi K2.6,0.9167,0.0278,0.4744,-920.7399
+g45-47,best,Claude Opus 4.8,Fine-Tuned Leader,0.9444,0.2500,0.6455,-159.0398
+g46-47,rest,Claude Opus 4.5,Claude Sonnet 4.5,0.2118,0.9097,0.0000,605.0073
+g46-47,rest,Claude Opus 4.6,GPT-5,0.9236,0.0486,0.1450,-3875.3249
+g46-47,rest,Claude Sonnet 4.6,GPT-5,0.2118,1.0000,0.0000,610365.3474
+g46-47,rest,DeepSeek-V3.2,Claude Opus 4.7,0.9375,0.1111,0.1797,-515.6869
+g46-47,rest,DeepSeek-V3.2,Gemini 2.5 Pro,0.9583,0.2014,0.2056,-255.1831
+g46-47,rest,GPT-5.1,Claude Sonnet 4.6,0.2118,0.9375,0.0000,830.4628
+g46-47,rest,GPT-5.4,GPT-5,0.9861,0.0417,0.5330,-4104.0496
+g46-47,rest,Gemini 2.5 Pro,Claude Sonnet 4.6,0.2118,0.9861,0.0000,3679.6250
+g46-47,rest,Gemini 2.5 Pro,GPT-5.1,0.2118,0.9028,0.0000,597.2580
+g46-47,rest,Gemini 3.1 Pro,GPT-5,0.9931,0.0556,1.2311,-3429.7484
+g48-49,general,Claude Haiku 4.5,Gemini 3.5 Flash,0.3008,0.9688,0.0000,3491.2594
+g48-49,general,Claude Opus 4.5,Claude Opus 4.7,0.3008,0.9219,0.0000,2270.3152
+g48-49,general,DeepSeek-V3.2,Gemini 3.5 Flash,0.9766,0.1797,0.6856,-1925.3831
+g48-49,general,DeepSeek-V3.2,Kimi K2.6,0.3008,1.0000,0.0000,9955.2157
+g48-49,general,GPT-5.2,GPT-5,0.9922,0.0469,1.2049,-3678.4833
+g48-49,general,GPT-5.2,Kimi K2.6,0.3008,0.9375,0.0000,2349.3240
+g48-49,general,GPT-5.4,Claude Opus 4.8,0.3008,0.9062,0.0000,2085.4393
+g48-49,general,GPT-5.4,GPT-5.5,0.9531,0.2812,0.4310,-592.8720
+g48-49,general,GPT-5.4,Kimi K2.6,0.3008,0.9609,0.0000,3373.0934
+g48-49,general,GPT-5.5,GPT-5,0.3008,0.9922,0.0000,9070.2022
+g48-49,general,GPT-5.5,Gemini 3.5 Flash,0.9609,0.3906,0.4825,-185.2018
+g50,best,Claude Fable 5,GPT-5.5,0.1333,1.0000,0.0000,759.4006
+g50,best,GPT-5.5,Claude Fable 5,0.9333,0.4000,0.2050,-11.5072
+g50,best,GPT-5.5,Kimi K2.6,1.0000,0.1333,0.3328,-293.9811
+g50,rest,Claude Opus 4.5,Claude Sonnet 4.5,0.2857,0.9935,0.0000,13350.6581
+g50,rest,Claude Opus 4.6,Claude Haiku 4.5,0.2857,1.0000,0.0000,72165697549420.2344
+g50,rest,Claude Opus 4.6,Claude Sonnet 4.6,0.2857,0.9416,0.0000,2451.5201
+g50,rest,Claude Opus 4.7,Gemini 2.5 Pro,0.2857,0.9481,0.0000,2630.8881
+g50,rest,DeepSeek-V3.2,GLM-5.2,0.9156,0.3052,0.1523,-705.1058
+g50,rest,DeepSeek-V3.2,GPT-5,0.9091,0.3571,0.1523,-479.5651
+g50,rest,DeepSeek-V3.2,Gemini 2.5 Pro,1.0000,0.3312,1.0308,-531.5714
+g50,rest,DeepSeek-V4-Pro,Claude Sonnet 4.5,0.2857,0.9805,0.0000,8972.4575
+g50,rest,DeepSeek-V4-Pro,Claude Sonnet 4.6,0.2857,0.9870,0.0000,10935.6354
+g50,rest,GLM-5.2,Claude Opus 4.6,0.2857,0.9675,0.0000,5708.3234
+g50,rest,GLM-5.2,Gemini 2.5 Pro,0.9416,0.1948,0.1907,-1472.9965
+g50,rest,GLM-5.2,Gemini 3.1 Pro,0.9545,0.3247,0.2192,-576.1041
+g50,rest,GPT-5.1,Claude Opus 4.6,0.2857,0.9156,0.0000,1600.7666
+g50,rest,GPT-5.2,Claude Haiku 4.5,0.9870,0.0909,0.6267,-5533.9880
+g50,rest,GPT-5.2,Claude Sonnet 4.5,0.9805,0.1558,0.5821,-2157.5986
+g50,rest,GPT-5.4,Claude Sonnet 4.5,0.9740,0.0974,0.3933,-5396.9381
+g50,rest,GPT-5.4,Claude Sonnet 4.6,0.2857,0.9221,0.0000,1636.5103
+g50,rest,Gemini 3.1 Pro,Claude Sonnet 4.5,0.9221,0.0455,0.1529,-12877.6542
+g50,rest,Gemini 3.1 Pro,Claude Sonnet 4.6,0.2857,0.9740,0.0000,5880.2194
+g51,general,Claude Fable 5,GPT-5.6 Sol,0.2394,0.9274,0.0000,524.0255
+g51,general,Claude Fable 5.1,Claude Opus 4.8,0.2394,0.9093,0.0000,424.0613
+g51,general,Claude Fable 5.1,GPT-5.1,0.2394,0.9597,0.0000,774.0179
+g51,general,Claude Fable 5.1,GPT-5.6 Terra,0.2394,0.9657,0.0000,856.1433
+g51,general,Claude Fable 5.1,Gemini 3.1 Pro,0.9788,0.2681,0.0965,-125.4566
+g51,general,Claude Fable 5.1,Gemini 3.5 Flash,0.2394,0.9909,0.0000,1976.6002
+g51,general,Claude Fable 5.1,Kimi K2.6,0.2394,0.9355,0.0000,551.6278
+g51,general,Claude Opus 4.6,Claude Fable 5,0.2394,0.9254,0.0000,501.8377
+g51,general,Claude Opus 4.6,Claude Opus 5,0.2394,0.9032,0.0000,391.8637
+g51,general,Claude Opus 4.6,Claude Sonnet 4.5,0.2394,0.9506,0.0000,710.8133
+g51,general,Claude Opus 4.6,GPT-5.2,0.2394,0.9083,0.0000,423.6205
+g51,general,Claude Opus 4.6,Kimi K2.6,0.2394,0.9607,0.0000,782.8676
+g51,general,Claude Opus 4.6,Kimi K3,0.2394,0.9859,0.0000,1663.8515
+g51,general,Claude Opus 4.7,GPT-5.6 Sol,0.2394,0.9375,0.0000,568.9157
+g51,general,Claude Opus 4.7,GPT-6 Astra,0.2394,0.9173,0.0000,456.4197
+g51,general,Claude Opus 4.8,Claude Fable 5.1,0.9435,0.3024,0.0451,-99.6035
+g51,general,Claude Opus 4.8,Claude Opus 4.7,0.9415,0.1210,0.0447,-371.7284
+g51,general,Claude Opus 4.8,Claude Sonnet 4.5,0.2394,0.9113,0.0000,428.5665
+g51,general,Claude Sonnet 4.5,Claude Opus 4.7,0.2394,0.9435,0.0000,635.2532
+g51,general,Claude Sonnet 4.5,Claude Sonnet 4.6,0.2394,0.9708,0.0000,988.1325
+g51,general,Claude Sonnet 4.5,Claude Sonnet 5,0.2394,0.9244,0.0000,501.5844
+g51,general,Claude Sonnet 4.5,GPT-5.6 Terra,0.4970,0.9647,0.0003,823.3796
+g51,general,Claude Sonnet 5,GPT-5.6 Terra,0.9214,0.4567,0.0333,-20.1186
+g51,general,DeepSeek-V3.2,Claude Opus 4.5,0.9919,0.1966,0.1989,-187.9625
+g51,general,DeepSeek-V3.2,Claude Sonnet 4.5,0.9950,0.1925,0.2363,-192.1551
+g51,general,DeepSeek-V3.2,GPT-5.2,0.9204,0.4556,0.0329,-20.7014
+g51,general,DeepSeek-V3.2,GPT-5.5,0.9335,0.4153,0.0427,-32.9190
+g51,general,DeepSeek-V3.2,Gemini 3.1 Pro,0.9960,0.3206,0.2442,-90.1259
+g51,general,DeepSeek-V4-Pro,Muse Spark 1.3,0.9506,0.1623,0.0481,-250.5180
+g51,general,GLM-5.2,Claude Opus 4.5,0.9829,0.4708,0.1202,-14.5061
+g51,general,GLM-5.2,GPT-5.4,0.9093,0.4577,0.0298,-20.0387
+g51,general,GLM-5.2,Gemini 3.1 Pro,0.9375,0.4022,0.0439,-38.3466
+g51,general,GLM-5.3 Flash,Claude Fable 5,0.2394,0.9486,0.0000,680.4637
+g51,general,GLM-5.3 Flash,Claude Opus 4.5,0.2394,0.9929,0.0000,2319.8875
+g51,general,GLM-5.3 Flash,Claude Opus 4.6,0.9970,0.0111,0.2649,-6668.2197
+g51,general,GLM-5.3 Flash,Claude Sonnet 4.5,0.9980,0.2863,0.3670,-112.0774
+g51,general,GLM-5.3 Flash,Claude Sonnet 5,0.2394,0.9718,0.0000,1017.3437
+g51,general,GLM-5.3 Flash,GLM-5.2,0.9173,0.3327,0.0321,-78.5925
+g51,general,GLM-5.3 Flash,GPT-5.4,0.9466,0.4204,0.0469,-31.4629
+g51,general,GLM-5.3 Flash,Gemini 3.1 Pro,0.2394,0.9456,0.0000,647.0143
+g51,general,GLM-5.3 Flash,Gemini 3.8 Flash,0.9304,0.2702,0.0400,-124.1150
+g51,general,GLM-5.3 Flash,Kimi K2.6,0.2394,0.9204,0.0000,478.7594
+g51,general,GLM-5.3 Flash,Muse Spark 1.3,0.9385,0.3165,0.0440,-92.8762
+g51,general,GPT-5,GPT-5.6 Sol,0.9768,0.1220,0.0867,-370.1768
+g51,general,GPT-5,Kimi K3,0.2394,0.9012,0.0000,390.2960
+g51,general,GPT-5.1,Claude Opus 4.5,0.9012,0.4950,0.0277,-7.9032
+g51,general,GPT-5.1,Claude Opus 4.6,0.2394,0.9556,0.0000,757.2840
+g51,general,GPT-5.1,Kimi K2.6,0.9869,0.2117,0.1421,-167.8065
+g51,general,GPT-5.2,Claude Sonnet 4.5,0.9355,0.4224,0.0433,-29.7811
+g51,general,GPT-5.2,GPT-5,0.9002,0.3478,0.0277,-64.8489
+g51,general,GPT-5.2,Kimi K2.6,0.9486,0.2339,0.0472,-145.3606
+g51,general,GPT-5.4,Claude Fable 5.1,0.9234,0.0685,0.0344,-647.1619
+g51,general,GPT-5.6 Luna,Claude Opus 4.6,0.2394,0.9617,0.0000,786.6216
+g51,general,GPT-5.6 Luna,GPT-5.6 Sol,0.2394,0.9476,0.0000,666.7429
+g51,general,GPT-5.6 Luna,Kimi K2.6,0.2394,0.9133,0.0000,439.1412
+g51,general,GPT-5.6 Sol,Claude Fable 5,0.2394,0.9073,0.0000,418.9402
+g51,general,GPT-5.6 Sol,Claude Sonnet 4.5,0.2394,0.9879,0.0000,1754.1572
+g51,general,GPT-5.6 Sol,GPT-5.5,0.2394,0.9577,0.0000,759.2265
+g51,general,GPT-6 Astra,Claude Opus 4.8,0.2394,0.9315,0.0000,543.7438
+g51,general,GPT-6 Astra,Claude Opus 5,0.2394,0.9778,0.0000,1129.8296
+g51,general,GPT-6 Astra,DeepSeek-V4-Pro,0.2394,0.9899,0.0000,1885.0894
+g51,general,GPT-6 Astra,Gemini 3.5 Flash,0.2394,0.9869,0.0000,1676.2434
+g51,general,GPT-6 Astra,Grok 4.5,0.2394,0.9637,0.0000,794.6742
+g51,general,GPT-6 Astra,Kimi K2.6,0.2394,0.9839,0.0000,1330.8125
+g51,general,GPT-6 Astra,Kimi K3,0.2394,0.9889,0.0000,1831.5881
+g51,general,GPT-6 Astra,Muse Spark 1.3,0.2394,0.9667,0.0000,870.5714
+g51,general,Gemini 2.5 Pro,Claude Opus 4.7,0.2394,0.9446,0.0000,640.8125
+g51,general,Gemini 2.5 Pro,Claude Sonnet 4.6,0.2394,0.9627,0.0000,792.6968
+g51,general,Gemini 2.5 Pro,Muse Spark 1.3,0.9425,0.1603,0.0447,-253.7424
+g51,general,Gemini 3.5 Flash,Claude Fable 5,0.9133,0.1321,0.0319,-340.0946
+g51,general,Gemini 3.8 Flash,Claude Fable 5.1,0.9567,0.2238,0.0514,-153.3116
+g51,general,Gemini 3.8 Flash,Claude Opus 4.5,0.9990,0.0232,0.5229,-1850.9424
+g51,general,Gemini 3.8 Flash,Claude Opus 4.7,0.9657,0.0212,0.0642,-1872.1533
+g51,general,Gemini 3.8 Flash,Claude Opus 4.8,0.9062,0.0907,0.0288,-512.0135
+g51,general,Gemini 3.8 Flash,Claude Opus 5,0.9940,0.2581,0.2245,-131.5505
+g51,general,Gemini 3.8 Flash,Claude Sonnet 4.5,0.2394,1.0000,0.0000,30473.3211
+g51,general,Gemini 3.8 Flash,DeepSeek-V4-Pro,0.9688,0.4677,0.0676,-15.1015
+g51,general,Gemini 3.8 Flash,GPT-5.4,0.9194,0.0897,0.0325,-514.8794
+g51,general,Gemini 3.8 Flash,GPT-5.6 Luna,0.2394,0.9052,0.0000,402.6668
+g51,general,Gemini 3.8 Flash,GPT-5.6 Sol,0.2394,0.9466,0.0000,652.8033
+g51,general,Gemini 3.8 Flash,Kimi K3,0.9808,0.0524,0.1037,-974.4225
+g51,general,Kimi K2.6,Muse Spark 1.3,0.2394,0.9385,0.0000,585.6875
+g51,general,Kimi K3,Claude Fable 5.1,0.2394,0.9758,0.0000,1115.0590
+g51,general,Kimi K3,Muse Spark 1.3,0.2394,0.9284,0.0000,526.2856
+g51,general,Muse Spark 1.3,Claude Fable 5.1,0.2394,0.9526,0.0000,723.3083
+g51,general,Muse Spark 1.3,Claude Opus 4.7,0.2394,0.9919,0.0000,1996.6888
+g51,general,Muse Spark 1.3,GPT-5,0.2394,0.9022,0.0000,390.6605
+g51,general,Muse Spark 1.3,Grok 4.5,0.2394,0.9062,0.0000,404.4704
+g51,general,Muse Spark 1.3,Kimi K2.6,0.2394,0.9516,0.0000,715.5418
+g51,general,Muse Spark 1.3,Kimi K3,0.2394,0.9294,0.0000,527.2344

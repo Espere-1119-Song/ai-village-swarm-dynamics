@@ -1,0 +1,6 @@
+heuristic,known_writes,known_predicted,accuracy_key,accuracy_container,unattributed_writes,unattributed_covered,coverage,gap
+carry,20965,20923,0.1469,0.1795,132756,132618,0.9990,all
+carry_30m,20965,14386,0.1634,0.1996,132756,38314,0.2886,all
+narr_near,20965,1143,0.3036,0.3692,132756,5263,0.0396,all
+narr_near_after_focus,20965,965,0.2228,0.2964,132756,5263,0.0396,all
+narr_session,20965,7276,0.4927,0.5345,132756,15309,0.1153,all

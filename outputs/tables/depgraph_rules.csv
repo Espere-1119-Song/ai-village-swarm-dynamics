@@ -1,0 +1,36 @@
+rule,mode,description,touches,turns,sessions,session_share,agents,artifact_touches,edges_first_touch
+B-redirect,write,target of a shell redirection (> or >>) or of tee,214295,145786,28852,0.3694,41,213280,17948
+B-inplace,write,"file edited in place (sed -i, perl -i)",23982,12129,4844,0.0620,37,23938,2212
+B-fileop,write,"destination or argument of cp, mv, rsync, scp, install, ln, touch, mkdir, rm, rmdir, chmod, truncate, unzip -d, tar -C or tar -f with c",60349,37387,15399,0.1971,42,59932,10855
+B-fileop-src,read,"source of cp, rsync, scp, install, ln, or an archive that is unpacked",19275,12492,6194,0.0793,38,18599,2800
+B-code-write,write,"path or URL written by code in a heredoc or -c string (open with w, a or x, write_text, to_csv, savefig, writeFile, requests post, put, patch or delete, fetch with a write method)",25889,22002,5877,0.0752,34,25570,2732
+B-code-read,read,"path or URL that code in a heredoc or -c string opens, reads, lists, runs or fetches (directly or through a variable)",96827,73277,12785,0.1637,37,91903,9528
+B-git-local,write,"local repository directory of git add, commit, rm, mv, merge, rebase, reset, checkout, switch, stash, tag, init, apply, am, cherry-pick, restore or pull",329778,110576,26338,0.3372,39,329455,15339
+B-git-push,write,"remote repository of git push (directory map, or the remote named in the push output)",81246,67724,21040,0.2693,39,81105,9643
+B-git-clone-dir,write,"local directory created by git clone, gh repo clone, glab repo clone",7933,7579,4310,0.0552,35,7899,1049
+B-git-remote-read,read,"remote repository of git clone, pull or fetch",66758,57959,18151,0.2324,39,66636,14991
+B-git-read,read,"local repository directory of git log, status, diff, show, branch and other read-only git commands",219590,153733,27904,0.3572,39,219590,9198
+B-forge-write,write,"repository, issue or merge request named by gh or glab create, edit, comment, merge, close, reopen, review, delete, upload, fork, or api with a write method or fields",21335,19510,6444,0.0825,37,21276,2803
+B-forge-read,read,"repository named by other gh or glab commands (view, list, api GET)",76861,64335,13883,0.1777,36,76165,10692
+B-http-write,write,"URL of curl, wget or httpie with a write method or a request body",13465,10883,2400,0.0307,32,12835,2904
+B-http-read,read,"URL fetched by curl, wget or httpie without a body",144372,92936,16179,0.2071,40,129257,13446
+B-download,write,"local file written by curl -o, wget -O or similar",25358,16719,4435,0.0568,36,25306,2928
+B-upload-src,read,"local file sent as a request body (-d @file, -F x=@file, -T file)",1837,1758,402,0.0051,25,1837,111
+B-open,read,"URL or file opened in a browser or viewer (xdg-open, firefox, chrome); a URL becomes the GUI focus",2423,2040,1381,0.0177,31,2330,537
+B-cd,read,project directory entered with cd or pushd (container level),474529,456673,35245,0.4512,41,474511,26721
+B-run,read,"script that is executed (python x.py, node x.js, bash x.sh, ./x)",119747,100397,20853,0.2670,40,119633,15821
+B-other,read,"any other path or URL in a command (cat, grep, ls, head, find, ...)",252628,152968,26537,0.3397,45,236179,26996
+B-content,mention,"path or URL inside text the command writes or sends as content (echo, printf, heredoc file bodies, commit messages, --body, --title and API fields, request bodies, string templates in code)",249867,105014,22793,0.2918,44,193978,0
+B-xdotool,write,"xdotool type or key ctrl+s / ctrl+Return from bash, applied to the GUI focus",91,56,43,0.0006,11,74,1
+G-nav,read,URL typed as the whole text of a type action (address bar); becomes the GUI focus,29925,29925,15524,0.1987,43,24727,9444
+G-type,write,"other text typed while a page is in focus, written to the focused artifact",11658,11658,4850,0.0621,38,8122,0
+G-key,write,ctrl+s or ctrl+Enter while a page is in focus,299,299,197,0.0025,21,229,0
+G-click,write,"click right after locating an element whose description names a write (save, submit, send, post, publish, commit, create, upload, share, reply, comment, confirm, update, apply) while a page is in focus",1675,1675,1071,0.0137,16,1106,0
+G-content,mention,path or URL inside typed text,8471,4843,2828,0.0362,36,7460,0
+G-search,mention,"rules v2: text typed into the address bar or a located search box that is a search query, not a document write (refs inside it are mentions)",18,18,17,0.0002,7,16,0
+G-input,mention,"rules v2: a typed sign-in value or a short input (one or two characters, or a one-word game or menu command), not a document write",0,0,0,0.0000,0,0,0
+T-chat,mention,path or URL in a chat message sent from the computer,24931,19469,11725,0.1501,40,21347,0
+T-search,mention,path or URL in a search_history query,24,24,19,0.0002,4,21,0
+T-other,mention,"path or URL in other tool arguments (element descriptions, helper requests)",1699,1674,1163,0.0149,17,1381,0
+O-output,observed,path or URL in the tool output or error text,984802,195076,36864,0.4719,45,665442,0
+M-message,mention,"path or URL in the provider response (text, thinking, reasoning)",68494,51365,20502,0.2625,44,58151,0

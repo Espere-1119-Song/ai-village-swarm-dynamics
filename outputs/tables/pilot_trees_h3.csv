@@ -1,0 +1,13 @@
+channel,n_edges,n_edges_with_shared_context,contexts_carried,contexts_changed,c,edge_change_share,c_lo,c_hi,n_grandchild_contexts,inherited_share,reverted_share,rules,source,modification_rate_per_trial,n_agents,ci_note
+agent_retelling,74465,41440,66953,13640,0.203725,0.286897,0.199502,0.207912,3203,0.380893,0.579145,v3,B2 MAP edges,,,
+chat_to_chat_other,15318,7597,11703,3045,0.260190,0.341845,0.250783,0.269596,3085,0.381524,0.578282,v3,B2 MAP edges,,,
+chat_to_memory_other,59147,33843,55250,10595,0.191765,0.274562,0.187743,0.196213,118,0.364407,0.601695,v3,B2 MAP edges,,,
+chat_same_agent,25002,16136,31877,9587,0.300750,0.431891,0.288937,0.312184,5543,0.378315,0.413314,v3,B2 MAP edges,,,
+own_memory_to_chat,5317,2539,3603,997,0.276714,0.336353,0.260862,0.290568,1441,0.528105,0.424705,v3,B2 MAP edges,,,
+search_answer_to_agent,1688,774,989,288,0.291203,0.341085,0.262278,0.326228,308,0.279221,0.694805,v3,B2 MAP edges,,,
+chat_to_search_answer,12311,6339,12009,1339,0.111500,0.183467,0.101301,0.121060,81,0.259259,0.654321,v3,B2 MAP edges,,,
+memory_consolidation_b1_number,,,6008828,174575,0.029053,,0.028919,0.029188,,,,v3,B1 tables,0.021640,45,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_money,,,181044,1005,0.005551,,0.005219,0.005904,,,,v3,B1 tables,0.004725,42,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_percent,,,334800,4686,0.013996,,0.013604,0.014400,,,,v3,B1 tables,0.010799,44,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_time,,,862275,63120,0.073202,,0.072654,0.073753,,,,v3,B1 tables,0.042409,45,"Wilson, units independent (B1 does not report a clustered CI for this ratio)"
+memory_consolidation_b1_quantities,,,7386947,243386,0.032948,,0.032820,0.033077,,,,v3,B1 tables,,,"Wilson, units independent"

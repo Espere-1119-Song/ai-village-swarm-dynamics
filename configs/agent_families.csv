@@ -1,0 +1,47 @@
+name,model_string,provider,model_family,scaffold,model_group,api_format
+Claude 3.7 Sonnet,claude-3-7-sonnet-20250219,Anthropic,Anthropic,standard,Claude 3.7 Sonnet,anthropic_messages
+o1,o1-2024-12-17,OpenAI,OpenAI,standard,o1,openai_chat_completions
+Claude 3.5 Sonnet,claude-3-5-sonnet-20241022,Anthropic,Anthropic,standard,Claude 3.5 Sonnet,anthropic_messages
+GPT-4o,gpt-4o-2024-08-06,OpenAI,OpenAI,standard,GPT-4o,openai_chat_completions
+GPT-4.1,gpt-4.1-2025-04-14,OpenAI,OpenAI,standard,GPT-4.1,openai_chat_completions
+o3,o3-2025-04-16,OpenAI,OpenAI,standard,o3,openai_chat_completions
+Gemini 2.5 Pro,gemini-2.5-pro,Google,Google,standard,Gemini 2.5 Pro,google_genai
+o4-mini,o4-mini-2025-04-16,OpenAI,OpenAI,standard,o4-mini,openai_chat_completions
+Claude Opus 4,claude-opus-4-20250514,Anthropic,Anthropic,standard,Claude Opus 4,anthropic_messages
+Claude Opus 4.1,claude-opus-4-1-20250805,Anthropic,Anthropic,standard,Claude Opus 4.1,anthropic_messages
+GPT-5,gpt-5-2025-08-07,OpenAI,OpenAI,standard,GPT-5,openai_responses
+Grok 4,grok-4-0709,xAI,Other,standard,Grok 4,openai_compat
+Claude Sonnet 4.5,claude-sonnet-4-5-20250929,Anthropic,Anthropic,standard,Claude Sonnet 4.5,anthropic_messages
+Claude Haiku 4.5,claude-haiku-4-5-20251001,Anthropic,Anthropic,standard,Claude Haiku 4.5,anthropic_messages
+GPT-5.1,gpt-5.1-2025-11-13,OpenAI,OpenAI,standard,GPT-5.1,openai_responses
+Gemini 3 Pro,gemini-3-pro-preview,Google,Google,standard,Gemini 3 Pro,google_genai
+Claude Opus 4.5,claude-opus-4-5-20251101,Anthropic,Anthropic,standard,Claude Opus 4.5,anthropic_messages
+DeepSeek-V3.2,deepseek-reasoner,DeepSeek,Other,standard,DeepSeek-V3.2,openai_compat
+GPT-5.2,gpt-5.2-2025-12-11,OpenAI,OpenAI,standard,GPT-5.2,openai_responses
+Opus 4.5 (Claude Code),claude-code::claude-opus-4-5-20251101,Anthropic,Anthropic,claude_code,Opus 4.5 (Claude Code),anthropic_claude_code_sdk
+Claude Opus 4.6,claude-opus-4-6,Anthropic,Anthropic,standard,Claude Opus 4.6,anthropic_messages
+Claude Sonnet 4.6,claude-sonnet-4-6,Anthropic,Anthropic,standard,Claude Sonnet 4.6,anthropic_messages
+Gemini 3.1 Pro,gemini-3.1-pro-preview,Google,Google,standard,Gemini 3.1 Pro,google_genai
+GPT-5.4,gpt-5.4-2026-03-05,OpenAI,OpenAI,standard,GPT-5.4,openai_responses
+Claude Opus 4.7,claude-opus-4-7,Anthropic,Anthropic,standard,Claude Opus 4.7,anthropic_messages
+Kimi K2.6,kimi-k2.6,Moonshot,Other,standard,Kimi K2.6,openai_compat_reasoning_content
+GPT-5.5,gpt-5.5,OpenAI,OpenAI,standard,GPT-5.5,openai_responses
+Gemini 3.5 Flash,gemini-3.5-flash,Google,Google,standard,Gemini 3.5 Flash,google_genai
+[Temporary] Fine-tuned Leader,tinker://363427a9-ee15-55e7-a2cd-8368f216760e:train:0/sampler_weights/kimi-leader-v7-aug-64,Tinker,Other,standard,Fine-Tuned Leader,openai_compat_reasoning_content
+Claude Opus 4.8,claude-opus-4-8,Anthropic,Anthropic,standard,Claude Opus 4.8,anthropic_messages
+Fine-Tuned Leader,tinker://363427a9-ee15-55e7-a2cd-8368f216760e:train:0/sampler_weights/kimi-leader-v7-aug-64,Tinker,Other,standard,Fine-Tuned Leader,openai_compat_reasoning_content
+Claude Fable 5,claude-fable-5,Anthropic,Anthropic,standard,Claude Fable 5,anthropic_messages
+Claude Sonnet 5,claude-sonnet-5,Anthropic,Anthropic,standard,Claude Sonnet 5,anthropic_messages
+DeepSeek-V4-Pro,deepseek/deepseek-v4-pro,DeepSeek,Other,standard,DeepSeek-V4-Pro,openrouter
+GLM-5.2,z-ai/glm-5.2,Zhipu,Other,standard,GLM-5.2,openrouter
+GPT-5.6 Sol,gpt-5.6-sol,OpenAI,OpenAI,standard,GPT-5.6 Sol,openai_responses
+GPT-5.6 Terra,gpt-5.6-terra,OpenAI,OpenAI,standard,GPT-5.6 Terra,openai_responses
+GPT-5.6 Luna,gpt-5.6-luna,OpenAI,OpenAI,standard,GPT-5.6 Luna,openai_responses
+Grok 4.5,grok-4.5,xAI,Other,standard,Grok 4.5,openai_compat
+Kimi K3,kimi-k3,Moonshot,Other,standard,Kimi K3,openai_compat_reasoning_content
+Claude Opus 5,claude-opus-5,Anthropic,Anthropic,standard,Claude Opus 5,anthropic_messages
+GLM-5.3 Flash,z-ai/glm-5.3-flash,Zhipu,Other,standard,GLM-5.3 Flash,openrouter
+Claude Fable 5.1,claude-fable-5-1,Anthropic,Anthropic,standard,Claude Fable 5.1,anthropic_messages
+Muse Spark 1.3,meta/muse-spark-1.3,Meta,Other,standard,Muse Spark 1.3,openrouter
+Gemini 3.8 Flash,gemini-3.8-flash,Google,Google,standard,Gemini 3.8 Flash,google_genai
+GPT-6 Astra,gpt-6-astra,OpenAI,OpenAI,standard,GPT-6 Astra,openai_responses
