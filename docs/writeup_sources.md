@@ -354,7 +354,7 @@ Source keys:
 | 285 | Module A stages | acceptance 224 s; bootstrap shards 605 to 2,368 s; matched 1,055 s and 1,066 s; 16 workers | accept 224 s; boot shards 605 to 2368 s; matched 1055 and 1066 s; workers 16 | R QA hawkes.md §13 |
 | 286 | Monitor fetch and validation | about 22 min; 14 s | fetched 02:50:46 to 03:12:16 UTC; monitor_hawkes in 14 s | R QA monitor.md header; R QA monitor_validation.md header |
 | 287 | B1 runtimes | 687 s, 1,214 s, 1,900 s; 1,555 s first extraction; about 1 min for the paired test | 687 s (v1), 1214 s (v2), 1900 s (v3); extraction 37 s + 1518 s; paired test about 1 min (srun of 2026-10-03) | R QA lineage_memory.md, lineage_memory_v2.md, lineage_memory_v3.md headers |
-| 288 | B2 units | 24 min on 48 CPUs | 全量 24 分钟（作业 587322，48 CPU） | G B2 units row |
+| 288 | B2 units | 24 min on 48 CPUs | full data 24 min (job 587322, 48 CPUs) | G B2 units row |
 | 289 | B2 trees | 1,577 s | done in 1577 s (46 + 22 + 56 + 584 + 298 + 36 + 504 s) | logs/avsd_lineage_trees-630077.out; Q lineage_trees.md §12 |
 | 290 | Module C | 144 s, 16 processes | 144 s on 16 processes | R QA changepoint.md header |
 | 291 | Module D1 | 77 s, 32 processes | 77 s wall on 32 processes | R QA swarmsim_d1.md Summary (G gives 78 s) |

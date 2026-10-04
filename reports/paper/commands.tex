@@ -1,5 +1,4 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Part 1: dlbook 数学记法（random / vector / matrix / tensor / graph / set / 算子）
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Mark sections of captions for referring to divisions of figures
@@ -464,7 +463,6 @@
 \let\ab\allowbreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Part 2: callout / listing / teaser / 批注 / hyperref / 表格配色 / algorithm2e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -484,7 +482,6 @@
 
 %% ---- Global listing defaults (promptbox) ----
 \tcbuselibrary{listings}
-%% 字号用 \fontsize 绝对值：\footnotesize 会让 listings 与正文各取不同 optical size（9.96 vs 8.97）
 \newcommand{\boxfont}{\fontsize{9}{11}\selectfont}
 \lstset{
   basicstyle=\ttfamily\boxfont,
@@ -493,9 +490,8 @@
   xleftmargin=0pt, xrightmargin=0pt, resetmargins=true,
   aboveskip=0pt, belowskip=0pt,
 }
-%% 段间距：listings 没有"段距"参数，段落用空行分隔；一个空行 = 此高度的间距。
-\newcommand{\lstparskip}{0.5\baselineskip}        % listing / transcript 段落间距，全局可调
-\newcommand{\lstgap}{\vspace{\lstparskip}}        % promptbox 内段落分隔：写 (*\lstgap*) 注入此间距（靠 escapeinside）
+\newcommand{\lstparskip}{0.5\baselineskip}
+\newcommand{\lstgap}{\vspace{\lstparskip}}
 %% ---- Prompt box: callout look (left accent + light tint, like \note) with a verbatim listing body ----
 %% \begin{promptbox}[System|User|Prompt] ...verbatim text... \end{promptbox}  (palette: gblue)
 \newtcblisting{promptbox}[1][]{%
@@ -541,7 +537,6 @@
 \newcommand{\arkcomment}[3]{\ensuretext{\textcolor{#3}{[#1 #2]}}}
 \newcommand{\wchai}[1]{\arkcomment{\marker{W.H.}{Chai}}{#1}{gpurple}}
 
-%% hyperref：链接统一 linkcol（gblue）文字色，无边框
 \hypersetup{
     colorlinks=true,
     linkcolor=linkcol,
@@ -552,11 +547,9 @@
 }
 \bibliographystyle{unsrt}
 
-%% 作者 / 机构：Lato sans（与章节标题同族）；作者 bold，机构 regular
 \renewcommand\Authfont{\sffamily\bfseries}
 \renewcommand\Affilfont{\sffamily\mdseries}
 
-%% ---- Leaderboard 表配色（单色热力图 perf0..perf80，基色 = palette blue）----
 \colorlet{perfhue}{gblue}
 \colorlet{perf0}{white}
 \colorlet{perf10}{perfhue!12}
@@ -612,9 +605,9 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=0.6pt] (char) {#1};}}
 
-\newcommand{\std}[1]{\,{\tiny $\pm$ #1}}       % 均值后跟小号 ±std：83.1\std{0.4}；\tiny 限在组内，prose 里可用
-\newcommand{\default}[1]{\cellcolor{ggrey!15}#1}   % ablation 表 default 配置的 cell（灰底）
-\newtheorem{assumption}{Assumption}   % cls 没有 assumption，Method 理论型要用
+\newcommand{\std}[1]{\,{\tiny $\pm$ #1}}
+\newcommand{\default}[1]{\cellcolor{ggrey!15}#1}
+\newtheorem{assumption}{Assumption}
 
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}

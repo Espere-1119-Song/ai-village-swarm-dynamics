@@ -436,8 +436,8 @@ def test_report_registers_b2():
     assert any(i.path == "figures/F3_interval_ecdf.png" for i in b2.items)
     assert all(i.path.startswith(("tables/trees_", "figures/F3_", "figures/F4_")) for i in b2.items)
     assert "lineage_trees" in QA_ORDER
-    assert _tab_of("模块 B2（P1）", "B2 传播树") == "moduleB2"
-    assert _tab_of("模块 B1、C（P0）", "B1 memory 链") == "moduleB1"
+    assert _tab_of("Module B2 (P1)", "B2 transmission trees") == "moduleB2"
+    assert _tab_of("Module B1, C (P0)", "B1 memory chains") == "moduleB1"
 
 
 def test_determined_paths():

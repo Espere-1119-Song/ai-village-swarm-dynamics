@@ -86,7 +86,7 @@ def parse_blocks(text: str) -> list[Block]:
             blocks.append(Block("heading", m.group(2), level=len(m.group(1))))
             i += 1
         elif m := _DETAILS_OPEN.match(line):
-            blocks.append(Block("details", m.group(1) or "详情"))
+            blocks.append(Block("details", m.group(1) or "Details"))
             i += 1
         elif _DETAILS_CLOSE.match(line):
             blocks.append(Block("/details"))
@@ -179,7 +179,7 @@ def table_html(t: MdTable, cell: Callable[[str], str] = inline, css: str = "md-t
         "<tr>" + "".join(f"<td{_style(t.align, k)}>{cell(c)}</td>" for k, c in enumerate(r)) + "</tr>"
         for r in t.rows
     )
-    note = (f'<p class="hidden-cols">按隐私规则隐藏列：{html.escape("、".join(hidden))}</p>'
+    note = (f'<p class="hidden-cols">Columns hidden by the privacy rules: {html.escape(", ".join(hidden))}</p>'
             if hidden else "")
     return (f'<div class="{wrap}"><table class="{css}"><thead><tr>{head}</tr></thead>'
             f"<tbody>{body}</tbody></table></div>{note}")

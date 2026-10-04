@@ -495,45 +495,45 @@ def strong_answers(reqs: list[dict], out: Path, seed: int) -> dict[str, list[dic
     return res
 
 
-README_TEXT = """# parents_review.csv 标注说明
+README_TEXT = """# parents_review.csv labelling guide
 
-这张表有 {n} 行，每行是一个信息单元的一次出现（CHILD），用于校验模块 B2 推断的父节点（SPEC 6.4.5）。CHILD 是某个 agent 在聊天、memory 或查历史答案中提到某条信息（⟦ ⟧ 标出的锚点：URL、数字、日期、名称或一段低频短语）的地方。cand_1 到 cand_{m} 是它之前、按规则这个 agent 能看到的候选来源：它所在房间里的聊天消息（同一 agent 自己的旧消息也算）、它自己的 memory、它自己的查历史答案，以及 env（它自己电脑操作的输出或它对屏幕的描述，即独立观察）。每个候选给出渠道、发言者、提前多少 active 小时、模型后验概率和约 300 字符的片段。… 表示截断，↵ 是换行，«masked» 是遮掉的凭证。人类一律显示为 human。
+This sheet has {n} rows. Each row is one occurrence (CHILD) of an information unit and serves to validate the inferred parents. CHILD is a place where an agent mentions a piece of information (the anchor marked ⟦ ⟧: a URL, number, date, name or rare phrase) in chat, memory or a search answer. cand_1 to cand_{m} are the earlier sources the agent could see under the rules: chat messages in its room (its own earlier messages included), its own memory, its own search answers, and env (its own computer output or its description of the screen, that is, independent observation). Each candidate gives the channel, speaker, lead in active hours, posterior probability and an excerpt of about 300 characters; … marks a cut, ↵ a line break and «masked» a masked credential. Humans always show as human.
 
-model_map 是推断出的父节点（候选编号或 env），model_post 是它的后验概率。三个本地模型各自独立预标，都看不到 model_map、后验和其他模型的结果：llm_choice、llm_confidence、llm_rationale 来自 Qwen3-14B；qwen35_choice、qwen35_confidence、qwen35_rationale 来自 Qwen3.5-122B-A10B；gptoss_choice、gptoss_confidence、gptoss_rationale 来自 gpt-oss-120b（后两个更强，会先推理再作答）。两个更强的模型一致时 suggested_parent 填这个父节点，否则留空。预标只供参考，请按片段独立判断。第一列 review_priority：1 共 {n1} 行，是两个更强的模型互相不一致、或与 model_map 不一致的行（有一个没有给出有效答案也算）；2 共 {n2} 行，是两个模型都与 model_map 一致的行。表格已按它排序，请尽量 {n} 行都标。旧表备份为 parents_review_qwen14b.csv，不需要再看。
+model_map is the inferred parent (a candidate number or env) and model_post its posterior. Three local models labelled every row independently without seeing model_map, the posterior or each other: llm_* from Qwen3-14B, qwen35_* from Qwen3.5-122B-A10B and gptoss_* from gpt-oss-120b (the last two reason before answering). suggested_parent holds the parent when the two stronger models agree. The labels are suggestions only. The first column, review_priority, sorts the sheet: priority 1: {n1} rows, where the two stronger models disagree with each other or with model_map; priority 2: {n2} rows, where both agree with model_map. Please label all {n} rows if you can.
 
-请在 human_parent 列填写：
-- 候选编号（1 到 {m}）：CHILD 最可能从这条候选得到这条信息。
-- env：CHILD 的 agent 是自己在电脑上看到的（独立得到），不是别人告诉它的。
-- none：所有候选都不像来源（例如来源不在表中）。
-- 无法判断时留空，在 notes 写原因；留空的行不进入统计。
-判断时看内容是否对得上（同样的数字、同样的说法、直接回复），不要只看时间最近。锚点本身抽错（例如把编号当成数字）时，仍按这条信息的来源判断，并在 notes 写 bad_unit。
+Fill human_parent with:
+- a candidate number (1 to {m}): CHILD most likely got the information from this candidate;
+- env: the agent saw it on its own computer (independent observation);
+- none: no candidate looks like the source;
+- nothing, with the reason in notes, when it cannot be judged; empty rows are left out.
+Judge by matching content (the same number, the same wording, a direct reply), not by recency alone. If the anchor itself is wrong, judge the source of the information and write bad_unit in notes.
 
-表中有聊天、memory 和工具输出的原文片段，可能含人名等个人信息。文件只能留在 `data/labels/`（已写入 .gitignore），不要分享、上传或提交到 git。child_uid 和各候选的 uid 用来对回数据，请勿修改。
+The sheet holds excerpts with personal data. Keep it in `data/labels/` (git-ignored); never share, upload or commit it. Do not edit child_uid or the candidate uids.
 
-填完后在 GRASP 上（`cd ~/ai-village-swarm-dynamics`）：
-1. `source scripts/env.sh && python -m avsd.lineage.prelabel_parents metrics`：推断父节点与三个模型预标相对人工标注的准确率与 95% 置信区间，写入 `outputs/tables/trees_parent_label_metrics.csv`。
-2. `sbatch scripts/lineage_trees.sbatch trees --gamma hand`：一条命令用这些标注选定最终的 γ（在网格上使人工所选父节点的平均对数后验最大），并用它重跑 B2 全部结果（约 1.5 小时）。至少需要 20 行能对上候选的标注。现在的 γ = 0 是暂定值，来自一级点名标签。
+When done, on GRASP (`cd ~/ai-village-swarm-dynamics`):
+1. `source scripts/env.sh && python -m avsd.lineage.prelabel_parents metrics` writes the accuracy of the inferred parents and the model labels against the human labels, with 95% intervals, to `outputs/tables/trees_parent_label_metrics.csv`.
+2. `avsd lineage trees --gamma composite` chooses the time term and γ on these labels and reruns the transmission trees.
 """
 
 
-README_TEXT_QWEN14B = """# parents_review.csv 标注说明
+README_TEXT_QWEN14B = """# parents_review.csv labelling guide
 
-这张表有 {n} 行，每行是一个信息单元的一次出现（CHILD），用于校验模块 B2 推断的父节点（SPEC 6.4.5）。CHILD 是某个 agent 在聊天、memory 或查历史答案中提到某条信息（⟦ ⟧ 标出的锚点：URL、数字、日期、名称或一段低频短语）的地方。cand_1 到 cand_{m} 是它之前、按规则这个 agent 能看到的候选来源：它所在房间里的聊天消息（同一 agent 自己的旧消息也算）、它自己的 memory、它自己的查历史答案，以及 env（它自己电脑操作的输出或它对屏幕的描述，即独立观察）。每个候选给出渠道、发言者、提前多少 active 小时、模型后验概率和约 300 字符的片段。… 表示截断，↵ 是换行，«masked» 是遮掉的凭证。人类一律显示为 human。
+This sheet has {n} rows. Each row is one occurrence (CHILD) of an information unit and serves to validate the inferred parents. CHILD is a place where an agent mentions a piece of information (the anchor marked ⟦ ⟧: a URL, number, date, name or rare phrase) in chat, memory or a search answer. cand_1 to cand_{m} are the earlier sources the agent could see under the rules: chat messages in its room (its own earlier messages included), its own memory, its own search answers, and env (its own computer output or its description of the screen, that is, independent observation). Each candidate gives the channel, speaker, lead in active hours, posterior probability and an excerpt of about 300 characters; … marks a cut, ↵ a line break and «masked» a masked credential. Humans always show as human.
 
-model_map 是推断出的父节点（候选编号或 env），model_post 是它的后验概率。llm_choice、llm_confidence、llm_rationale 是本地模型 Qwen3-14B 的预标，只供参考。第一列 review_priority：1 表示后验低于 0.6 或模型与预标不一致，优先看；2 是其余行。表格已按它排序，请尽量 50 行都标。
+model_map is the inferred parent (a candidate number or env) and model_post its posterior. llm_choice, llm_confidence and llm_rationale are suggestions from the local model Qwen3-14B. The first column, review_priority, sorts the sheet: 1 marks rows with a posterior below 0.6 or a model that disagrees, 2 the rest. Please label all 50 rows if you can.
 
-请在 human_parent 列填写：
-- 候选编号（1 到 {m}）：CHILD 最可能从这条候选得到这条信息。
-- env：CHILD 的 agent 是自己在电脑上看到的（独立得到），不是别人告诉它的。
-- none：所有候选都不像来源（例如来源不在表中）。
-- 无法判断时留空，在 notes 写原因；留空的行不进入统计。
-判断时看内容是否对得上（同样的数字、同样的说法、直接回复），不要只看时间最近。锚点本身抽错（例如把编号当成数字）时，仍按这条信息的来源判断，并在 notes 写 bad_unit。
+Fill human_parent with:
+- a candidate number (1 to {m}): CHILD most likely got the information from this candidate;
+- env: the agent saw it on its own computer (independent observation);
+- none: no candidate looks like the source;
+- nothing, with the reason in notes, when it cannot be judged; empty rows are left out.
+Judge by matching content (the same number, the same wording, a direct reply), not by recency alone. If the anchor itself is wrong, judge the source of the information and write bad_unit in notes.
 
-表中有聊天、memory 和工具输出的原文片段，可能含人名等个人信息。文件只能留在 `data/labels/`（已写入 .gitignore），不要分享、上传或提交到 git。child_uid 和各候选的 uid 用来对回数据，请勿修改。
+The sheet holds excerpts with personal data. Keep it in `data/labels/` (git-ignored); never share, upload or commit it. Do not edit child_uid or the candidate uids.
 
-填完后在 GRASP 上（`cd ~/ai-village-swarm-dynamics`）：
-1. `source scripts/env.sh && python -m avsd.lineage.prelabel_parents metrics`：推断父节点与模型预标相对人工标注的准确率与 95% 置信区间，写入 `outputs/tables/trees_parent_label_metrics.csv`。
-2. `sbatch scripts/lineage_trees.sbatch trees --gamma hand`：一条命令用这些标注选定最终的 γ（在网格上使人工所选父节点的平均对数后验最大），并用它重跑 B2 全部结果（约 1.5 小时）。至少需要 20 行能对上候选的标注。现在的 γ = 0 是暂定值，来自一级点名标签。
+When done, on GRASP (`cd ~/ai-village-swarm-dynamics`):
+1. `source scripts/env.sh && python -m avsd.lineage.prelabel_parents metrics` writes the accuracy of the inferred parents and the model labels against the human labels, with 95% intervals, to `outputs/tables/trees_parent_label_metrics.csv`.
+2. `avsd lineage trees --gamma composite` chooses the time term and γ on these labels and reruns the transmission trees.
 """
 
 

@@ -525,7 +525,7 @@ def write_qa(path: Path, rows: list[dict[str, Any]], scaling: pl.DataFrame, agg:
         "contradiction. It leaves out details the blog gives, which we take from the blog: the "
         "running agent that made a step ready holds it, a merge step can sit on several lists, and "
         "a sub-agent's group is its forker and the forker's other sub-agents. 'Each figure runs 16 "
-        "tasks' (appendix B: 每张图 16 个任务) means 16 tasks, each with its own DAG, per family; "
+        "tasks' (appendix B: 16 tasks per figure) means 16 tasks, each with its own DAG, per family; "
         "a family is the unit behind one figure and behind T1.",
         "",
         "## Reproduction table",

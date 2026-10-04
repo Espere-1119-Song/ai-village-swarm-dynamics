@@ -16,10 +16,8 @@
 
 \input{packages}
 
-%% 章节编号一律不带句点（subsection / subsubsection 走此默认 label）
 \titlelabel{\thetitle\quad}
 
-%% 章节标题统一 Lato Heavy sans（eb 字重 = 比 bold 再粗一号），按层级递减字号
 \titleformat{\section}
   {\sffamily\fontseries{eb}\Large\selectfont}
   {\thesection}{1em}{}
@@ -39,12 +37,9 @@
   {\sffamily\fontseries{eb}\normalsize\selectfont}
   {}{0em}{}[\quad]
 
-%% ToC 间距：section 条目间保持宽间距，section 内 subsection 用正常行距
 \setlength{\cftbeforesecskip}{0.8em}
 \setlength{\cftbeforesubsecskip}{0pt}
-%% Contents 标题与 section 同款字体
 \renewcommand{\cfttoctitlefont}{\sffamily\fontseries{eb}\Large\selectfont}
-%% 标题下间距对齐 section（取值偏大因 titlesec 把行距算进去；末项抵消首条目的 \cftbeforesecskip）
 \renewcommand{\cftaftertoctitle}{\par\vspace{0.8\baselineskip}%
   \vspace{0.65\baselineskip}\vspace{-\cftbeforesecskip}}
 
@@ -68,14 +63,13 @@
 
 \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
 
-%% 页面四周间距：对齐 MAI 技术报告（US Letter；左右≈77.5pt，上≈91pt，下≈105pt）
 \geometry{
   letterpaper,
-  hmargin=77.5pt,                 % 左右边距各 ~1.08in -> textwidth ~457pt (16.1cm)
-  top=91pt,                       % 正文顶端距纸顶（正文页无 running header）
-  textheight=596pt,               % 下边距自动 ~105pt
+  hmargin=77.5pt,
+  top=91pt,
+  textheight=596pt,
   headheight=34pt, headsep=8pt,
-  footskip=30pt                   % 页码距正文底 ~30pt
+  footskip=30pt
 }
 
 \newcommand{\titlefont}{\normalfont\bfseries\fontsize{21}{26}\selectfont}
@@ -91,8 +85,6 @@
   
 \makeatletter
 
-%% \authornote{...} 在作者列表下方紧贴显示一行 8pt sans（contribution markers / correspondence）
-%% 留空（不调用）则不显示该行
 \newcommand{\@authornote}{}
 \newcommand{\authornote}[1]{\gdef\@authornote{#1}}
 
@@ -108,14 +100,12 @@
 \end{flushleft}\egroup
 }
 
-%% 首页：无页眉、无页脚
 \fancypagestyle{firstpagestyle}{
     \fancyhf{}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
     }
 
-%% 正文页：仅右下角页码
 \fancypagestyle{fancy}{
     \fancyhf{}
     \renewcommand{\headrulewidth}{0pt}
@@ -144,7 +134,6 @@
 \newtheorem{corollary}{Corollary}
 \newtheorem{example}{Example}
 
-%% appendix：section 编号 A/B/C，figure / table / equation 按 section 编号（A.1）
 \newcommand{\beginsupplement}{%
     \appendix
 

@@ -471,7 +471,7 @@ Code: `src/avsd/lineage/b2_units.py` (units and occurrences), `b2_refs.py` (expl
 - `scripts/blind_labels.py make` writes the blind copies `data/labels/memory_pairs_blind.csv` (277 rows) and `parents_blind.csv` (50 rows).
   - They drop every model label, posterior, MAP parent and design column.
   - The B2 rows and each row's candidates are shuffled (seed 20261003). Before the shuffle, candidate 1 was the MAP parent in 44 of 50 rows. The mapping back is kept in `parents_blind_map.json`.
-- The owner's copies, with a Chinese guide, are in `~/Downloads/avsd_labels/` on the Mac (mode 600). The earlier 250-row sheet is moved to `旧版_不用标/`.
+- The owner's copies, are in `~/Downloads/avsd_labels/` on the Mac (mode 600). The earlier 250-row sheet is moved to `old_unused/`.
 - After labelling:
   1. Copy the owner's two files to `data/labels/`.
   2. Run `scripts/blind_labels.py merge`.
@@ -575,7 +575,7 @@ Code: `src/avsd/lineage/b2_units.py` (units and occurrences), `b2_refs.py` (expl
 ## 2026-10-02. Offline labelling page for the blind sheets
 
 - `scripts/blind_labeler_html.py <dir> <out.html>` builds one self-contained page from the two blind sheets. Rows are embedded as JSON. The page loads nothing from the network, keeps labels in the browser's localStorage, and exports `memory_pairs_labeled.csv` and `parents_labeled.csv` with exactly the blind sheets' columns. It can import an exported file to resume in another browser.
-- The owner's copy is `~/Downloads/avsd_labels/标注工具.html` (mode 600). It contains personal data, so it must never be published as an artifact or uploaded.
+- The owner's copy is `~/Downloads/avsd_labels/labeling.html` (mode 600). It contains personal data, so it must never be published as an artifact or uploaded.
 - When the exports come back, copy them to `data/labels/memory_pairs_blind.csv` and `parents_blind.csv` on GRASP, then run `scripts/blind_labels.py merge`.
 
 ## 2026-10-02. Intervals for pooled module A shares in the write-up
@@ -588,7 +588,7 @@ Code: `src/avsd/lineage/b2_units.py` (units and occurrences), `b2_refs.py` (expl
 
 ## 2026-10-03. One labelling dashboard for everything the owner checks
 
-- The offline page (`~/Downloads/avsd_labels/标注工具.html`, built by `scripts/blind_labeler_html.py`) now opens on an overview of every owner task with its progress:
+- The offline page (`~/Downloads/avsd_labels/labeling.html`, built by `scripts/blind_labeler_html.py`) now opens on an overview of every owner task with its progress:
   - the B1 blind sheet (277 units);
   - the B2 blind sheet (50 occurrences);
   - the stage-0 time-zone spot check, the 20 live UI links of outputs/qa/build_events.md section 12, pending since 2026-09-30.

@@ -2,18 +2,16 @@
 \RequirePackage{amsmath}
 \RequirePackage{amsthm}
 \RequirePackage{amssymb}
-\RequirePackage{mathtools}                % 必须在 amsmath 之后
-\RequirePackage{bm}                       % commands.tex 的 \vzero 等依赖
+\RequirePackage{mathtools}
+\RequirePackage{bm}
 \RequirePackage{mathpazo}
 
-%%==================== 排版 / 字体 ====================
 \RequirePackage{microtype}
 \RequirePackage{anyfontsize}
 \RequirePackage{titlesec}
 \RequirePackage{tocloft}
-\RequirePackage[defaultsans]{lato}        % \sfdefault = Lato，正文仍 Palatino
+\RequirePackage[defaultsans]{lato}
 
-%%==================== 颜色 ====================
 \RequirePackage{xcolor}
 \RequirePackage{colortbl}
 %% ---- Google GM2 palette (single source; see CLAUDE.md "Color palette") ----
@@ -25,40 +23,34 @@
 \definecolor{ggrey}{HTML}{5F6368}     % grey 700
 \colorlet{linkcol}{gblue}
 
-%%==================== 图与排版插入 ====================
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
 \RequirePackage{adjustbox}
-\RequirePackage{tikz}                     % \circled 依赖
+\RequirePackage{tikz}
 
 %%==================== Caption ====================
 \RequirePackage[labelsep=colon]{caption}
-\RequirePackage{subcaption}               % 必须在 caption 之后
+\RequirePackage{subcaption}
 
-%%==================== 表格 ====================
 \RequirePackage{booktabs}
 \RequirePackage{multirow}
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
 
-%%==================== 布局 ====================
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{authblk}
 \RequirePackage{enumitem}
 \RequirePackage{tcolorbox}
 
-%%==================== 工具 ====================
 \RequirePackage{verbatim}
 \RequirePackage{pifont}
 
-%%==================== 算法 ====================
 \RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
-\RequirePackage{minted}                   % 需 -shell-escape
+\RequirePackage{minted}
 
 %%==================== Bib ====================
 \RequirePackage[numbers,sort&compress]{natbib}
 
-%%==================== Hyperref（必须最后加载）====================
 \RequirePackage[colorlinks=true,allcolors=linkcol]{hyperref}
-\RequirePackage[capitalize,noabbrev]{cleveref} % 必须在 hyperref 之后
+\RequirePackage[capitalize,noabbrev]{cleveref}

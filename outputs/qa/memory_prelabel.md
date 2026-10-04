@@ -292,17 +292,17 @@ Accuracy against the third judge (D1 and D2 are the units each stratum stands fo
 
 ## 11. Review design
 
-Priority 1-必标 (inclusion probability 1): stratum A, the strong models disagree or one has no valid answer (29); stratum B, they agree and at least one rule version (v1, v2, v3) says otherwise (218). Every unit on which two rule versions disagree is in A or B, so the paired rule-set comparisons have no sampling error from the design. Stratum C (both models and all rule versions agree, 253 units): a random sample of 30 units (target 250 rows to label, at least 30 sampled), allocated to the labels in proportion (seed 20261003, permanent random numbers) is priority 2-抽样; the other 223 are 3-可选. Rows to label: 277. The sheet records each row's design_stratum and inclusion_prob; `compute_label_metrics` weights labelled rows by 1 / inclusion probability (adjusted within a stratum for rows left unlabelled).
+Priority 1-required (inclusion probability 1): stratum A, the strong models disagree or one has no valid answer (29); stratum B, they agree and at least one rule version (v1, v2, v3) says otherwise (218). Every unit on which two rule versions disagree is in A or B, so the paired rule-set comparisons have no sampling error from the design. Stratum C (both models and all rule versions agree, 253 units): a random sample of 30 units (target 250 rows to label, at least 30 sampled), allocated to the labels in proportion (seed 20261003, permanent random numbers) is priority 2-sampled; the other 223 are 3-optional. Rows to label: 277. The sheet records each row's design_stratum and inclusion_prob; `compute_label_metrics` weights labelled rows by 1 / inclusion probability (adjusted within a stratum for rows left unlabelled).
 
 | stratum | units | priority | sampled | inclusion probability |
 |---|---|---|---|---|
-| A | 29 | 1-必标 | 29 | 1 |
-| B | 218 | 1-必标 | 218 | 1 |
-| C:kept | 101 | 2-抽样 / 3-可选 | 12 | 0.119 |
-| C:modified | 16 | 2-抽样 / 3-可选 | 2 | 0.125 |
-| C:dropped | 50 | 2-抽样 / 3-可选 | 6 | 0.120 |
-| C:new | 52 | 2-抽样 / 3-可选 | 6 | 0.115 |
-| C:restored | 34 | 2-抽样 / 3-可选 | 4 | 0.118 |
+| A | 29 | 1-required | 29 | 1 |
+| B | 218 | 1-required | 218 | 1 |
+| C:kept | 101 | 2-sampled / 3-optional | 12 | 0.119 |
+| C:modified | 16 | 2-sampled / 3-optional | 2 | 0.125 |
+| C:dropped | 50 | 2-sampled / 3-optional | 6 | 0.120 |
+| C:new | 52 | 2-sampled / 3-optional | 6 | 0.115 |
+| C:restored | 34 | 2-sampled / 3-optional | 4 | 0.118 |
 
 ## 12. Validation against the owner's labels
 

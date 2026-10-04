@@ -11,34 +11,34 @@ from avsd.report.build import build_report
 from avsd.report.progress import parse_progress
 from avsd.report.tables import encode_table, is_forbidden, make_table, read_csv_table
 
-TAB_LABELS = ["总览", "数据与事件表", "聊天激发", "记忆保留", "变点", "模拟与依赖图", "外部验证", "QA 报告"]
+TAB_LABELS = ["Overview", "Data and event table", "Chat excitation", "Memory retention", "Change points", "Simulator and dependency graphs", "External validation", "QA reports"]
 PNG = base64.b64decode(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
 )
 
-PROGRESS = """# 进度
+PROGRESS = """# Progress
 
-## 阶段 0（P0）
+## Phase 0 (P0)
 
-| 任务 | 状态 | 产出与验收 |
+| Task | Status | Output and acceptance |
 |---|---|---|
-| 3.1 仓库结构 | Completed | 目录与 `pyproject.toml` |
-| 4.1-8 QA 报告 | In progress | ingest 与 build_events |
+| 3.1 Repository layout | Completed | folders and `pyproject.toml` |
+| 4.1-8 QA report | In progress | ingest and build_events |
 
-## 模块 B1、C（P0）
+## Module B1, C (P0)
 
-| 任务 | 状态 | 产出与验收 |
+| Task | Status | Output and acceptance |
 |---|---|---|
-| B1 memory 链 | Blocked | 等用户标注 |
-| C 变点与 CHANGELOG 对齐 | Not started | |
+| B1 memory chains | Blocked | waiting for labels |
+| C change points and CHANGELOG alignment | Not started | |
 
-## 工作日志（美东时间）
+## Work log (Eastern time)
 
-| 时间 | 步骤 | 结果 |
+| Time | Step | Result |
 |---|---|---|
-| 9/30 18:02 | 建仓库骨架 | 完成 |
+| 9/30 18:02 | Repository skeleton | done |
 
-| 9/30 18:04 | 读数据集文档 | 写入 schema_notes |
+| 9/30 18:04 | Read the dataset docs | wrote schema_notes |
 """
 
 QA_MD = """# QA: module C
@@ -132,7 +132,7 @@ def _cfg(root):
 
 def test_forbidden_column_names():
     for name in ("text", "text_head", "content_len", "heading_note", "summary", "Summaries", "evidence",
-                 "email", "e-mail", "userEmail", "`text`", "摘要"):
+                 "email", "e-mail", "userEmail", "`text`"):
         assert is_forbidden(name), name
     for name in ("context_len", "series_id", "n_units", "entries_within_w", "monitor_by_category"):
         assert not is_forbidden(name), name
@@ -176,26 +176,26 @@ def test_markdown_subset():
     assert '<details class="md-details"><summary>Series list</summary>' in html and "</details>" in html
     assert "<ol><li>First step.</li><li>Second step.</li></ol>" in html
     assert 'class="a-right"' in html
-    assert "someone@example.com" not in html and "按隐私规则隐藏列：email" in html
+    assert "someone@example.com" not in html and "Columns hidden by the privacy rules: email" in html
     assert md.sections(QA_MD, ("2.",)).startswith("## 2. Alignment")
     assert [t for _, _, t in md.headings(QA_MD)] == ["QA: module C", "1. Inputs", "2. Alignment"]
 
 
 def test_progress_tables_and_log():
     p = parse_progress(PROGRESS)
-    assert [t.title for t in p.tasks] == ["阶段 0（P0）", "模块 B1、C（P0）"]
+    assert [t.title for t in p.tasks] == ["Phase 0 (P0)", "Module B1, C (P0)"]
     assert p.status_counts() == {"Completed": 1, "In progress": 1, "Not started": 1, "Blocked": 1}
-    assert p.rows_for("moduleB1") == [("B1 memory 链", "Blocked")]
-    assert p.rows_for("moduleC") == [("C 变点与 CHANGELOG 对齐", "Not started")]
+    assert p.rows_for("moduleB1") == [("B1 memory chains", "Blocked")]
+    assert p.rows_for("moduleC") == [("C change points and CHANGELOG alignment", "Not started")]
     assert len(p.rows_for("data")) == 2
-    assert [r[1] for r in p.log.rows] == ["建仓库骨架", "读数据集文档"]  # rows after a blank line continue
+    assert [r[1] for r in p.log.rows] == ["Repository skeleton", "Read the dataset docs"]  # rows after a blank line continue
 
 
 def test_build_report(tree):
     out = build_report(_cfg(tree))
     assert out == tree / "reports" / "index.html"
     html = out.read_text(encoding="utf-8")
-    assert "AVSD 结果浏览" in html
+    assert "AVSD results browser" in html
     for label in TAB_LABELS:
         assert f">{label}</a>" in html, label
     for token in ("overview", "data", "moduleA", "moduleB1", "moduleC", "moduleD", "validation", "qa"):
@@ -211,7 +211,7 @@ def test_build_report(tree):
     for secret in ("SECRET-CELL-1", "SECRET-CELL-2", "SECRET-CELL-3", "someone@example.com"):
         assert secret not in html
     assert not any("parquet" in k for k in blocks)
-    assert "changepoint_monitor_findings.parquet" in html and "parquet 表不嵌入" in html
+    assert "changepoint_monitor_findings.parquet" in html and "Parquet tables are not embedded" in html
     # Figures inline, no external resources.
     assert "data:image/png;base64," + base64.b64encode(PNG).decode() in html
     assert re.search(r"<script[^>]+src=", html) is None and "<link" not in html and "@import" not in html
@@ -220,7 +220,7 @@ def test_build_report(tree):
     for css, status in (("done", "Completed"), ("doing", "In progress"), ("todo", "Not started"),
                         ("blocked", "Blocked")):
         assert f'<span class="pill {css}">{status}</span>' in html
-    assert "建仓库骨架" in html and "读数据集文档" in html
+    assert "Repository skeleton" in html and "Read the dataset docs" in html
     assert _values(blocks["d-ingest-summary"], "rows_written") == [46]
     # Views: chart entries from changelog_review.md, defaults and fixed filters, unknown file routing.
     views = json.loads(re.search(r'id="avsd-views">(.*?)</script>', html, re.DOTALL).group(1))
@@ -235,7 +235,7 @@ def test_build_report(tree):
     assert next(f for f in cp_view["filters"] if f["col"] == "method")["default"] == "pelt_l2"
     assert "mystery_stats.csv" in html
     # Missing outputs are listed with their expected names.
-    assert "尚未产出" in html and "outputs/tables/hawkes_*.csv" in html
+    assert "Not produced yet" in html and "outputs/tables/hawkes_*.csv" in html
     assert "outputs/figures/F6_memory_retention_v2.png" in html
 
 
@@ -244,7 +244,7 @@ def test_build_report_empty_tree(tmp_path):
     html = out.read_text(encoding="utf-8")
     for label in TAB_LABELS:
         assert f">{label}</a>" in html
-    assert "未找到 PROGRESS.md" in html and "尚未产出" in html
+    assert "PROGRESS.md not found" in html and "Not produced yet" in html
     for name in ("outputs/tables/changepoints.csv", "outputs/figures/F5_changepoint_timeline.png",
                  "outputs/tables/memory_hazard_v2.csv", "outputs/qa/*.md", "outputs/tables/hawkes_*.csv"):
         assert name in html, name
@@ -257,8 +257,8 @@ def test_unreadable_file_becomes_error_card(tree, monkeypatch):
 
     monkeypatch.setattr(build, "read_csv_table", boom)
     html = build_report(_cfg(tree)).read_text(encoding="utf-8")
-    assert "无法读取这个文件" in html and "cannot parse memory_hazard_v2.csv" in html
-    assert "AVSD 结果浏览" in html
+    assert "Could not read this file" in html and "cannot parse memory_hazard_v2.csv" in html
+    assert "AVSD results browser" in html
 
 
 def test_cli_report(tree):

@@ -11,7 +11,7 @@
   var TABS = $$(".tab").map(function (a) { return a.getAttribute("data-tab"); });
   var nf = new Intl.NumberFormat("en-US");
   var collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
-  var WEEK = "日一二三四五六";
+  var WEEK = "SMTWTFS";
 
   function el(tag, cls, text) {
     var e = document.createElement(tag);
@@ -81,7 +81,7 @@
       if (parts.every(function (p) { return URL_RE.test(p); })) {
         td.className = "links";
         parts.forEach(function (p, i) {
-          var a = el("a", null, parts.length > 1 ? "链接 " + (i + 1) : "链接");
+          var a = el("a", null, parts.length > 1 ? "Link " + (i + 1) : "Link");
           a.href = p; a.target = "_blank"; a.rel = "noopener noreferrer"; a.title = p;
           td.appendChild(a);
         });
@@ -96,7 +96,7 @@
     var s = String(v);
     return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
   }
-  function optionLabel(v) { return v === NULL_KEY ? "（空）" : v; }
+  function optionLabel(v) { return v === NULL_KEY ? "(empty)" : v; }
 
   /* ---------- interactive table ---------- */
   function TableWidget(node) {
@@ -104,7 +104,7 @@
     var T = getData(view.src || node.getAttribute("data-src"));
     this.listeners = []; this.context = []; this.filtered = []; this.filters = [];
     node.textContent = "";
-    if (!T) { node.appendChild(el("p", "loading", "数据缺失")); return; }
+    if (!T) { node.appendChild(el("p", "loading", "missing")); return; }
     var self = this;
     this.node = node; this.T = T; this.view = view;
     var idx = {};
@@ -139,8 +139,8 @@
   TableWidget.prototype.build = function () {
     var self = this, T = this.T;
     var bar = el("div", "toolbar");
-    var qWrap = el("label", "ctl", "筛选（当前显示的列）");
-    var q = el("input"); q.type = "search"; q.placeholder = "输入关键词";
+    var qWrap = el("label", "ctl", "Filter (visible columns)");
+    var q = el("input"); q.type = "search"; q.placeholder = "Type a keyword";
     q.addEventListener("input", debounce(function () { self.q = q.value; self.page = 0; self.apply(); }, 150));
     qWrap.appendChild(q); bar.appendChild(qWrap); this.qInput = q;
 
@@ -158,12 +158,12 @@
           if (a === NULL_KEY || b === NULL_KEY) return a === NULL_KEY ? 1 : -1;
           return num ? Number(a) - Number(b) : collator.compare(a, b);
         });
-        s.appendChild(new Option("全部", ""));
-        keys.forEach(function (k) { s.appendChild(new Option(optionLabel(k) + "（" + nf.format(counts[k]) + "）", k)); });
+        s.appendChild(new Option("All", ""));
+        keys.forEach(function (k) { s.appendChild(new Option(optionLabel(k) + " (" + nf.format(counts[k]) + ")", k)); });
         s.addEventListener("change", function () { f.value = s.value; self.page = 0; self.apply(); });
         f.input = s; wrap.appendChild(s);
       } else if (f.type === "text") {
-        var t = el("input"); t.type = "search"; t.placeholder = "包含…";
+        var t = el("input"); t.type = "search"; t.placeholder = "contains…";
         t.addEventListener("input", debounce(function () { f.value = t.value.trim().toLowerCase(); self.page = 0; self.apply(); }, 150));
         f.input = t; wrap.appendChild(t);
       } else if (f.type === "daterange") {
@@ -177,10 +177,10 @@
         });
         var range = el("span", "range"), a = el("input"), b = el("input");
         [a, b].forEach(function (x) { x.type = "date"; if (lo) x.min = lo; if (hi) x.max = hi; });
-        a.setAttribute("aria-label", f.label + " 起"); b.setAttribute("aria-label", f.label + " 止");
+        a.setAttribute("aria-label", f.label + " from"); b.setAttribute("aria-label", f.label + " to");
         var on = function () { f.from = a.value; f.to = b.value; self.page = 0; self.apply(); };
         a.addEventListener("change", on); b.addEventListener("change", on);
-        range.appendChild(a); range.appendChild(el("span", null, "至")); range.appendChild(b);
+        range.appendChild(a); range.appendChild(el("span", null, "to")); range.appendChild(b);
         f.inputs = [a, b]; wrap.appendChild(range);
       }
       bar.appendChild(wrap);
@@ -191,7 +191,7 @@
       var sum = el("summary", "btn"); pick.appendChild(sum); this.colSummary = sum;
       var panel = el("div", "colpick-panel");
       var acts = el("div", "colpick-actions");
-      var all = el("button", "btn", "全部列"), def = el("button", "btn", "默认列");
+      var all = el("button", "btn", "All columns"), def = el("button", "btn", "Default columns");
       all.type = def.type = "button";
       all.addEventListener("click", function () { self.visible = T.cols.map(function (c) { return c.k; }); self.syncCols(); self.apply(); });
       def.addEventListener("click", function () { self.visible = self.defaultVisible.slice(); self.syncCols(); self.apply(); });
@@ -212,9 +212,9 @@
       document.addEventListener("click", function (e) { if (pick.open && !pick.contains(e.target)) pick.open = false; });
       bar.appendChild(pick);
     }
-    var reset = el("button", "btn", "重置"); reset.type = "button"; reset.title = "恢复默认筛选、排序与列";
+    var reset = el("button", "btn", "Reset"); reset.type = "button"; reset.title = "Restore the default filters, sorting and columns";
     reset.addEventListener("click", function () { self.reset(); });
-    var dl = el("button", "btn primary", "下载 CSV"); dl.type = "button"; dl.title = "导出筛选后的行（当前显示的列）";
+    var dl = el("button", "btn primary", "Download CSV"); dl.type = "button"; dl.title = "Export the filtered rows (visible columns)";
     dl.addEventListener("click", function () { self.download(); });
     bar.appendChild(reset); bar.appendChild(dl);
     this.node.appendChild(bar);
@@ -237,15 +237,15 @@
     this.pager = el("div", "pager");
     this.node.appendChild(this.pager);
     var notes = [];
-    if (T.truncated) notes.push("文件共 " + nf.format(T.total) + " 行，页面只嵌入前 " + nf.format(T.rows.length) + " 行");
-    if (T.hidden.length) notes.push("按隐私规则隐藏列：" + T.hidden.join("、"));
-    if (notes.length) { this.node.appendChild(el("p", "info", notes.join("；") + "。")); }
+    if (T.truncated) notes.push("The file has " + nf.format(T.total) + " rows; the page embeds the first " + nf.format(T.rows.length) + " rows");
+    if (T.hidden.length) notes.push("Columns hidden by the privacy rules: " + T.hidden.join(", "));
+    if (notes.length) { this.node.appendChild(el("p", "info", notes.join("; ") + ".")); }
   };
   TableWidget.prototype.syncCols = function () {
     var on = {};
     this.visible.forEach(function (k) { on[k] = 1; });
     if (this.colBoxes) this.colBoxes.forEach(function (b) { b.checked = !!on[b.value]; });
-    if (this.colSummary) this.colSummary.textContent = "列 " + this.visible.length + "/" + this.T.cols.length;
+    if (this.colSummary) this.colSummary.textContent = "Columns " + this.visible.length + "/" + this.T.cols.length;
   };
   TableWidget.prototype.reset = function () {
     this.q = ""; this.qInput.value = ""; this.sort = null; this.page = 0;
@@ -339,7 +339,7 @@
       th.scope = "col";
       th.setAttribute("aria-sort", s && s.k === k ? (s.dir > 0 ? "ascending" : "descending") : "none");
       var b = el("button", "sort", c.name);
-      b.type = "button"; b.setAttribute("data-k", k); b.title = "点击排序";
+      b.type = "button"; b.setAttribute("data-k", k); b.title = "Click to sort";
       b.appendChild(el("span", "ind", s && s.k === k ? (s.dir > 0 ? "▲" : "▼") : ""));
       th.appendChild(b); tr.appendChild(th);
     });
@@ -357,12 +357,12 @@
       frag.appendChild(r);
     }
     if (!n) {
-      var er = el("tr"), ed = el("td", "empty-row", "没有符合条件的行");
+      var er = el("tr"), ed = el("td", "empty-row", "No matching rows");
       ed.colSpan = Math.max(1, this.visible.length); er.appendChild(ed); frag.appendChild(er);
     }
     this.tbody.appendChild(frag);
-    var txt = n ? "显示第 " + nf.format(start + 1) + "–" + nf.format(end) + " 行，共 " + nf.format(n) + " 行" : "共 0 行";
-    if (n !== this.base.length) txt += "（筛选自 " + nf.format(this.base.length) + " 行）";
+    var txt = n ? "Rows " + nf.format(start + 1) + "–" + nf.format(end) + " of " + nf.format(n) + " rows" : "0 rows";
+    if (n !== this.base.length) txt += " (filtered from " + nf.format(this.base.length) + " rows)";
     this.info.textContent = txt;
     this.pager.textContent = "";
     var pages = Math.max(1, Math.ceil(n / PAGE));
@@ -372,11 +372,11 @@
         b.addEventListener("click", function () { self.page = page; self.render(); self.scroll.scrollTop = 0; });
         self.pager.appendChild(b);
       };
-      mk("« 首页", 0, this.page === 0);
-      mk("‹ 上一页", this.page - 1, this.page === 0);
-      this.pager.appendChild(el("span", null, "第 " + (this.page + 1) + " / " + pages + " 页"));
-      mk("下一页 ›", this.page + 1, this.page >= pages - 1);
-      mk("末页 »", pages - 1, this.page >= pages - 1);
+      mk("« First", 0, this.page === 0);
+      mk("‹ Previous", this.page - 1, this.page === 0);
+      this.pager.appendChild(el("span", null, "Page " + (this.page + 1) + " / " + pages));
+      mk("Next ›", this.page + 1, this.page >= pages - 1);
+      mk("Last »", pages - 1, this.page >= pages - 1);
     }
   };
   TableWidget.prototype.download = function () {
@@ -400,7 +400,7 @@
     if (!table.tHead || !table.tBodies.length) return;
     var ths = Array.prototype.slice.call(table.tHead.rows[0].cells);
     ths.forEach(function (th, k) {
-      th.classList.add("sortable"); th.tabIndex = 0; th.title = "点击排序";
+      th.classList.add("sortable"); th.tabIndex = 0; th.title = "Click to sort";
       var go = function () {
         var dir = th.getAttribute("aria-sort") === "ascending" ? -1 : 1;
         ths.forEach(function (t) { t.removeAttribute("aria-sort"); });
@@ -449,11 +449,11 @@
   function CpChart(node, panel) {
     var cfg = VIEWS[node.id] || {}, T = getData(cfg.src), self = this;
     node.textContent = "";
-    if (!T) { node.appendChild(el("p", "loading", "数据缺失")); return; }
+    if (!T) { node.appendChild(el("p", "loading", "missing")); return; }
     var ci = function (n) { var c = T.cols.filter(function (x) { return x.name === n; })[0]; return c ? c.k : -1; };
     this.k = { date: ci("date"), run: ci("run_day"), aligned: ci("aligned"), doc: ci("aligned_documented"),
       goal: ci("nearest_goal_transition_date") };
-    if (this.k.date < 0) { node.appendChild(el("p", "loading", "变点表缺少 date 列")); return; }
+    if (this.k.date < 0) { node.appendChild(el("p", "loading", "The change-point table has no date column")); return; }
     this.node = node; this.T = T; this.basis = this.k.aligned >= 0 ? this.k.aligned : this.k.doc;
     this.entries = (cfg.entries || []).map(function (e) {
       return { id: e.id, c: e.c, r: e.r, s: e.s, e: e.e, sd: dayNum(e.s), ed: dayNum(e.e) };
@@ -471,20 +471,20 @@
     goals.delete(null);
     this.goals = goals;
     this.entries.forEach(function (e) { lo = Math.min(lo, e.sd); hi = Math.max(hi, e.ed); });
-    if (!isFinite(lo)) { node.appendChild(el("p", "loading", "没有可画的日期")); return; }
+    if (!isFinite(lo)) { node.appendChild(el("p", "loading", "No dates to draw")); return; }
     this.lo = lo - 3; this.hi = hi + 3; this.runOf = runOf;
 
     var controls = el("div", "cp-controls"), legend = el("div", "legend");
-    var keys = [["sw aligned", "对齐"], ["sw unaligned", "未对齐"], ["sw mark", "CHANGELOG 变更"], ["sw mark2", "roster 变动"]];
-    if (goals.size) keys.push(["sw dot", "village goal 切换"]);
+    var keys = [["sw aligned", "aligned"], ["sw unaligned", "unaligned"], ["sw mark", "CHANGELOG change"], ["sw mark2", "roster change"]];
+    if (goals.size) keys.push(["sw dot", "village goal transition"]);
     keys.forEach(function (x) {
       var s = el("span"); s.appendChild(el("i", x[0])); s.appendChild(document.createTextNode(x[1])); legend.appendChild(s);
     });
     controls.appendChild(legend);
     if (this.k.aligned >= 0 && this.k.doc >= 0) {
-      var lab = el("label", null, "对齐口径 "), sel = el("select");
-      sel.appendChild(new Option("CHANGELOG 条目（aligned）", "aligned"));
-      sel.appendChild(new Option("已知事件，含 goal 切换（aligned_documented）", "doc"));
+      var lab = el("label", null, "Alignment basis "), sel = el("select");
+      sel.appendChild(new Option("CHANGELOG entries (aligned)", "aligned"));
+      sel.appendChild(new Option("Documented events incl. goal transitions (aligned_documented)", "doc"));
       sel.className = "btn";
       sel.addEventListener("change", function () { self.basis = self.k[sel.value]; self.draw(); });
       lab.appendChild(sel); controls.appendChild(lab);
@@ -495,7 +495,7 @@
     this.wrap = el("div", "cp-wrap");
     this.wrap.tabIndex = 0;
     this.wrap.setAttribute("role", "group");
-    this.wrap.setAttribute("aria-label", "每个运行日的变点数柱状图；左右方向键移动，回车筛选表格");
+    this.wrap.setAttribute("aria-label", "Bar chart of change points per run day; arrow keys move, Enter filters the table");
     this.tip = el("div", "tooltip"); this.tip.hidden = true;
     node.appendChild(this.wrap);
 
@@ -562,7 +562,7 @@
 
     this.wrap.textContent = "";
     var s = svg("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img",
-      "aria-label": "每个运行日的变点数，按是否对齐分色，顶部为 CHANGELOG 条目" }, this.wrap);
+      "aria-label": "Change points per run day by alignment, with CHANGELOG entries on top" }, this.wrap);
     ticks.forEach(function (t) {
       svg("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), "class": t === 0 ? "axis" : "grid" }, s);
       svg("text", { x: m.l - 6, y: y(t) + 4, "text-anchor": "end", "class": "tick-text" }, s).textContent = nf.format(t);
@@ -573,13 +573,13 @@
       var dn = Math.round(mo.getTime() / 864e5), mon = mo.getUTCMonth() + 1, yr = mo.getUTCFullYear();
       if ((mon - 1) % step === 0) {
         svg("line", { x1: x(dn), x2: x(dn), y1: H - m.b, y2: H - m.b + 4, "class": "axis" }, s);
-        var label = yr !== lastYear ? yr + "年" + mon + "月" : mon + "月";
+        var label = yr !== lastYear ? yr + "-" + mon : "" + mon;
         svg("text", { x: x(dn), y: H - m.b + 16, "text-anchor": "middle", "class": "tick-text" }, s).textContent = label;
         lastYear = yr; n++;
       }
       mo = new Date(Date.UTC(yr, mon, 1));
     }
-    var rows2 = [[m.t - 54, m.t - 42, "变更", "mark", 0], [m.t - 36, m.t - 26, "roster", "mark2", 1]];
+    var rows2 = [[m.t - 54, m.t - 42, "change", "mark", 0], [m.t - 36, m.t - 26, "roster", "mark2", 1]];
     rows2.forEach(function (r) {
       svg("text", { x: m.l - 6, y: r[1] - 1, "text-anchor": "end", "class": "row-label" }, s).textContent = r[2];
       self.entries.forEach(function (e) {
@@ -607,9 +607,9 @@
     this.guide = svg("line", { x1: 0, x2: 0, y1: 4, y2: H - m.b, "class": "guide", visibility: "hidden" }, s);
     this.wrap.appendChild(this.tip);
     var pct = total ? Math.round(100 * nA / total) : 0;
-    this.summary.textContent = "按表格当前筛选（日期除外）：" + nf.format(total) + " 个变点，分布在 " + nf.format(byDay.size) +
-      " 个运行日；对齐 " + nf.format(nA) + "（" + pct + "%），未对齐 " + nf.format(total - nA) + "。" +
-      (range && (range.from || range.to) ? " 表格日期筛选 " + (range.from || "…") + " 至 " + (range.to || "…") + "，图中以浅色带标出。" : "");
+    this.summary.textContent = "With the table's current filters (dates aside):" + nf.format(total) + " change points over " + nf.format(byDay.size) +
+      " run days; aligned " + nf.format(nA) + " (" + pct + "%), unaligned " + nf.format(total - nA) + "." +
+      (range && (range.from || range.to) ? " Table date filter " + (range.from || "…") + " to " + (range.to || "…") + ", shaded in the chart." : "");
   };
   CpChart.prototype.snap = function (px) {
     if (!this.byDay || px < this.geom.left - 8 || px > this.geom.right + 8) return null;
@@ -630,11 +630,11 @@
     this.guide.setAttribute("x1", x); this.guide.setAttribute("x2", x); this.guide.setAttribute("visibility", "visible");
     var c = this.byDay.get(d) || { a: 0, u: 0 }, tip = this.tip, date = dayStr(d);
     tip.textContent = "";
-    var head = el("div", "tt-date", date + "（周" + WEEK[new Date(d * 864e5).getUTCDay()] + "）" +
+    var head = el("div", "tt-date", date + " (" + WEEK[new Date(d * 864e5).getUTCDay()] + ")" +
       (this.runOf[d] !== undefined ? " · run day " + this.runOf[d] : ""));
     tip.appendChild(head);
-    tip.appendChild(el("div", "tt-total", nf.format(c.a + c.u) + " 个变点"));
-    [["对齐", c.a, "var(--c-aligned)"], ["未对齐", c.u, "var(--c-unaligned)"]].forEach(function (r) {
+    tip.appendChild(el("div", "tt-total", nf.format(c.a + c.u) + " change points"));
+    [["aligned", c.a, "var(--c-aligned)"], ["unaligned", c.u, "var(--c-unaligned)"]].forEach(function (r) {
       var row = el("div", "tt-row"), key = el("i", "key");
       key.style.background = r[2];
       row.appendChild(key); row.appendChild(el("b", null, nf.format(r[1]))); row.appendChild(el("span", null, r[0]));
@@ -643,14 +643,14 @@
     var es = this.entries.filter(function (e) { return e.sd <= d && d <= e.ed; });
     if (es.length || this.goals.has(d)) {
       var box = el("div", "tt-entries");
-      if (this.goals.has(d)) box.appendChild(el("div", null, "village goal 切换"));
+      if (this.goals.has(d)) box.appendChild(el("div", null, "village goal transition"));
       es.slice(0, 6).forEach(function (e) {
-        box.appendChild(el("div", null, e.id + (e.c ? "（" + e.c + "）" : "") + (e.ed > e.sd ? " " + e.s + " 至 " + e.e : "")));
+        box.appendChild(el("div", null, e.id + (e.c ? " (" + e.c + ")" : "") + (e.ed > e.sd ? " " + e.s + " to " + e.e : "")));
       });
-      if (es.length > 6) box.appendChild(el("div", null, "另有 " + (es.length - 6) + " 条"));
+      if (es.length > 6) box.appendChild(el("div", null, "plus " + (es.length - 6) + " more"));
       tip.appendChild(box);
     }
-    if (this.table && this.table.dateFilter && this.table.dateFilter()) tip.appendChild(el("div", "tt-date", "点击把表格筛到当天"));
+    if (this.table && this.table.dateFilter && this.table.dateFilter()) tip.appendChild(el("div", "tt-date", "Click to filter the table to this day"));
     tip.hidden = false;
     var W = this.wrap.clientWidth, tw = tip.offsetWidth, left = (px === undefined ? x : px) + 14;
     if (left + tw > W) left = Math.max(0, (px === undefined ? x : px) - tw - 14);
@@ -669,10 +669,10 @@
     if (!panel || panel.getAttribute("data-ready")) return;
     panel.setAttribute("data-ready", "1");
     $$(".tbl", panel).forEach(function (n) {
-      try { WIDGETS[n.id] = new TableWidget(n); } catch (e) { n.textContent = "表格渲染失败：" + e.message; console.error(e); }
+      try { WIDGETS[n.id] = new TableWidget(n); } catch (e) { n.textContent = "Table failed to render: " + e.message; console.error(e); }
     });
     $$(".cpchart", panel).forEach(function (n) {
-      try { WIDGETS[n.id] = new CpChart(n, panel); } catch (e) { n.textContent = "图表渲染失败：" + e.message; console.error(e); }
+      try { WIDGETS[n.id] = new CpChart(n, panel); } catch (e) { n.textContent = "Chart failed to render: " + e.message; console.error(e); }
     });
     $$("table.md-table", panel).forEach(makeSortable);
   }
@@ -740,12 +740,12 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !box.hidden) { box.hidden = true; boxImg.removeAttribute("src"); } });
 
   /* ---------- theme ---------- */
-  var themeBtn = document.getElementById("theme-btn"), NAMES = { auto: "自动", light: "浅色", dark: "深色" };
+  var themeBtn = document.getElementById("theme-btn"), NAMES = { auto: "auto", light: "light", dark: "dark" };
   var mode = document.documentElement.getAttribute("data-theme") || "auto";
   var paintTheme = function () {
     if (mode === "auto") document.documentElement.removeAttribute("data-theme");
     else document.documentElement.setAttribute("data-theme", mode);
-    themeBtn.textContent = "主题：" + NAMES[mode];
+    themeBtn.textContent = "Theme: " + NAMES[mode];
   };
   themeBtn.addEventListener("click", function () {
     mode = mode === "auto" ? "light" : mode === "light" ? "dark" : "auto";

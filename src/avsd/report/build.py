@@ -3,7 +3,7 @@
 Inputs are aggregates only: outputs/qa/*.md, outputs/tables/*.csv and *.md,
 outputs/figures/*.png and PROGRESS.md. data/ is never read. CSS, JS, figures
 (base64 PNG) and table data (JSON) are inlined, so the page opens from disk and
-makes no network requests. Missing outputs show as "尚未产出" and new files are
+makes no network requests. Missing outputs show as "not produced yet" and new files are
 picked up on the next build: known names get their captions, other names are
 routed to a tab by pattern (registry.py). A file that cannot be read becomes an
 error card instead of failing the build.
@@ -45,14 +45,14 @@ try:
     ET = ZoneInfo("America/New_York")   # PROGRESS.md logs in US Eastern time
 except ZoneInfoNotFoundError:            # no tz database: fall back to the machine's zone
     ET = datetime.now().astimezone().tzinfo
-LOG_ROWS = 10                       # work-log rows shown before "显示其余"
+LOG_ROWS = 10                       # work-log rows shown before "show the rest"
 TABLE_BUDGET = 8_000_000            # embedded table JSON, all tables together
 IMAGE_BUDGET = 5_000_000            # embedded PNG bytes, all figures together
 ROUTE_ORDER = ("data", "moduleC", "moduleA", "moduleB2", "moduleB1", "moduleD", "validation")
-WEEKDAYS = "一二三四五六日"
-SHOWN = {"figure": "图", "table": "交互表", "md_table": "交互表", "ingest": "交互表（摘要）",
-         "md_sections": "文档摘录", "markdown": "文档", "cp_chart": "交互表", "error": "读取失败",
-         "pdf": "PDF（与同名 PNG 相同，未嵌入）", "listed": "仅列出（未嵌入）"}
+WEEKDAYS = "MTWTFSS"
+SHOWN = {"figure": "Figure", "table": "Interactive table", "md_table": "Interactive table", "ingest": "Interactive table (summary)",
+         "md_sections": "Document excerpt", "markdown": "Document", "cp_chart": "Interactive table", "error": "Could not be read",
+         "pdf": "PDF (same as the PNG, not embedded)", "listed": "Listed only (not embedded)"}
 
 
 @dataclass
@@ -163,29 +163,29 @@ class _Page:
         view["columns"] = [c for c in view.get("columns", []) if c in columns]
         view["fixed"] = [x for x in view.get("fixed", []) if x["col"] in columns]
         view["src"] = data_id
-        meta = f"{t.n_total:,} 行 × {len(t.columns)} 列 · 更新于 {_fmt_time(f.mtime)}"
+        meta = f"{t.n_total:,} rows × {len(t.columns)} columns · updated {_fmt_time(f.mtime)}"
         return {"kind": "table", "title": title, "note": note, "src": f"outputs/{f.rel}", "meta": meta,
                 "widget": self.widget(view), "data_id": data_id}
 
     def figure_card(self, title: str, note: str, f: OutFile) -> dict | None:
         """A base64 figure, or None when the image budget is used up."""
         if self.image_bytes + f.size > IMAGE_BUDGET:
-            f.why = f"图片总量超过 {IMAGE_BUDGET // 1_000_000} MB，未嵌入"
+            f.why = f"Images exceed {IMAGE_BUDGET // 1_000_000} MB in total, not embedded"
             return None
         self.image_bytes += f.size
         b64 = base64.b64encode(f.path.read_bytes()).decode()
         return {"kind": "figure", "title": title, "note": note, "src": f"outputs/{f.rel}",
-                "img": f"data:image/png;base64,{b64}", "meta": f"{_fmt_size(f.size)} · 更新于 {_fmt_time(f.mtime)}"}
+                "img": f"data:image/png;base64,{b64}", "meta": f"{_fmt_size(f.size)} · updated {_fmt_time(f.mtime)}"}
 
 
 def _html_card(title: str, note: str, f: OutFile, html: str) -> dict:
     return {"kind": "html", "title": title, "note": note, "src": f"outputs/{f.rel}",
-            "meta": f"更新于 {_fmt_time(f.mtime)}", "html": Markup(html)}
+            "meta": f"updated {_fmt_time(f.mtime)}", "html": Markup(html)}
 
 
 def _error_card(title: str, f: OutFile, err: Exception) -> dict:
-    return {"kind": "error", "title": title, "src": f"outputs/{f.rel}", "meta": f"更新于 {_fmt_time(f.mtime)}",
-            "note": f"无法读取这个文件（{type(err).__name__}: {err}）。其余内容不受影响。"}
+    return {"kind": "error", "title": title, "src": f"outputs/{f.rel}", "meta": f"updated {_fmt_time(f.mtime)}",
+            "note": f"Could not read this file ({type(err).__name__}: {err}). The rest of the page is not affected."}
 
 
 def _num(s: str | None) -> str:
@@ -257,10 +257,10 @@ def _known_card(it: Item, f: OutFile, tab: Tab, page: _Page, files: dict[str, Ou
         entries = _changelog_entries(review)
         if review is not None:
             review.mark(tab.token, "md_table")
-        note = it.note if entries else it.note + "未找到 changelog_review.md 中的条目，图中不显示 CHANGELOG。"
+        note = it.note if entries else it.note + "No entries found in changelog_review.md, so the chart shows no CHANGELOG."
         return {"kind": "chart", "title": it.title, "note": note,
                 "src": "outputs/tables/changepoints.csv + outputs/tables/changelog_review.md",
-                "meta": f"更新于 {_fmt_time(f.mtime)}",
+                "meta": f"updated {_fmt_time(f.mtime)}",
                 "widget": page.widget({"src": data_id, "entries": entries}), "data_id": data_id}
     return None
 
@@ -307,7 +307,7 @@ def _other_cards(token: str, page: _Page, files: dict[str, OutFile]) -> tuple[li
             elif f.ext == "pdf" and f.path.stem in pngs:
                 shown = "pdf"
             else:
-                f.why = "parquet 表不嵌入（只读 CSV）" if f.ext == "parquet" else "该类型不嵌入"
+                f.why = "Parquet tables are not embedded (CSV only)" if f.ext == "parquet" else "This type is not embedded"
         except Exception as err:
             card, shown = _error_card(f.name, f, err), "error"
         f.mark(token, shown)
@@ -328,7 +328,7 @@ def _qa_reports(files: dict[str, OutFile]) -> list[dict]:
         text, stem = f.read(), f.path.stem
         prefix = _unique_id("qa-" + _slug(stem), {r["id"] for r in out})
         out.append({"stem": stem, "id": prefix, "title": md.title(text) or stem, "file": f.name,
-                    "meta": f"{_fmt_size(f.size)} · 更新于 {_fmt_time(f.mtime)}",
+                    "meta": f"{_fmt_size(f.size)} · updated {_fmt_time(f.mtime)}",
                     "html": Markup(md.to_html(text, 2, prefix)),
                     "toc": [(f"{prefix}-h{k}", t) for k, lvl, t in md.headings(text) if lvl == 2]})
     return out
@@ -355,10 +355,10 @@ def _progress_html(progress: Progress) -> tuple[list[dict], dict | None]:
 
 def _file_index(files: dict[str, OutFile]) -> Table:
     rows = [[f.name, f.rel.split("/")[0], f.ext, f"{f.size / 1e3:.1f}", _fmt_time(f.mtime),
-             "、".join(TAB_LABELS.get(p, p) for p in f.pages) or TAB_LABELS.get(f.tab, f.tab),
+             ", ".join(TAB_LABELS.get(p, p) for p in f.pages) or TAB_LABELS.get(f.tab, f.tab),
              f.why or SHOWN.get(f.shown, SHOWN["listed"])]
             for f in sorted(files.values(), key=lambda f: f.rel)]
-    header = ["文件", "目录", "类型", "大小 (KB)", "更新时间", "所在页", "展示方式"]
+    header = ["File", "Contents", "Type", "Size (KB)", "Updated", "Page", "Shown as"]
     return make_table("outputs_index.csv", header, rows)
 
 
@@ -403,7 +403,7 @@ def build_report(cfg: dict) -> Path:
     panels = [_panel(tab, *items[tab.token], page, files, qa_reports, progress) for tab in MODULE_TABS]
     overview_others, overview_listed = _other_cards("overview", page, files)
     index_id, _ = page.table("outputs-index", lambda: _file_index(files))
-    index_filters = [{"type": "select", "col": c, "label": c} for c in ("目录", "类型", "所在页")]
+    index_filters = [{"type": "select", "col": c, "label": c} for c in ("Contents", "Type", "Page")]
     index_widget = page.widget({"src": index_id, "columns": [], "fixed": [], "filters": index_filters})
     task_sections, log = _progress_html(progress)
     latest = max(files.values(), key=lambda f: f.mtime) if files else None

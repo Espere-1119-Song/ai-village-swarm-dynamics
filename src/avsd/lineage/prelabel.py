@@ -51,9 +51,9 @@ Stages (`python -m avsd.lineage.prelabel <stage>`, scripts/prelabel_memory.sbatc
    confusion matrices, overturns of Qwen3-14B by the strong-model consensus,
    the third-judge check of scripts/prelabel_adjudicate.py and the design).
    Review design (`review_design`): units where the two strong models disagree
-   (A) or agree against any rule version (B) are priority 1-必标 with inclusion
+   (A) or agree against any rule version (B) are priority 1-required with inclusion
    probability 1; a random sample of the rest (C, everyone agrees), stratified
-   by label with proportional allocation, is 2-抽样 with probability n/N, so
+   by label with proportional allocation, is 2-sampled with probability n/N, so
    about REVIEW_TARGET rows are labelled. The sheet shows the strong models'
    labels and their agreed suggestion, not the rule or Qwen3-14B labels; it is
    sorted by priority and keeps any human_label and notes already filled.
@@ -135,7 +135,7 @@ SHEET_COLUMNS: tuple[str, ...] = (
 BACKUP_FILE = "memory_pairs_review_qwen14b.csv"
 LLM_LABELS_FILE = "memory_pairs_llm_labels.csv"  # pair_id, unit_key, one label column per model
 ADJUDICATION_FILE = "memory_pairs_adjudication.csv"  # third-judge labels on a sample of disagreements
-PRIORITIES: tuple[str, ...] = ("1-必标", "2-抽样", "3-可选")
+PRIORITIES: tuple[str, ...] = ("1-required", "2-sampled", "3-optional")
 SAMPLE_SIZE = 60  # agreement rows in the random sample (priority 2, Qwen3-14B design)
 STRATA: tuple[str, ...] = ("disagree", "agree")
 REVIEW_TARGET = 250  # rows to label in the re-check design (certainty rows plus the sample)
@@ -1139,13 +1139,13 @@ def review_design(rows: list[dict], seed: int, target: int = REVIEW_TARGET, min_
 
     rows: dicts with qwen35_label and gptoss_label ('' when a model gave no valid answer), the rule
     labels named in `rule_cols` ('' when missing), pair_id and unit_key.
-    - A (1-必标, probability 1): the two strong models disagree, or one has no valid answer.
-    - B (1-必标, probability 1): they agree and at least one rule version says otherwise (a missing
+    - A (1-required, probability 1): the two strong models disagree, or one has no valid answer.
+    - B (1-required, probability 1): they agree and at least one rule version says otherwise (a missing
       rule label counts as otherwise).
     - C:<label> (the rest): both models and every rule version say <label>. A random sample of
-      max(min_sample, target - |A| - |B|) of these rows is 2-抽样, allocated to the labels in
+      max(min_sample, target - |A| - |B|) of these rows is 2-sampled, allocated to the labels in
       proportion (`allocate`, at least one per non-empty label) and drawn with permanent random
-      numbers (`_prn`); the others are 3-可选. Every row of C:<label> has inclusion probability
+      numbers (`_prn`); the others are 3-optional. Every row of C:<label> has inclusion probability
       n_label / N_label, sampled or not.
     Every unit on which two rule versions disagree is in A or B, so paired comparisons of the rule
     sets carry no sampling error from the design. Returns one dict per row (priority, stratum,
@@ -2305,24 +2305,24 @@ def _cell(v) -> str:
     return " " + s if s[:1] in ("=", "+", "-", "@") else s
 
 
-README_TEXT = """# memory_pairs_review.csv 复核说明
+README_TEXT = """# memory_pairs_review.csv review guide
 
-这张表有 {n_rows} 行，每行是一个事实单元在一对相邻 memory 版本之间的状态，用于校验 B1 规则方法（SPEC 6.3.4）。PREV 是某次 memory 重写（consolidation）的输入版本，NEXT 是重写后的输出版本。prev_excerpt、next_excerpt 是两个版本中围绕这个值截取的片段，每段约 300 字符：⟦ ⟧ 标出与单元取值相同的文字，⟨ ⟩ 标出同一上下文中的其他取值，… 表示截断，↵ 是换行，«masked» 是遮掉的密码、token 等凭证，(+N more matches) 表示还有 N 处同样的取值没有列出。earlier_excerpt 取自 PREV 之前最近一个含有该单元的版本；只有规则 v1 判为 restored 的单元检索过更早的版本，其他行没有这一列的内容。用 Excel 或 Numbers 直接打开即可。
+This sheet has {n_rows} rows. Each row is the state of one fact unit between two consecutive memory versions and serves to validate the rule-based fact tracking. PREV is the input of a memory rewrite (consolidation) and NEXT its output. prev_excerpt and next_excerpt are excerpts of about 300 characters around the value: ⟦ ⟧ marks text equal to the unit's value, ⟨ ⟩ other values in the same context, … a cut, ↵ a line break, «masked» a masked credential, and (+N more matches) further matches not shown. earlier_excerpt comes from the latest version before PREV that holds the unit; only units that rule v1 calls restored were searched. Open the file in Excel or Numbers.
 
-两个本地模型各自独立预标：qwen35_label、qwen35_confidence、qwen35_rationale 来自 Qwen3.5-122B-A10B，gptoss_label、gptoss_confidence、gptoss_rationale 来自 gpt-oss-120b。它们看到的片段和表中相同，看不到规则的结果，也看不到对方的结果。两个模型一致时 suggested_label 填这个标签，不一致时留空。模型也会出错（抽查结果见 outputs/qa/memory_prelabel.md），suggested_label 只供参考，请按片段独立判断。规则方法 v1、v2、v3 的结果和早先 Qwen3-14B 的预标不在表中显示，因为人工标注正是用来评估它们的，统计时按 unit_key 从其他文件对回。旧表备份为 memory_pairs_review_qwen14b.csv，不需要再看。
+Two local models labelled every row independently: qwen35_label, qwen35_confidence and qwen35_rationale come from Qwen3.5-122B-A10B, and gptoss_label, gptoss_confidence and gptoss_rationale from gpt-oss-120b. They saw the same excerpts, not the rules' results and not each other's. suggested_label holds their label when they agree and stays empty otherwise. The models make mistakes (see outputs/qa/memory_prelabel.md), so judge each excerpt yourself. The results of rules v1, v2 and v3 and the earlier Qwen3-14B labels are not shown, because the human labels are what evaluates them.
 
-第一列 review_priority 是复核优先级，表格已按它排序。1-必标 共 {n1} 行：design_stratum 为 A 的 {nA} 行是两个模型不一致（或有一个没有给出有效答案）；为 B 的 {nB} 行是两个模型一致，但三版规则中至少一版给出不同结果。其余 {nC} 行两个模型与三版规则全部一致（design_stratum 为 C:标签），从中按建议标签分层随机抽出 {n2} 行作为 2-抽样（种子 {seed}），剩下 {n3} 行是 3-可选。请标完全部 1-必标 和 2-抽样，共 {n12} 行；3-可选 不用标，标了也只进入不加权的参考统计。inclusion_prob 是这一行进入必标或抽样的概率：A、B 层为 1，C 层为该层抽样行数除以该层行数。统计时每个已标行按 1/inclusion_prob 加权，代表全部 {n_rows} 行。三版规则之间互相不一致的单元全部在 A、B 层，所以比较 v1、v2、v3 时不受抽样误差影响。
+The first column, review_priority, sorts the sheet. 1-required has {n1} rows: {nA} rows of stratum A, where the two models disagree or one gave no valid answer, and {nB} rows of stratum B, where they agree but at least one rule version says otherwise. The other {nC} rows agree everywhere (stratum C:label); {n2} of them are drawn at random by suggested label as 2-sampled (seed {seed}), and the remaining {n3} are 3-optional. Please label all 1-required and 2-sampled rows, {n12} in all. inclusion_prob is the chance that a row was selected (1 in strata A and B); each labelled row is weighted by 1/inclusion_prob to stand for all {n_rows} rows.
 
-请在 human_label 列填写 kept、modified、dropped、new、restored 之一（小写英文）。只看片段无法判断时，在 notes 写明原因，human_label 留空，留空的行不进入统计。单元本身抽错了（比如把编号当成数字），仍按这个值在两个版本中是否出现来填，并在 notes 写 bad_unit。数字、金额、百分比和时刻要连同上下文一起看，“56 位捐款人”和“56 天”是两个单元；其他类型只看取值。
-- kept：PREV 和 NEXT 都有这个事实，写法可以不同。
-- modified：PREV 有；NEXT 里这个事实还在，但取值换了，例如捐款人数从 56 变成 60。
-- dropped：PREV 有；NEXT 里既没有这个值，也没有同一事实的新值。
-- new：PREV 没有，NEXT 有，表中也没有更早的版本含有它。
-- restored：PREV 没有，NEXT 有，更早的版本里出现过（见 earlier_excerpt）。
+Fill human_label with one of kept, modified, dropped, new or restored. If the excerpts do not settle it, leave human_label empty and give the reason in notes. If the unit itself is wrong (for example an ID taken as a number), label whether the value appears and write bad_unit in notes. Numbers, amounts, percentages and clock times count together with their context word; other types count by value only.
+- kept: both PREV and NEXT hold the fact, in any wording.
+- modified: PREV holds it; NEXT keeps the fact with a new value.
+- dropped: PREV holds it; NEXT has neither the value nor a new value of the same fact.
+- new: PREV lacks it, NEXT holds it, and no earlier version holds it.
+- restored: PREV lacks it, NEXT holds it, and an earlier version held it (see earlier_excerpt).
 
-两个容易出错的地方（第三方抽查时模型常在这里出错）：一是 ⟦ ⟧ 只标出程序找到的匹配，同一个值换了写法（例如日期里用了别的连字符，或 “56 位捐款人” 写成 “捐款人：56”）不会被标出，请以片段原文为准；二是 earlier_excerpt 只说明更早的版本出现过相同的取值和上下文词，只有那里说的是同一个事实才算 restored，同一个数字或词用在不相关的地方应标 new。
+Two common pitfalls: ⟦ ⟧ marks only the matches the program found, so the same value in another spelling is not marked; and earlier_excerpt only shows the same value and context words earlier, which counts as restored only when it is the same fact.
 
-表中有 memory 原文片段，含人名、邮箱、电话等个人信息。文件只能留在 `data/labels/`（已写入 .gitignore），不要分享、上传或提交到 git。design_stratum、inclusion_prob 和最后一列 unit_key 用于统计和对回 memory_pairs.csv，请勿修改。填完或填完一部分后，在 GRASP 上 `source scripts/env.sh`，再运行 `python -m avsd.lineage.prelabel metrics`，结果写入 `outputs/tables/memory_label_metrics.csv`：三版规则（rule、rule_v2、rule_v3）、Qwen3-14B（llm）和两个模型（qwen35_122b、gptoss_120b）相对人工标注的精确率、召回率与 F1，含按设计加权的估计和 95% 置信区间，也列出不加权的结果；只用已填写的行。
+The sheet holds memory excerpts with personal data. Keep it in `data/labels/` (git-ignored); never share, upload or commit it. Do not edit design_stratum, inclusion_prob or unit_key. When done, run `source scripts/env.sh` and `python -m avsd.lineage.prelabel metrics` on GRASP; it writes `outputs/tables/memory_label_metrics.csv` with precision, recall and F1 of the rules and models against the human labels, weighted by design with 95% intervals, plus unweighted results.
 """
 
 
@@ -3423,14 +3423,14 @@ def render_recheck(reqs: list[dict], answers: dict, labels: dict[str, list[str]]
     cb, sb = dinfo["C_by_label"], dinfo["sample_by_label"]
     c = dinfo["counts"]
     L += ["## 11. Review design", "",
-          (f"Priority 1-必标 (inclusion probability 1): stratum A, the strong models disagree or one has no valid "
+          (f"Priority 1-required (inclusion probability 1): stratum A, the strong models disagree or one has no valid "
            f"answer ({dinfo['A']}); stratum B, they agree and at least one rule version (v1, v2, v3) says "
            f"otherwise ({dinfo['B']}). Every unit on which two rule versions disagree is in A or B, so the paired "
            "rule-set comparisons have no sampling error from the design. Stratum C (both models and all rule "
            f"versions agree, {sum(cb.values())} units): a random sample of {dinfo['n_sample']} units (target "
            f"{dinfo['target']} rows to label, at least {dinfo['min_sample']} sampled), allocated to the labels in "
-           f"proportion (seed {dinfo['seed']}, permanent random numbers) is priority 2-抽样; the other "
-           f"{c[PRIORITIES[2]]} are 3-可选. Rows to label: {c[PRIORITIES[0]] + c[PRIORITIES[1]]}. The sheet records "
+           f"proportion (seed {dinfo['seed']}, permanent random numbers) is priority 2-sampled; the other "
+           f"{c[PRIORITIES[2]]} are 3-optional. Rows to label: {c[PRIORITIES[0]] + c[PRIORITIES[1]]}. The sheet records "
            "each row's design_stratum and inclusion_prob; `compute_label_metrics` weights labelled rows by 1 / "
            "inclusion probability (adjusted within a stratum for rows left unlabelled)."), "",
           _md_table(["stratum", "units", "priority", "sampled", "inclusion probability"],

@@ -21,7 +21,7 @@ MAX_ROWS = 20_000            # rows embedded per table
 MAX_JSON_BYTES = 4_000_000   # encoded size budget per table
 
 # A column is dropped when one of its name tokens contains one of these stems.
-_FORBIDDEN = re.compile(r"text|content|heading|summar|evidence|mail|文本|正文|内容|摘要|证据|邮箱|邮件|标题")
+_FORBIDDEN = re.compile(r"text|content|heading|summar|evidence|mail")
 _TOKEN_SPLIT = re.compile(r"[^0-9A-Za-z\u4e00-\u9fff]+|(?<=[a-z])(?=[A-Z])")
 _INT = re.compile(r"[+-]?(0|[1-9]\d*)$")  # no leading zeros: "007" stays a string
 _FLOAT = re.compile(r"[+-]?((0|[1-9]\d*)(\.\d*)?|\.\d+)([eE][+-]?\d+)?$")

@@ -848,7 +848,7 @@ def test_report_recheck_design(tmp_path, monkeypatch):
         llm = {r["unit_key"]: r for r in csv.DictReader(f)}
     assert llm[k[5]]["qwen35_122b"] == "" and llm[k[3]]["qwen3_14b"] == "dropped" and llm[k[4]]["gptoss_120b"] == "kept"
     readme = (labels / pre.README_FILE).read_text()
-    assert readme.startswith("# memory_pairs_review.csv") and "共 5 行" in readme and "{" not in readme
+    assert readme.startswith("# memory_pairs_review.csv") and "5 rows" in readme and "{" not in readme
     qa = (tmp_path / "out" / "qa" / pre.QA_FILE).read_text()
     assert secret_text not in qa and "## 6. Agreement between labellers" in qa and "## 11. Review design" in qa
     assert "No judgments recorded yet." in qa and "Qwen3-14B → consensus" in qa
@@ -993,7 +993,7 @@ def test_parent_report_with_strong_models(tmp_path):
     assert by["c1"]["human_parent"] == "2" and by["c1"]["notes"] == "direct reply"  # kept
     assert [r["review_priority"] for r in rows] == sorted(r["review_priority"] for r in rows)
     readme = (labels / pp.README_FILE).read_text()
-    assert "suggested_parent" in readme and "{" not in readme and "1 共 3 行" in readme
+    assert "suggested_parent" in readme and "{" not in readme and "priority 1: 3 rows" in readme
     qa = (tmp_path / "out" / "qa" / pp.QA_FILE).read_text()
     assert secret not in qa and "Re-check with two stronger models" in qa and "| MAP parent / gpt-oss-120b | 5 |" in qa
     pytest.importorskip("scipy")

@@ -10,7 +10,7 @@
 | Change points | Which behavioural shifts coincide with documented scaffolding changes | PELT and BOCPD change points aligned with the CHANGELOG |
 | Simulator and dependency graphs | Whether a generative model of swarm work matches real agent work | Simulator of task DAGs and agent swarms, dependency graphs of computer-use sessions |
 
-A one-page summary of the project and its findings is in `reports/project_summary.md`. The full write-up is in `reports/writeup.md`. `python scripts/writeup_figures.py` draws its figures from the aggregate tables, and `python scripts/writeup_pdf.py` typesets it as `reports/writeup.pdf`. The results browser is online at https://espere-1119-song.github.io/ai-village-swarm-dynamics/reports/, and `avsd report` builds a self-contained interactive page of every figure and table in `reports/index.html`. `SPEC.md` holds the plan, `docs/decisions.md` every analysis decision and `PROGRESS.md` (in Chinese) the work log.
+A one-page summary of the project and its findings is in `reports/project_summary.md`. The full write-up is in `reports/writeup.md`. `python scripts/writeup_figures.py` draws its figures from the aggregate tables, and `python scripts/writeup_pdf.py` typesets it as `reports/writeup.pdf`. The results browser is online at https://espere-1119-song.github.io/ai-village-swarm-dynamics/reports/, and `avsd report` builds a self-contained interactive page of every figure and table in `reports/index.html`. `SPEC.md` holds the plan, `docs/decisions.md` every analysis decision.
 
 A demo video of 1 min 54 s with an English voice-over is `reports/demo.mp4`. `scripts/demo_video/build_video.sh` renders it from the aggregate tables: `scenes.html` draws each frame, headless Chrome captures the frames, `narration.py` speaks the script with the Kokoro TTS model and ffmpeg encodes both.
 
@@ -71,7 +71,6 @@ The fact units of B1 and the parents of B2 are checked against blind labels. Cla
 ```bash
 python scripts/blind_labels.py make                                  # blind sheets in data/labels/
 python scripts/blind_fulltext.py                                     # masked full memory texts for the page
-python scripts/blind_labeler_html.py data/labels labeler.html       # offline labelling page
 python scripts/blind_labels.py merge                                 # owner's labels back into the review sheets
 python -m avsd.lineage.prelabel import-claude                        # Claude's B1 labels
 python -m avsd.lineage.prelabel_parents claude                       # Claude's B2 labels

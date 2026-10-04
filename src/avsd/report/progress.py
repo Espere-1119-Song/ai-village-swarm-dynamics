@@ -47,14 +47,14 @@ class Progress:
 
 def _tab_of(section: str, task: str) -> str | None:
     """Map a task row to a report tab from its section heading and task name."""
-    if "阶段 0" in section:
+    if "Phase 0" in section:
         return "data"
-    if "外部验证" in section:
+    if "External validation" in section:
         return "validation"
     prefix = re.match(r"([A-E])(\d?)(?![\w])", task)
     letters: list[str] = []
-    if m := re.match(r"\s*模块\s*([^（(]+)", section):
-        letters = [x.strip() for x in re.split(r"[、,/，\s]+", m.group(1)) if x.strip()]
+    if m := re.match(r"\s*Module\s*([^(]+)", section):
+        letters = [x.strip() for x in re.split(r"[,/\s]+", m.group(1)) if x.strip()]
     if prefix and (not letters or any(x.startswith(prefix.group(1)) for x in letters)):
         return _MODULE_TAB.get(prefix.group(0)) or _MODULE_TAB.get(prefix.group(1))
     if len(letters) == 1:
@@ -71,9 +71,9 @@ def parse_progress(text: str) -> Progress:
             section = plain(b.text)
         elif b.kind == "table" and section:
             header = [plain(h) for h in b.table.header]
-            status_col = next((k for k, h in enumerate(header) if h in ("状态", "Status")), None)
+            status_col = next((k for k, h in enumerate(header) if h in ("Status",)), None)
             table = TaskTable(section, header, b.table.rows, status_col)
-            if section.startswith("工作日志"):
+            if section.startswith("Work log"):
                 log = log or table
             elif status_col is not None:
                 table.tabs = [_tab_of(section, plain(r[0]) if r else "") for r in table.rows]

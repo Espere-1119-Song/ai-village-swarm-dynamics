@@ -657,8 +657,8 @@ def test_label_metrics_join_every_rule_version(tmp_path):
 
     labels = tmp_path / "labels"
     labels.mkdir()
-    rows = [("1-必标", 1, "kept", "dropped", "dropped"), ("1-必标", 2, "modified", "dropped", "dropped"),
-            ("2-抽样", 3, "kept", "kept", "kept"), ("2-抽样", 4, "new", "new", "new")]
+    rows = [("1-required", 1, "kept", "dropped", "dropped"), ("1-required", 2, "modified", "dropped", "dropped"),
+            ("2-sampled", 3, "kept", "kept", "kept"), ("2-sampled", 4, "new", "new", "new")]
     with open(labels / pre.REVIEW_FILE, "w", encoding="utf-8-sig", newline="") as f:
         wr = csv.DictWriter(f, fieldnames=list(pre.REVIEW_COLUMNS))
         wr.writeheader()
