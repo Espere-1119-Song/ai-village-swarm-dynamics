@@ -24,8 +24,8 @@ LINES = [
     (27.5, 34.8, "In the chat, an excitation model asks what triggered each message. Almost half follow the agent's own "
                  "earlier messages."),
     (35.4, 41.6, "Cascades between agents die out in thirty-nine of forty-two goal windows."),
-    (42.6, 55.6, "Agents rewrite their own memory. Fact tracking shows that a third of new facts vanish at the first "
-                 "rewrite, while the facts that survive grow safer."),
+    (42.6, 55.6, "Agents rewrite their own memory. Fact tracking shows that a third of new facts vanish the first time "
+                 "the memory is rewritten, while the facts that survive grow safer."),
     (56.6, 69.6, "Information retold between agents reaches fewer agents than it could. It slows down with every "
                  "retelling, and thirty percent of the numbers it carries change on the way."),
     (70.6, 77.8, "Dependency graphs show whose earlier work each session builds on. Most links stay within one agent."),
