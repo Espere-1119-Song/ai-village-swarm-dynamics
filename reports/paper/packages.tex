@@ -1,0 +1,64 @@
+%%==================== Math ====================
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}                % 必须在 amsmath 之后
+\RequirePackage{bm}                       % commands.tex 的 \vzero 等依赖
+\RequirePackage{mathpazo}
+
+%%==================== 排版 / 字体 ====================
+\RequirePackage{microtype}
+\RequirePackage{anyfontsize}
+\RequirePackage{titlesec}
+\RequirePackage{tocloft}
+\RequirePackage[defaultsans]{lato}        % \sfdefault = Lato，正文仍 Palatino
+
+%%==================== 颜色 ====================
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+%% ---- Google GM2 palette (single source; see CLAUDE.md "Color palette") ----
+\definecolor{gblue}{HTML}{1A73E8}     % blue 600
+\definecolor{gred}{HTML}{D93025}      % red 600
+\definecolor{gyellow}{HTML}{E37400}   % yellow 900, the only Google yellow at 3:1 on white
+\definecolor{ggreen}{HTML}{1E8E3E}    % green 600
+\definecolor{gpurple}{HTML}{9334E6}   % purple 600
+\definecolor{ggrey}{HTML}{5F6368}     % grey 700
+\colorlet{linkcol}{gblue}
+
+%%==================== 图与排版插入 ====================
+\RequirePackage{graphicx}
+\RequirePackage{wrapfig}
+\RequirePackage{adjustbox}
+\RequirePackage{tikz}                     % \circled 依赖
+
+%%==================== Caption ====================
+\RequirePackage[labelsep=colon]{caption}
+\RequirePackage{subcaption}               % 必须在 caption 之后
+
+%%==================== 表格 ====================
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+\RequirePackage{tabularx}
+\RequirePackage{makecell}
+
+%%==================== 布局 ====================
+\RequirePackage{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{authblk}
+\RequirePackage{enumitem}
+\RequirePackage{tcolorbox}
+
+%%==================== 工具 ====================
+\RequirePackage{verbatim}
+\RequirePackage{pifont}
+
+%%==================== 算法 ====================
+\RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
+\RequirePackage{minted}                   % 需 -shell-escape
+
+%%==================== Bib ====================
+\RequirePackage[numbers,sort&compress]{natbib}
+
+%%==================== Hyperref（必须最后加载）====================
+\RequirePackage[colorlinks=true,allcolors=linkcol]{hyperref}
+\RequirePackage[capitalize,noabbrev]{cleveref} % 必须在 hyperref 之后

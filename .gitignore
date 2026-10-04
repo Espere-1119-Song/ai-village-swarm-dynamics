@@ -31,3 +31,10 @@ reports/build/
 scripts/demo_video/fonts/
 scripts/demo_video/assets/
 scripts/demo_video/narration.wav
+
+# LaTeX build files of reports/paper (arxivtmpl)
+reports/paper/*
+!reports/paper/main.tex
+!reports/paper/arxivtmpl.cls
+!reports/paper/packages.tex
+!reports/paper/commands.tex
