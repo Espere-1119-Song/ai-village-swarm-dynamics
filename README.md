@@ -88,9 +88,6 @@ The labelling page embeds personal data from the logs. Keep it on the labeller's
 - `outputs/qa/`: one QA report per step, with inputs, checks, acceptance items and runtimes.
 - `reports/index.html` and `reports/writeup.md`.
 
-
-`reports/findings_zh.md` (and the self-contained `reports/findings_zh.html`) explains the main findings in plain Chinese for readers outside the field. `python scripts/explainer_figures.py` draws its figures from `outputs/tables/` (it needs a CJK font, so run it on a machine that has one), and `python scripts/explainer_html.py` builds the HTML page.
-
 ## Tests
 
 ```bash
