@@ -1,0 +1,366 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>avsd demo</title>
+<style>
+@font-face { font-family: "IS"; src: url(fonts/InstrumentSans-Regular.ttf); font-weight: 400; }
+@font-face { font-family: "IS"; src: url(fonts/InstrumentSans-Medium.ttf); font-weight: 500; }
+@font-face { font-family: "IS"; src: url(fonts/InstrumentSans-SemiBold.ttf); font-weight: 600; }
+html, body { margin: 0; background: #fff; overflow: hidden; }
+canvas { display: block; }
+</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="data.js"></script>
+<script>
+const W = 1920, H = 1080, L = 140, R = 1780;
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const D = window.DATA;
+const C = {
+  ink: '#202124', muted: '#5F6368', g6: '#80868B', g5: '#9AA0A6', g4: '#BDC1C6', g3: '#DADCE0', g2: '#E8EAED', g1: '#F1F3F4',
+  b7: '#1967D2', b6: '#1A73E8', b5: '#4285F4', b4: '#669DF6', b3: '#8AB4F8', b1: '#D2E3FC',
+  r7: '#C5221F', r6: '#D93025', r5: '#EA4335', r4: '#EE675C', r3: '#F28B82', r1: '#FAD2CF',
+  y9: '#E37400', y6: '#F9AB00', y5: '#FBBC04', y3: '#FDD663', y1: '#FEEFC3',
+  n7: '#188038', n6: '#1E8E3E', n5: '#34A853', n4: '#5BB974', n3: '#81C995', n1: '#CEEAD6',
+  p7: '#8430CE', p6: '#9334E6', p5: '#A142F4', p4: '#AF5CF7', p3: '#C58AF9', p1: '#E9D2FD',
+};
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - clamp(x), 3);
+const eio = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const lerp = (a, b, p) => a + (b - a) * p;
+const fmt = n => Math.round(n).toLocaleString('en-US');
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+function txt(s, x, y, o = {}) {
+  const { size = 32, weight = 400, color = C.ink, align = 'left', alpha = 1, base = 'alphabetic' } = o;
+  if (alpha <= 0) return;
+  ctx.save(); ctx.globalAlpha *= alpha; ctx.font = `${weight} ${size}px IS`; ctx.fillStyle = color;
+  ctx.textAlign = align; ctx.textBaseline = base; ctx.fillText(s, x, y); ctx.restore();
+}
+function width(s, size, weight = 400) { ctx.save(); ctx.font = `${weight} ${size}px IS`; const w = ctx.measureText(s).width; ctx.restore(); return w; }
+function rise(s, x, y, t, t0, o = {}) { const p = eo(prog(t, t0, t0 + 0.6)); if (p <= 0) return; txt(s, x, y + (1 - p) * 22, { ...o, alpha: (o.alpha ?? 1) * p }); }
+function dot(x, y, r, c, a = 1) { if (a <= 0 || r <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); ctx.restore(); }
+function ring(x, y, r, c, lw = 2, a = 1) { ctx.save(); ctx.globalAlpha *= a; ctx.strokeStyle = c; ctx.lineWidth = lw; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke(); ctx.restore(); }
+function rrect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+function box(x, y, w, h, r, fill, stroke, a = 1, lw = 2) { ctx.save(); ctx.globalAlpha *= a; rrect(x, y, w, h, r); if (fill) { ctx.fillStyle = fill; ctx.fill(); } if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); } ctx.restore(); }
+function shadowBox(x, y, w, h, r, a = 1) { ctx.save(); ctx.globalAlpha *= a; ctx.shadowColor = 'rgba(60,64,67,0.18)'; ctx.shadowBlur = 24; ctx.shadowOffsetY = 6; rrect(x, y, w, h, r); ctx.fillStyle = '#fff'; ctx.fill(); ctx.restore(); }
+function line(x0, y0, x1, y1, c, lw = 2, a = 1, dash = null) { ctx.save(); ctx.globalAlpha *= a; ctx.strokeStyle = c; ctx.lineWidth = lw; if (dash) ctx.setLineDash(dash); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); ctx.restore(); }
+function curve(x0, y0, x1, y1, p, c, lw = 2, a = 1) {
+  if (p <= 0 || a <= 0) return;
+  const dx = (x1 - x0) * 0.5, P = [[x0, y0], [x0 + dx, y0], [x1 - dx, y1], [x1, y1]];
+  const l = (u, v) => [lerp(u[0], v[0], p), lerp(u[1], v[1], p)];
+  const q1 = l(P[0], P[1]), A = l(P[1], P[2]), q2 = l(q1, A), B = l(P[2], P[3]), Cc = l(A, B), q3 = l(q2, Cc);
+  ctx.save(); ctx.globalAlpha *= a; ctx.strokeStyle = c; ctx.lineWidth = lw; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.bezierCurveTo(q1[0], q1[1], q2[0], q2[1], q3[0], q3[1]); ctx.stroke(); ctx.restore();
+  return q3;
+}
+function wrap(s, x, y, maxw, lh, o) { const words = s.split(' '); let cur = '', yy = y; const lines = []; for (const w of words) { const t2 = cur ? cur + ' ' + w : w; if (width(t2, o.size, o.weight) > maxw && cur) { lines.push(cur); cur = w; } else cur = t2; } if (cur) lines.push(cur); lines.forEach((ln, i) => txt(ln, x, yy + i * lh, o)); return lines.length; }
+
+function header(t, color, label, question, method) {
+  const p = eo(prog(t, 0.15, 0.75));
+  dot(L + 10, 118, 10 * p, color);
+  rise(label, L + 34, 128, t, 0.15, { size: 30, weight: 600, color });
+  rise(question, L, 200, t, 0.3, { size: 56, weight: 600 });
+  rise(method, L, 252, t, 0.45, { size: 28, color: C.muted });
+}
+function finding(t, t0, s, y = 990, size = 40) { rise(s, L, y, t, t0, { size, weight: 600 }); }
+
+// ---------- swarm of agents (title and end) ----------
+const SW = (() => { const r = rng(7), cols = [C.b5, C.r5, C.y5, C.n5, C.p5, C.b3, C.r3, C.n3]; return Array.from({ length: 46 }, (_, i) => ({ ax: 300 + r() * 560, ay: 170 + r() * 300, fx: 0.05 + r() * 0.09, fy: 0.05 + r() * 0.09, px: r() * 6.3, py: r() * 6.3, c: cols[i % cols.length], s: 5 + r() * 4 })); })();
+function swarm(t, conv = 0) {
+  const pts = SW.map(d => { const x = 960 + d.ax * Math.cos(d.px + t * d.fx * 6.3), y = 540 + d.ay * Math.sin(d.py + t * d.fy * 6.3); return [lerp(x, 960, conv), lerp(y, 540, conv), d]; });
+  for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) { const dx = pts[i][0] - pts[j][0], dy = pts[i][1] - pts[j][1], dd = Math.hypot(dx, dy); if (dd < 150) line(pts[i][0], pts[i][1], pts[j][0], pts[j][1], C.g4, 1.2, (1 - dd / 150) * 0.5 * (1 - conv)); }
+  pts.forEach(([x, y, d]) => dot(x, y, d.s, d.c, 0.8));
+  const g = ctx.createRadialGradient(960, 540, 60, 960, 540, 820); g.addColorStop(0, 'rgba(255,255,255,0.97)'); g.addColorStop(0.45, 'rgba(255,255,255,0.88)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+}
+
+// ---------- scenes ----------
+const S = [];
+S.push({ dur: 6, draw(t) {
+  swarm(t + 3);
+  rise('Influence Between Agents', 960, 470, t, 0.3, { size: 96, weight: 600, align: 'center' });
+  rise('in the AI Village', 960, 578, t, 0.55, { size: 96, weight: 600, align: 'center' });
+  rise('avsd: a toolkit that measures how agents in a swarm shape each other', 960, 660, t, 1.2, { size: 34, color: C.muted, align: 'center' });
+  rise('Enxin Song  ·  Wenhao Chai', 960, 770, t, 1.9, { size: 34, weight: 500, align: 'center' });
+  rise('AI Swarm Dynamics Hackathon  ·  AI Village × Grove Research  ·  October 2026', 960, 820, t, 2.1, { size: 26, color: C.muted, align: 'center' });
+} });
+
+const SRC = [['Chat messages', 183485, C.b5], ['Events', 381610, C.y6], ['Computer-use sessions', 78362, C.n5], ['Computer-use turns', 2510487, C.n4], ['Memory versions', 246151, C.r5], ['Daily summaries', 939, C.p5]];
+S.push({ dur: 10, draw(t) {
+  header(t, C.g6, 'The data', '18 months of AI Village logs', 'Hugging Face dataset aidigestorg/ai-village, revision 838b4150');
+  const y0 = 320, bh = 78, gap = 16, bx = L, bw = 520;
+  SRC.forEach(([name, n, col], j) => {
+    const y = y0 + j * (bh + gap), p = eo(prog(t, 0.8 + j * 0.15, 1.4 + j * 0.15));
+    if (p <= 0) return;
+    shadowBox(bx, y, bw, bh, 14, p); box(bx, y, 10, bh, 4, col, null, p);
+    txt(name, bx + 34, y + 48, { size: 28, weight: 500, alpha: p });
+    txt(fmt(n * eo(prog(t, 1.0 + j * 0.15, 2.6 + j * 0.15))), bx + bw - 28, y + 48, { size: 30, weight: 600, color: col, align: 'right', alpha: p });
+  });
+  const tx = 1060, ty = 320, tw = R - tx, th = 6 * bh + 5 * gap;
+  const pt = eo(prog(t, 1.6, 2.4));
+  if (pt > 0) {
+    shadowBox(tx, ty, tw, th, 16, pt);
+    txt('One unified event table', tx + 36, ty + 58, { size: 32, weight: 600, alpha: pt });
+    const cols = ['time', 'actor', 'type', 'agent', 'family', 'room'];
+    cols.forEach((c, i) => txt(c, tx + 36 + i * 118, ty + 106, { size: 18, weight: 500, color: C.muted, alpha: pt }));
+    line(tx + 30, ty + 120, tx + tw - 30, ty + 120, C.g3, 2, pt);
+    const filled = prog(t, 2.2, 7.5);
+    const rows = 13;
+    for (let k = 0; k < rows; k++) {
+      const pr = clamp(filled * rows - k);
+      if (pr <= 0) break;
+      const yy = ty + 140 + k * 28, r = rng(100 + k)();
+      const col = SRC[Math.floor(r * 6)][2];
+      box(tx + 36, yy, 10, 16, 3, col, null, pr);
+      for (let i = 0; i < 6; i++) box(tx + 60 + i * 112, yy + 3, 40 + rng(k * 7 + i)() * 56, 10, 5, C.g2, null, pr);
+    }
+    const cnt = 3187863 * eio(prog(t, 2.2, 7.5));
+    txt(fmt(cnt) + ' rows', tx + tw - 36, ty + 58, { size: 32, weight: 600, color: C.b6, align: 'right', alpha: pt });
+  }
+  for (let j = 0; j < 6; j++) {
+    const y = y0 + j * (bh + gap) + bh / 2, per = 0.34 - j * 0.02;
+    for (let k = 0; k < 18; k++) {
+      const s = 2.0 + j * 0.06 + k * per, p = prog(t, s, s + 0.9);
+      if (p <= 0 || p >= 1 || s > 7.4) continue;
+      const tyy = ty + 150 + ((j * 5 + k * 3) % 13) * 28;
+      const q = curve(bx + bw + 8, y, tx - 8, tyy, eio(p), 'rgba(0,0,0,0)', 0);
+      if (q) box(q[0] - 6, q[1] - 6, 12, 12, 3, SRC[j][2], null, 0.9);
+    }
+  }
+  rise('46 agents  ·  4 model families  ·  389 run days  ·  April 2025 to September 2026', L, 990, t, 6.0, { size: 32, color: C.muted });
+} });
+
+const TREE = [['Chat', 'Excitation model', 'Agents mostly respond to themselves', C.b5, C.b6],
+  ['Memory', 'Fact tracking', 'A third of new facts lost at the first rewrite', C.r5, C.r6],
+  ['Retelling', 'Transmission trees', 'Reaches fewer agents, changes on the way', C.y6, C.y9],
+  ['Shared work', 'Dependency graphs', 'Agents continue their own work', C.n5, C.n6],
+  ['Scaffolding', 'Change points', 'No alignment with changes beyond chance', C.p5, C.p6]];
+S.push({ dur: 11, draw(t) {
+  header(t, C.g6, 'Overview', 'Five questions, one method each', 'The core question splits by the channel through which agents could influence each other');
+  const rx = 600, ry = 640, qx = 880, fx = 1290;
+  rise('How strongly do', L, ry - 40, t, 0.6, { size: 44, weight: 600 });
+  rise('agents influence', L, ry + 14, t, 0.6, { size: 44, weight: 600 });
+  rise('each other?', L, ry + 68, t, 0.6, { size: 44, weight: 600 });
+  dot(rx, ry, 12 * eo(prog(t, 0.8, 1.2)), C.g6);
+  TREE.forEach(([q, m, f, col, dark], i) => {
+    const y = 360 + i * 140, t0 = 1.2 + i * 0.35;
+    curve(rx, ry, qx, y, eio(prog(t, t0, t0 + 0.7)), col, 3.5);
+    dot(qx, y, 12 * eo(prog(t, t0 + 0.6, t0 + 0.9)), dark);
+    rise(q, qx + 30, y - 6, t, t0 + 0.65, { size: 38, weight: 600 });
+    rise(m, qx + 30, y + 34, t, t0 + 0.8, { size: 28, color: C.muted });
+    const t1 = 4.6 + i * 0.4;
+    curve(qx + 290, y, fx - 20, y, eio(prog(t, t1, t1 + 0.6)), col, 2.5, 0.8);
+    dot(fx - 14, y, 7 * eo(prog(t, t1 + 0.5, t1 + 0.7)), dark);
+    rise(f, fx + 8, y + 10, t, t1 + 0.5, { size: 30, weight: 500, color: dark });
+  });
+} });
+
+const MSG = (() => { const r = rng(11), out = [], last = [-1, -1, -1, -1, -1]; for (let k = 0; k < 30; k++) { const row = Math.floor(r() * 5), u = r(); let type = u < 0.48 ? 'self' : u < 0.74 ? 'base' : u < 0.96 ? 'other' : 'human'; let parent = -1; if (type === 'self') { parent = last[row]; if (parent < 0) type = 'base'; } if (type === 'other') { const others = last.map((v, i) => [v, i]).filter(([v, i]) => v >= 0 && i !== row); if (others.length) parent = others[Math.floor(r() * others.length)][0]; else type = 'base'; } out.push({ row, type, parent, t: 0.9 + k * 0.2 }); last[row] = k; } return out; })();
+const TCOL = { self: C.b5, other: C.r5, base: C.g5, human: C.y6 };
+S.push({ dur: 15, draw(t) {
+  header(t, C.b6, '1 / 5  ·  Chat', 'Who triggers whom in the chat?', 'Excitation model: a multivariate Hawkes process with one dimension per agent');
+  const a = 1 - prog(t, 7.4, 7.9), b = prog(t, 7.9, 8.4);
+  if (a > 0) {
+    ctx.save(); ctx.globalAlpha *= a;
+    txt('Schematic: each message, linked to the earlier message that triggered it', L, 330, { size: 24, color: C.muted });
+    const x0 = 330, x1 = 980;
+    for (let i = 0; i < 5; i++) { const y = 400 + i * 100; txt('Agent ' + 'ABCDE'[i], L, y + 9, { size: 26, weight: 500, color: C.muted }); line(x0 - 20, y, x1 + 20, y, C.g2, 2); }
+    const px = k => x0 + (MSG[k].t - 0.9) / (MSG.length * 0.2) * (x1 - x0), py = k => 400 + MSG[k].row * 100;
+    MSG.forEach((m, k) => { if (m.parent >= 0) { const p = eio(prog(t, m.t, m.t + 0.35)); curve(px(m.parent), py(m.parent), px(k), py(k), p, TCOL[m.type], 2.5, 0.85); } });
+    MSG.forEach((m, k) => dot(px(k), py(k), 10 * eo(prog(t, m.t + 0.25, m.t + 0.45)), TCOL[m.type]));
+    const bx = 1080, bw = R - bx, by = 470, segs = [['Self', 47.5, C.b5], ['Baseline', 25.9, C.g4], ['Other agents', 23.8, C.r5], ['Human', 1.8, C.y5], ['System', 1.0, C.n5]];
+    const fill = eio(prog(t, 2.0, 4.0));
+    txt('Share of agent messages by what triggered them', bx, by - 30, { size: 26, weight: 500, alpha: prog(t, 1.8, 2.3) });
+    let acc = 0;
+    segs.forEach(([n, v, col], i) => { const w = bw * v / 100, x = bx + bw * acc / 100; const vis = clamp((fill * 100 - acc) / v); if (vis > 0) box(x, by, Math.max(w * vis - 3, 1), 64, 6, col); acc += v; });
+    rise('Self 47.5%', bx, by + 104, t, 3.0, { size: 26, weight: 600, color: C.b6 });
+    rise('Baseline 25.9%', bx + bw * 0.475, by + 144, t, 3.25, { size: 26, weight: 500, color: C.muted });
+    rise('Other agents 23.8%', R, by + 104, t, 3.5, { size: 26, weight: 600, color: C.r6, align: 'right' });
+    rise('Human and system 2.8%', R, by + 180, t, 3.8, { size: 22, color: C.muted, align: 'right' });
+    rise('47.5%', bx, 760, t, 4.4, { size: 110, weight: 600, color: C.b6 });
+    if (t > 4.6) wrap("of agent messages follow the agent's own earlier messages, more than any other source", bx, 820, 680, 40, { size: 30, alpha: eo(prog(t, 4.6, 5.2)) });
+    ctx.restore();
+    finding(t, 5.6, 'Agents mostly respond to themselves.');
+  }
+  if (b > 0) {
+    ctx.save(); ctx.globalAlpha *= b;
+    const x0 = L + 90, x1 = R - 20, yb = 860, yt = 360, ymax = 2;
+    const Y = v => yb - (Math.min(v, ymax) / ymax) * (yb - yt);
+    [0, 0.5, 1, 1.5, 2].forEach(v => { line(x0, Y(v), x1, Y(v), v === 1 ? C.g5 : C.g2, v === 1 ? 2.5 : 1.5, 1, v === 1 ? [10, 8] : null); txt(v.toFixed(1), x0 - 18, Y(v) + 9, { size: 24, color: C.muted, align: 'right' }); });
+    txt('Spectral radius ρ of agent-to-agent excitation, one dot per goal window', x0, 330, { size: 26, weight: 500 });
+    txt('above 1: cascades grow', x1, Y(1) - 16, { size: 24, color: C.r6, align: 'right' });
+    txt('below 1: cascades die out', x1, Y(1) + 36, { size: 24, color: C.b6, align: 'right' });
+    const n = D.rho.length;
+    D.rho.forEach((v, i) => { const x = x0 + 30 + i / (n - 1) * (x1 - x0 - 330), s = 8.6 + i * 0.06; dot(x, Y(v), 11 * eo(prog(t, s, s + 0.3)), v < 1 ? C.b5 : C.r5); });
+    txt('42 goal windows, April 2025 to September 2026', x0 + 30, yb + 44, { size: 24, color: C.muted, alpha: prog(t, 9, 9.5) });
+    ctx.restore();
+    finding(t, 11.2, 'Cascades between agents die out in 39 of 42 goal windows.');
+  }
+} });
+
+const CHIPS = [['url', 'example.org/doc'], ['amount', '$1,250'], ['date', 'Oct 12'], ['count', '42 sign-ups'], ['name', 'Agent B'], ['time', '3:00 pm'], ['percent', '18%'], ['url', 'github.com/...'], ['date', 'May 26'], ['count', '7 issues'], ['name', 'Agent D'], ['amount', '$80']];
+const REWRITES = [2.4, 4.6, 6.8, 9.0], DROP = { 1: 0, 4: 0, 7: 0, 10: 0, 2: 1, 9: 1, 5: 2 };
+S.push({ dur: 14, draw(t) {
+  header(t, C.r6, '2 / 5  ·  Memory', "How long do facts survive an agent's own rewrites?", 'Fact tracking: 4.1 million fact units followed through 85,600 memory rewrites');
+  const cx = L, cy = 320, cw = 760, ch = 520, pc = eo(prog(t, 0.6, 1.2));
+  if (pc > 0) {
+    shadowBox(cx, cy, cw, ch, 18, pc);
+    txt("An agent's memory (schematic)", cx + 36, cy + 58, { size: 28, weight: 600, alpha: pc });
+    const nr = REWRITES.filter(r => t >= r).length;
+    if (nr > 0) txt(`rewrite ${nr}`, cx + cw - 36, cy + 58, { size: 28, weight: 600, color: C.r6, align: 'right' });
+    REWRITES.forEach(r => { const p = prog(t, r - 0.3, r + 0.4); if (p > 0 && p < 1) { const x = cx + p * cw; ctx.save(); const g = ctx.createLinearGradient(x - 90, 0, x, 0); g.addColorStop(0, 'rgba(234,67,53,0)'); g.addColorStop(1, 'rgba(234,67,53,0.16)'); ctx.fillStyle = g; ctx.fillRect(Math.max(cx, x - 90), cy + 80, Math.min(90, x - cx), ch - 100); ctx.restore(); } });
+    CHIPS.forEach(([k, v], i) => {
+      const col = i % 3, row = Math.floor(i / 3), x = cx + 36 + col * 236, y = cy + 100 + row * 100;
+      let a = pc, sc = 1, red = 0;
+      if (DROP[i] !== undefined) { const r = REWRITES[DROP[i]]; const p = prog(t, r, r + 0.6); a *= 1 - p; red = p > 0 && p < 1 ? 1 : 0; sc = 1 - 0.15 * p; }
+      if (a <= 0.01) { box(x, y, 216, 76, 14, null, C.g2, pc, 2); return; }
+      ctx.save(); ctx.translate(x + 108, y + 38); ctx.scale(sc, sc); ctx.translate(-x - 108, -y - 38);
+      box(x, y, 216, 76, 14, red ? C.r1 : C.g1, red ? C.r5 : null, a, 2);
+      txt(k, x + 18, y + 30, { size: 18, weight: 500, color: C.muted, alpha: a });
+      txt(v, x + 18, y + 60, { size: 24, weight: 600, alpha: a });
+      ctx.restore();
+    });
+  }
+  const gx = 1020, gy0 = 360, gx1 = R - 20, gy1 = 820, hmax = 40;
+  const X = g => gx + 60 + (g - 1) / 19 * (gx1 - gx - 80), Y = h => gy1 - h / hmax * (gy1 - gy0);
+  const pa = eo(prog(t, 1.0, 1.6));
+  if (pa > 0) {
+    ctx.save(); ctx.globalAlpha *= pa;
+    txt('Chance of losing a fact at rewrite g (%)', gx + 60, gy0 - 26, { size: 26, weight: 500 });
+    [0, 10, 20, 30, 40].forEach(v => { line(gx + 60, Y(v), gx1, Y(v), C.g2, 1.5); txt(String(v), gx + 46, Y(v) + 8, { size: 22, color: C.muted, align: 'right' }); });
+    [1, 5, 10, 15, 20].forEach(g => txt(String(g), X(g), gy1 + 36, { size: 22, color: C.muted, align: 'center' }));
+    txt('rewrite g', (gx + gx1) / 2 + 30, gy1 + 76, { size: 22, color: C.muted, align: 'center' });
+    ctx.restore();
+  }
+  const H2 = D.hazard, upto = 1 + 19 * eio(prog(t, 2.4, 10.5));
+  ctx.save(); ctx.strokeStyle = C.r5; ctx.lineWidth = 5; ctx.lineJoin = 'round'; ctx.beginPath();
+  let started = false;
+  for (let g = 1; g <= 20; g++) { if (g > upto + 1e-6) { const fl = upto - Math.floor(upto); if (fl > 0 && g === Math.floor(upto) + 1) ctx.lineTo(lerp(X(g - 1), X(g), fl), lerp(Y(H2[g - 2]), Y(H2[g - 1]), fl)); break; } if (!started) { ctx.moveTo(X(g), Y(H2[g - 1])); started = true; } else ctx.lineTo(X(g), Y(H2[g - 1])); }
+  if (t > 2.4) ctx.stroke(); ctx.restore();
+  if (t > 2.4) dot(X(1), Y(H2[0]), 9, C.r6);
+  rise('34% lost at the first rewrite', X(1) + 24, Y(H2[0]) - 18, t, 2.6, { size: 26, weight: 600, color: C.r6 });
+  rise('lower with every rewrite survived', X(7), Y(18), t, 9.6, { size: 24, color: C.muted });
+  finding(t, 10.6, 'A third of new facts are lost at the first rewrite. Survivors grow safer.');
+} });
+
+const AG = (() => { const r = rng(5); return Array.from({ length: 14 }, (_, i) => { const a = i / 14 * 6.283 + 0.3 + (r() - 0.5) * 0.25, rr = 250 + (r() - 0.5) * 50; return [600 + rr * Math.cos(a), 610 + rr * 0.92 * Math.sin(a)]; }); })();
+const HOPS = [[0, 3, 1.4, 0.6, '$1,250'], [0, 9, 1.9, 0.6, '$1,250'], [3, 5, 3.5, 1.1, '$1,250'], [5, 7, 6.0, 1.8, '$1,200']];
+S.push({ dur: 14, draw(t) {
+  header(t, C.y9, '3 / 5  ·  Retelling', 'How far, how fast and how faithfully does information travel?', 'Transmission trees: who passed each piece of information to whom');
+  txt('Schematic', L, 330, { size: 24, color: C.muted, alpha: prog(t, 0.6, 1.0) });
+  const got = { 0: [0, '$1,250'] };
+  HOPS.forEach(([a, b, s, d, v]) => { if (t >= s + d) got[b] = [s + d, v]; });
+  HOPS.forEach(([a, b, s, d, v]) => {
+    const p = eio(prog(t, s, s + d)); if (p <= 0) return;
+    line(AG[a][0], AG[a][1], lerp(AG[a][0], AG[b][0], p), lerp(AG[a][1], AG[b][1], p), C.y6, 4, 0.9);
+    if (p < 1) { const x = lerp(AG[a][0], AG[b][0], p), y = lerp(AG[a][1], AG[b][1], p); box(x - 50, y - 20, 100, 40, 20, v === '$1,200' ? C.r5 : C.y5); txt(v, x, y + 9, { size: 22, weight: 600, align: 'center', color: '#fff' }); }
+  });
+  AG.forEach(([x, y], i) => {
+    const pa = eo(prog(t, 0.5 + i * 0.03, 0.9 + i * 0.03)); if (pa <= 0) return;
+    const g = got[i];
+    if (g) { const changed = g[1] === '$1,200'; dot(x, y, 26 * pa, changed ? C.r5 : C.y5); const pv = eo(prog(t, g[0], g[0] + 0.4)); if (i !== 0 || t > 0.9) { box(x - 52, y - 72, 104, 36, 18, '#fff', changed ? C.r5 : C.y6, pv, 2.5); txt(g[1], x, y - 46, { size: 22, weight: 600, align: 'center', color: changed ? C.r6 : C.y9, alpha: pv }); } }
+    else { dot(x, y, 26 * pa, '#fff'); ring(x, y, 26 * pa, C.g4, 3, pa); }
+  });
+  rise('9 of 14 agents never receive it', 600, 960 - 40, t, 8.2, { size: 26, color: C.muted, align: 'center' });
+  const bx = 1140;
+  [['0.235', 2.2, 'further acquisitions per acquisition, half of what the agents still lacking it would allow'], ['Slower', 4.8, 'with each retelling (p = 0.002 on paths where every parent is known)'], ['30%', 7.4, 'of retold quantities change value on the way']].forEach(([big, s, small], i) => {
+    const y = 420 + i * 170; rise(big, bx, y, t, s, { size: 64, weight: 600, color: i === 2 ? C.r6 : C.y9 });
+    if (t > s + 0.2) wrap(small, bx, y + 44, 640, 36, { size: 28, alpha: eo(prog(t, s + 0.2, s + 0.8)) });
+  });
+  finding(t, 10.4, 'Retold information reaches fewer agents than it could, slows and changes.');
+} });
+
+function graph(t, G, x0, x1, yc, hh, t0, t1, colOf, lwScale, nodeR, nodeCol = C.ink) {
+  const nl = G.layers, X = n => lerp(x0, x1, G.nodes[n][0]), Y = n => yc + G.nodes[n][1] * hh;
+  const tl = l => lerp(t0, t1, l / Math.max(nl - 1, 1));
+  G.edges.forEach(([p, c, k]) => { const lc = G.nodes[c][2], s = tl(lc) - 0.45; const pr = eio(prog(t, s, s + 0.45)); if (pr > 0) { const [col, a] = colOf(k); curve(X(p), Y(p), X(c), Y(c), pr, col, 1.6 * lwScale, a); } });
+  G.nodes.forEach((nd, i) => { const s = tl(nd[2]); dot(X(i), Y(i), nodeR * eo(prog(t, s - 0.05, s + 0.2)), nodeCol, 0.75); });
+}
+S.push({ dur: 16, draw(t) {
+  header(t, C.n6, '4 / 5  ·  Shared work', 'Whose earlier work does each session build on?', "Dependency graphs: a session's parent is the last session that wrote an artifact it touches");
+  const pl = prog(t, 0.6, 1.1);
+  txt('AI Village, goal G43: 270 linked sessions of 16 agents', L, 318, { size: 26, weight: 500, alpha: pl });
+  line(1300, 309, 1350, 309, C.b4, 5, pl); txt('within one agent', 1362, 318, { size: 24, alpha: pl });
+  line(1560, 309, 1610, 309, C.r4, 5, pl); txt('between agents', 1622, 318, { size: 24, alpha: pl });
+  graph(t, D.graphs.ai_village, L + 10, R - 10, 495, 150, 0.9, 7.2, k => k === 's' ? [C.b4, 0.6] : [C.r4, 0.85], 1.4, 5);
+  const pg = prog(t, 7.4, 7.9);
+  txt('Generator DAG from the blog, same number of steps', L, 700, { size: 26, weight: 500, alpha: pg, color: C.muted });
+  graph(t, D.graphs.generator, L + 10, R - 10, 805, 95, 7.6, 10.2, () => [C.g5, 0.4], 1.0, 1.7, C.g6);
+  finding(t, 10.6, '77% of links stay within one agent, and far more skip layers than in the generator.', 960, 38);
+  rise("60% of sessions continue the agent's own previous session, against at most 25% by chance.", L, 1012, t, 12.0, { size: 30, color: C.muted });
+} });
+
+S.push({ dur: 12, draw(t) {
+  header(t, C.p6, '5 / 5  ·  Scaffolding changes', 'Do documented scaffold changes shift behaviour?', 'Change-point detection on 387 behaviour series, against 186 dated CHANGELOG entries');
+  const wk = D.weekly, n = wk.entries.length, x0 = L, x1 = R, bw = (x1 - x0) / n;
+  const sweep = eio(prog(t, 0.8, 4.0));
+  const pl = prog(t, 0.6, 1.0);
+  txt('CHANGELOG entries per week', x0, 330, { size: 24, weight: 500, alpha: pl, color: C.muted });
+  txt('Change points per week', x0, 520, { size: 24, weight: 500, alpha: pl, color: C.muted });
+  line(x0, 460, x1, 460, C.g3, 2, pl); line(x0, 740, x1, 740, C.g3, 2, pl);
+  const me = Math.max(...wk.entries), mc = Math.max(...wk.aligned.map((v, i) => v + wk.unaligned[i]));
+  for (let i = 0; i < n; i++) {
+    const vis = clamp(sweep * n - i); if (vis <= 0) break;
+    const x = x0 + i * bw;
+    const he = wk.entries[i] / me * 100 * vis; box(x + 2, 460 - he, bw - 4, he, 2, C.g5);
+    const ha = wk.aligned[i] / mc * 190 * vis, hu = wk.unaligned[i] / mc * 190 * vis;
+    box(x + 2, 740 - ha, bw - 4, ha, 2, C.b4); box(x + 2, 740 - ha - hu, bw - 4, hu, 2, C.r4);
+  }
+  ['Apr 2025', 'Oct 2025', 'Apr 2026', 'Sep 2026'].forEach((s, i) => txt(s, x0 + [0, 26, 52, 75][i] * bw, 776, { size: 22, color: C.muted, alpha: pl }));
+  const pb = eo(prog(t, 4.6, 5.4));
+  if (pb > 0) {
+    const bx = L, by = 830, full = 1100;
+    txt('Change points within 3 run days of an entry', bx, by, { size: 26, weight: 500, alpha: pb });
+    box(bx, by + 18, full * 1929 / 2314 * pb, 34, 6, C.b5); txt('observed 1,929', bx + full * 1929 / 2314 * pb + 16, by + 46, { size: 24, weight: 600, color: C.b6, alpha: pb });
+    box(bx, by + 62, full * 1969.5 / 2314 * pb, 34, 6, C.g4); txt('chance alone 1,970  (p = 0.695)', bx + full * 1969.5 / 2314 * pb + 16, by + 90, { size: 24, weight: 600, color: C.muted, alpha: pb });
+  }
+  rise('They bunch on Mondays,', 1460, 860, t, 6.8, { size: 30, weight: 600, color: C.p6 });
+  rise('when 39 of 51 goals start.', 1460, 900, t, 7.0, { size: 30, weight: 600, color: C.p6 });
+  finding(t, 8.6, 'No alignment with documented changes beyond chance.', 1010, 38);
+} });
+
+const CMDS = [['avsd ingest', '13 tables, 5.8 GB, checksums match'], ['avsd build-events', '3,187,863 events in one table'], ['avsd hawkes fit --window goal', '43 windows, 42 pass the recovery check'], ['python -m avsd.lineage.memory --rules v2', '4.1 M fact units, 85,600 rewrites'], ['avsd lineage trees --gamma composite', '815,594 transmissions'], ['avsd swarmsim calibrate', '51 goal graphs, 64 generator DAGs each'], ['avsd changepoint', '2,314 change points, 387 series'], ['avsd report', 'write-up, figures and results browser']];
+const IMGS = {};
+S.push({ dur: 9, draw(t) {
+  header(t, C.g6, 'The toolkit', 'One command per step, reproducible on CPUs', 'configs/default.yaml pins the dataset revision and the seed; outputs hold only aggregates');
+  const tx = L, ty = 310, tw = 1000, th = 600, pt = eo(prog(t, 0.5, 1.0));
+  if (pt > 0) {
+    box(tx, ty, tw, th, 18, '#202124', null, pt);
+    [C.r5, C.y5, C.n5].forEach((c, i) => dot(tx + 30 + i * 26, ty + 28, 7, c, pt));
+    CMDS.forEach(([cmd, out], i) => {
+      const s = 1.0 + i * 0.85, y = ty + 92 + i * 64;
+      const nch = Math.floor(cmd.length * prog(t, s, s + 0.45));
+      if (nch <= 0) return;
+      txt('$ ' + cmd.slice(0, nch), tx + 36, y, { size: 26, weight: 500, color: '#E8EAED' });
+      rise('✓ ' + out, tx + 60, y + 28, t, s + 0.5, { size: 20, color: C.n3 });
+    });
+  }
+  ['overview', 'sources', 'memory', 'depgraph_example'].forEach((k, i) => {
+    const im = IMGS[k]; if (!im) return;
+    const s = 2.0 + i * 1.3, p = eo(prog(t, s, s + 0.7)); if (p <= 0) return;
+    const w = 540, h = w * im.height / im.width, x = 1210 + (1 - p) * 120, y = 320 + i * 105;
+    shadowBox(x - 12, y - 12, w + 24, h + 24, 12, p);
+    ctx.save(); ctx.globalAlpha *= p; ctx.drawImage(im, x, y, w, h); ctx.restore();
+  });
+} });
+
+S.push({ dur: 7, draw(t) {
+  swarm(t + 20, 0);
+  rise('Influence Between Agents in the AI Village', 960, 420, t, 0.3, { size: 54, weight: 600, align: 'center' });
+  rise('github.com/Espere-1119-Song/ai-village-swarm-dynamics', 960, 530, t, 0.7, { size: 48, weight: 600, align: 'center', color: C.b6 });
+  rise('Code, write-up (reports/writeup.pdf) and results browser', 960, 600, t, 1.0, { size: 32, color: C.muted, align: 'center' });
+  rise('Enxin Song  ·  Wenhao Chai', 960, 720, t, 1.4, { size: 34, weight: 500, align: 'center' });
+  rise('Data: AI Digest, AI Village dataset (Hugging Face aidigestorg/ai-village)', 960, 780, t, 1.6, { size: 24, color: C.muted, align: 'center' });
+} });
+
+let acc = 0; S.forEach(s => { s.start = acc; acc += s.dur; });
+window.DURATION = acc;
+window.render = function (t) {
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const s = S.find(x => t >= x.start && t < x.start + x.dur) || S[S.length - 1];
+  const lt = t - s.start, fade = Math.min(1, lt / 0.45, (s.dur - lt) / 0.45);
+  ctx.save(); ctx.globalAlpha = s === S[S.length - 1] && lt > s.dur - 0.45 ? 1 : clamp(fade); s.draw(lt); ctx.restore();
+};
+Promise.all([document.fonts.load('400 32px IS'), document.fonts.load('500 32px IS'), document.fonts.load('600 32px IS'),
+  ...['overview', 'sources', 'memory', 'depgraph_example'].map(k => new Promise(res => { const im = new Image(); im.onload = () => { IMGS[k] = im; res(); }; im.onerror = res; im.src = 'assets/' + k + '.png'; }))])
+  .then(() => document.fonts.ready).then(() => { window.READY = true; window.render(0); });
+</script></body></html>

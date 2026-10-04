@@ -26,3 +26,7 @@ slurm-*.out
 
 # LaTeX build files of reports/writeup.pdf
 reports/build/
+
+# Copies made by scripts/demo_video/data_prep.py
+scripts/demo_video/fonts/
+scripts/demo_video/assets/

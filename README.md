@@ -1,6 +1,6 @@
 # avsd: swarm dynamics in the AI Village logs
 
-`avsd` turns the logs of the AI Village (AI Digest, 2026) into one unified event table and runs four analyses on it.
+`avsd` turns the logs of the AI Village (AI Digest, 2026) into one unified event table and runs five analyses on it.
 
 | Analysis | Question | Method |
 |---|---|---|
@@ -11,6 +11,8 @@
 | Simulator and dependency graphs | Whether a published swarm-scaling simulator matches real agent work | Re-implementation of the simulator, dependency graphs of computer-use sessions |
 
 A one-page summary of the project and its findings is in `reports/project_summary.md`. The full write-up is in `reports/writeup.md`. `python scripts/writeup_figures.py` draws its figures from the aggregate tables, and `python scripts/writeup_pdf.py` typesets it as `reports/writeup.pdf`. The results browser is online at https://espere-1119-song.github.io/ai-village-swarm-dynamics/reports/, and `avsd report` builds a self-contained interactive page of every figure and table in `reports/index.html`. `SPEC.md` holds the plan, `docs/decisions.md` every analysis decision and `PROGRESS.md` (in Chinese) the work log.
+
+A demo video of 1 min 54 s without audio is `reports/demo.mp4`. `scripts/demo_video/build_video.sh` renders it from the aggregate tables: `scenes.html` draws each frame, headless Chrome captures the frames and ffmpeg encodes them.
 
 ## Install
 
